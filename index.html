@@ -1,1306 +1,1202 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subnautica2攻略</title>
-  <meta
-    name="description"
-    content="Subnautica2中文攻略站｜2026.05.14新发布。新手入门、合成配方、材料采集点、氧气洞穴潜泳、生存机制详解，持续更新中。深海探险，从这里开始。"
-  >
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap"
-    rel="stylesheet"
-  >
-  <style>
-    :root {
-      --bg-1: #020b16;
-      --bg-2: #041428;
-      --bg-3: #07233f;
-      --surface: rgba(6, 23, 41, 0.72);
-      --surface-strong: rgba(4, 20, 40, 0.92);
-      --line: rgba(87, 214, 255, 0.22);
-      --line-strong: rgba(105, 229, 255, 0.6);
-      --text-main: #e8fbff;
-      --text-soft: rgba(214, 241, 255, 0.74);
-      --text-faint: rgba(214, 241, 255, 0.5);
-      --accent: #57d6ff;
-      --accent-2: #7fffd4;
-      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.28);
-      --shadow-glow: 0 0 24px rgba(87, 214, 255, 0.24);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 18px;
-      --nav-height: 78px;
-      --transition: 0.3s ease;
-      --max-width: 1280px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Exo 2", sans-serif;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(87, 214, 255, 0.12), transparent 28%),
-        radial-gradient(circle at 82% 16%, rgba(127, 255, 212, 0.08), transparent 22%),
-        linear-gradient(180deg, #010712 0%, #041428 48%, #020d1c 100%);
-      color: var(--text-main);
-      min-height: 100vh;
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 120px 120px;
-      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
-      opacity: 0.18;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(var(--max-width), calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      transition:
-        background-color var(--transition),
-        border-color var(--transition),
-        box-shadow var(--transition),
-        backdrop-filter var(--transition);
-      border-bottom: 1px solid transparent;
-    }
-
-    .site-header.is-scrolled {
-      background: rgba(4, 20, 40, 0.86);
-      border-color: rgba(103, 221, 255, 0.14);
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
-      backdrop-filter: blur(14px);
-    }
-
-    .nav-shell {
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-width: max-content;
-    }
-
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(127, 255, 212, 0.26);
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(127, 255, 212, 0.28), rgba(87, 214, 255, 0.08));
-      box-shadow: inset 0 0 24px rgba(127, 255, 212, 0.1), 0 0 20px rgba(87, 214, 255, 0.12);
-      font-size: 1.1rem;
-    }
-
-    .brand-text {
-      font-family: "Orbitron", sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #f1fdff;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding: 10px 14px;
-      border-radius: 999px;
-      color: var(--text-soft);
-      font-size: 0.96rem;
-      transition:
-        color var(--transition),
-        background-color var(--transition),
-        box-shadow var(--transition),
-        transform var(--transition);
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 6px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(87, 214, 255, 0.88), transparent);
-      opacity: 0;
-      transform: scaleX(0.7);
-      transition: opacity var(--transition), transform var(--transition);
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      color: var(--text-main);
-      background: rgba(87, 214, 255, 0.1);
-      box-shadow: 0 0 24px rgba(87, 214, 255, 0.14);
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a:focus-visible::after {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      padding-top: calc(var(--nav-height) + 64px);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(87, 214, 255, 0.18), transparent 26%),
-        radial-gradient(circle at 75% 30%, rgba(127, 255, 212, 0.12), transparent 20%),
-        linear-gradient(180deg, rgba(3, 12, 24, 0.34), rgba(1, 8, 16, 0.12));
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      padding: 64px 0 88px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
-      gap: 56px;
-      align-items: end;
-    }
-
-    .hero-copy {
-      max-width: 100%;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border: 1px solid rgba(87, 214, 255, 0.22);
-      border-radius: 999px;
-      background: rgba(5, 20, 37, 0.48);
-      color: var(--text-soft);
-      font-size: 0.95rem;
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow-glow);
-      margin-bottom: 24px;
-    }
-
-    .eyebrow .mono {
-      font-family: "Share Tech Mono", monospace;
-      color: var(--accent-2);
-      letter-spacing: 0.08em;
-    }
-
-    h1 {
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(3.2rem, 7vw, 6.1rem);
-      line-height: 0.94;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-shadow: 0 0 34px rgba(87, 214, 255, 0.18);
-      margin-bottom: 24px;
-    }
-
-    .hero-subtitle {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 14px;
-      margin-bottom: 24px;
-      color: var(--text-soft);
-      font-size: 1.04rem;
-    }
-
-    .hero-subtitle span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .hero-subtitle span::before {
-      content: "•";
-      color: var(--accent);
-    }
-
-    .hero-subtitle span:first-child::before {
-      content: "";
-      display: none;
-    }
-
-    .hero-description {
-      max-width: 680px;
-      color: var(--text-soft);
-      font-size: clamp(1.02rem, 1.2vw, 1.16rem);
-      margin-bottom: 34px;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .cta-button {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 16px 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(122, 235, 255, 0.45);
-      background: linear-gradient(135deg, rgba(87, 214, 255, 0.2), rgba(127, 255, 212, 0.08));
-      color: #f4fdff;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      overflow: hidden;
-      transition:
-        transform var(--transition),
-        border-color var(--transition),
-        box-shadow var(--transition),
-        background-color var(--transition);
-      box-shadow:
-        0 0 0 0 rgba(87, 214, 255, 0.28),
-        0 10px 28px rgba(0, 0, 0, 0.24),
-        inset 0 0 26px rgba(87, 214, 255, 0.08);
-    }
-
-    .cta-button::before {
-      content: "";
-      position: absolute;
-      inset: 16%;
-      border-radius: inherit;
-      background: radial-gradient(circle, rgba(127, 255, 212, 0.18), transparent 60%);
-      filter: blur(10px);
-      opacity: 0.32;
-      transition: opacity var(--transition), transform var(--transition);
-      transform: scale(0.92);
-    }
-
-    .cta-button::after {
-      content: "";
-      position: absolute;
-      inset: -28%;
-      border-radius: inherit;
-      background: radial-gradient(circle, rgba(87, 214, 255, 0.26), transparent 54%);
-      opacity: 0;
-      transform: scale(0.72);
-      transition: opacity var(--transition), transform var(--transition);
-      pointer-events: none;
-    }
-
-    .cta-button:hover,
-    .cta-button:focus-visible {
-      transform: translateY(-2px);
-      border-color: rgba(127, 255, 212, 0.72);
-      box-shadow:
-        0 0 0 10px rgba(87, 214, 255, 0.05),
-        0 0 38px rgba(87, 214, 255, 0.28),
-        0 16px 36px rgba(2, 10, 22, 0.46);
-      outline: none;
-    }
-
-    .cta-button:hover::before,
-    .cta-button:focus-visible::before {
-      opacity: 0.56;
-      transform: scale(1);
-    }
-
-    .cta-button:hover::after,
-    .cta-button:focus-visible::after {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .hero-note {
-      color: var(--text-faint);
-      font-size: 0.96rem;
-    }
-
-    .hero-panel {
-      justify-self: end;
-      width: min(100%, 360px);
-      padding: 24px;
-      margin-left: 20px;
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(87, 214, 255, 0.2);
-      background:
-        linear-gradient(180deg, rgba(8, 28, 49, 0.66), rgba(3, 12, 24, 0.72)),
-        rgba(3, 12, 24, 0.6);
-      backdrop-filter: blur(14px);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .hero-panel-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .hero-panel-title {
-      font-family: "Share Tech Mono", monospace;
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
-      color: var(--accent-2);
-      text-transform: uppercase;
-    }
-
-    .pulse-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent-2);
-      box-shadow: 0 0 14px rgba(127, 255, 212, 0.74);
-      animation: pulse 2.8s ease-in-out infinite;
-    }
-
-    .status-list {
-      list-style: none;
-      display: grid;
-      gap: 14px;
-    }
-
-    .status-item {
-      display: grid;
-      grid-template-columns: 42px minmax(0, 1fr);
-      gap: 14px;
-      align-items: start;
-      padding: 14px;
-      border: 1px solid rgba(87, 214, 255, 0.14);
-      border-radius: var(--radius-md);
-      background: rgba(5, 18, 32, 0.5);
-      transition:
-        transform var(--transition),
-        border-color var(--transition),
-        box-shadow var(--transition);
-    }
-
-    .status-item:hover {
-      transform: translateY(-2px);
-      border-color: rgba(127, 255, 212, 0.3);
-      box-shadow: 0 0 24px rgba(87, 214, 255, 0.12);
-    }
-
-    .status-item strong {
-      display: block;
-      margin-bottom: 3px;
-      font-size: 1rem;
-    }
-
-    .status-item span {
-      color: var(--text-soft);
-      font-size: 0.93rem;
-    }
-
-    .status-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(180deg, rgba(87, 214, 255, 0.16), rgba(87, 214, 255, 0.05));
-      border: 1px solid rgba(87, 214, 255, 0.14);
-      font-size: 1.2rem;
-    }
-
-    .bubble-layer {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .lang-toggle {
-      margin-left: 8px;
-    }
-    .lang-toggle button {
-      background: rgba(87, 214, 255, 0.12);
-      border: 1px solid var(--line);
-      color: var(--text-main);
-      padding: 8px 16px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
-    }
-    .lang-toggle button:hover {
-      background: rgba(87, 214, 255, 0.22);
-      border-color: var(--line-strong);
-      box-shadow: 0 0 20px rgba(87, 214, 255, 0.2);
-    }
-    /* Language visibility */
-    .lang-only[lang="en"] { display: none; }
-    body.lang-en .lang-only[lang="en"] { display: inline; }
-    body.lang-en .lang-only[lang="zh"] { display: none; }
-    body.lang-en .lang-zh { display: none; }
-    body.lang-zh .lang-en { display: none; }
-    
-
-    .bubble {
-      position: absolute;
-      bottom: -160px;
-      border-radius: 50%;
-      border: 1px solid rgba(151, 236, 255, 0.18);
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(87, 214, 255, 0.08) 42%, transparent 72%);
-      box-shadow:
-        inset -8px -10px 22px rgba(87, 214, 255, 0.08),
-        0 0 24px rgba(87, 214, 255, 0.08);
-      opacity: 0.7;
-      animation: bubbleFloat linear infinite;
-    }
-
-    main {
-      position: relative;
-      z-index: 2;
-    }
-
-    .section {
-      padding: 104px 0;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 36px;
-    }
-
-    .section-kicker {
-      display: inline-block;
-      font-family: "Share Tech Mono", monospace;
-      color: var(--accent-2);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      font-size: 0.92rem;
-    }
-
-    .section-title {
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.8rem, 3vw, 3rem);
-      line-height: 1.05;
-      letter-spacing: 0.04em;
-    }
-
-    .section-summary {
-      max-width: 520px;
-      color: var(--text-soft);
-    }
-
-    .article-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .article-card {
-      position: relative;
-      min-height: 290px;
-      padding: 22px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(7, 25, 43, 0.7), rgba(3, 12, 24, 0.78)),
-        rgba(5, 18, 32, 0.7);
-      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
-      display: flex;
-      flex-direction: column;
-      transition:
-        transform var(--transition),
-        border-color var(--transition),
-        box-shadow var(--transition),
-        background-color var(--transition);
-      overflow: hidden;
-    }
-
-    .article-card::before {
-      content: "";
-      position: absolute;
-      inset: -40% -20% auto;
-      height: 140px;
-      background: radial-gradient(circle, rgba(87, 214, 255, 0.16), transparent 60%);
-      opacity: 0;
-      transition: opacity var(--transition);
-      pointer-events: none;
-    }
-
-    .article-card:hover,
-    .article-card:focus-within {
-      transform: translateY(-6px);
-      border-color: var(--line-strong);
-      box-shadow:
-        0 0 0 1px rgba(87, 214, 255, 0.28),
-        0 0 34px rgba(87, 214, 255, 0.16),
-        0 22px 40px rgba(0, 0, 0, 0.28);
-    }
-
-    .article-card:hover::before,
-    .article-card:focus-within::before {
-      opacity: 1;
-    }
-
-    .article-card-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(87, 214, 255, 0.16);
-      background: rgba(87, 214, 255, 0.08);
-      font-size: 1.55rem;
-      margin-bottom: 18px;
-    }
-
-    .article-card h3 {
-      font-size: 1.12rem;
-      line-height: 1.45;
-      margin-bottom: 10px;
-      min-height: 5.8em;
-    }
-
-    .article-card p {
-      color: var(--text-soft);
-      font-size: 0.95rem;
-      margin-bottom: auto;
-    }
-
-    .article-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 24px;
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: color var(--transition), transform var(--transition);
-    }
-
-    .article-link:hover,
-    .article-link:focus-visible {
-      color: var(--accent-2);
-      transform: translateX(3px);
-      outline: none;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .feature-card,
-    .timeline-card,
-    .footer-shell {
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(87, 214, 255, 0.14);
-      background:
-        linear-gradient(180deg, rgba(6, 23, 41, 0.84), rgba(3, 12, 24, 0.84)),
-        rgba(4, 20, 40, 0.8);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .feature-card {
-      padding: 28px;
-      min-height: 230px;
-      transition:
-        transform var(--transition),
-        border-color var(--transition),
-        box-shadow var(--transition);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(127, 255, 212, 0.28);
-      box-shadow: 0 0 26px rgba(87, 214, 255, 0.14);
-    }
-
-    .feature-emoji {
-      font-size: 2.4rem;
-      line-height: 1;
-      margin-bottom: 18px;
-      display: inline-block;
-      filter: drop-shadow(0 0 18px rgba(87, 214, 255, 0.22));
-    }
-
-    .feature-card h3 {
-      font-size: 1.18rem;
-      margin-bottom: 10px;
-    }
-
-    .feature-card p {
-      color: var(--text-soft);
-      font-size: 0.96rem;
-    }
-
-    .timeline-card {
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .timeline-card::before {
-      content: "";
-      position: absolute;
-      top: 28px;
-      left: 34px;
-      width: 2px;
-      bottom: 28px;
-      background: linear-gradient(180deg, rgba(127, 255, 212, 0.48), rgba(87, 214, 255, 0.12));
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 58px;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: 26px;
-      top: 6px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(127, 255, 212, 0.9), rgba(87, 214, 255, 0.56));
-      box-shadow: 0 0 18px rgba(87, 214, 255, 0.26);
-    }
-
-    .timeline-date {
-      font-family: "Share Tech Mono", monospace;
-      color: var(--accent-2);
-      font-size: 0.96rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
-
-    .timeline-item h3 {
-      font-size: 1.12rem;
-      margin-bottom: 8px;
-    }
-
-    .timeline-item p {
-      color: var(--text-soft);
-    }
-
-    .site-footer {
-      padding: 0 0 40px;
-    }
-
-    .footer-shell {
-      padding: 24px 28px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .footer-shell strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--text-main);
-    }
-
-    .footer-shell p {
-      color: var(--text-faint);
-      font-size: 0.93rem;
-    }
-
-    @keyframes bubbleFloat {
-      0% {
-        transform: translate3d(0, 0, 0) scale(0.92);
-        opacity: 0;
-      }
-      15% {
-        opacity: 0.52;
-      }
-      50% {
-        transform: translate3d(26px, -48vh, 0) scale(1);
-        opacity: 0.66;
-      }
-      100% {
-        transform: translate3d(-18px, -110vh, 0) scale(1.08);
-        opacity: 0;
-      }
-    }
-
-    @keyframes pulse {
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 0.92;
-      }
-      50% {
-        transform: scale(1.18);
-        opacity: 0.64;
-      }
-    }
-
-    @media (max-width: 1180px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-panel {
-        justify-self: start;
-      }
-
-      .article-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 1024px) {
-      :root {
-        --nav-height: 74px;
-      }
-
-      .container {
-        width: min(var(--max-width), calc(100% - 36px));
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-inner {
-        padding-bottom: 72px;
-      }
-
-      .section {
-        padding: 88px 0;
-      }
-
-      .article-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .feature-grid,
-      .footer-shell {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      :root {
-        --nav-height: 60px;
-      }
-
-      .container {
-        width: min(var(--max-width), calc(100% - 24px));
-      }
-
-      .nav-links {
-        gap: 4px !important;
-        justify-content: center !important;
-        flex-wrap: wrap !important;
-      }
-
-      .nav-links a {
-        padding: 7px 10px !important;
-        font-size: 0.82rem !important;
-        white-space: nowrap !important;
-      }
-
-      h1 {
-        font-size: clamp(1.6rem, 9vw, 2.4rem) !important;
-        letter-spacing: 0.04em !important;
-        word-break: break-word !important;
-        overflow-wrap: break-word !important;
-        line-height: 1.1 !important;
-      }
-
-      .eyebrow {
-        font-size: 0.78rem !important;
-        padding: 7px 10px !important;
-        margin-bottom: 16px !important;
-        white-space: nowrap !important;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .hero-copy {
-        max-width: 100% !important;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr !important;
-        gap: 24px !important;
-        padding-bottom: 48px !important;
-        align-items: start !important;
-      }
-
-      .hero-panel {
-        width: 100% !important;
-        margin-left: 0 !important;
-        margin-top: 8px !important;
-        padding: 18px !important;
-      }
-
-      .hero-actions {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 12px !important;
-      }
-
-      .cta-button {
-        width: 100% !important;
-        justify-content: center !important;
-        padding: 14px 20px !important;
-        font-size: 0.95rem !important;
-      }
-
-      .hero {
-        padding-top: 80px;
-        min-height: auto;
-      }
-
-      .section {
-        padding: 60px 0;
-      }
-
-      .article-grid {
-        grid-template-columns: 1fr !important;
-        gap: 14px !important;
-      }
-
-      .article-card {
-        min-height: auto !important;
-        padding: 18px !important;
-      }
-
-      .article-card h3 {
-        min-height: auto !important;
-        font-size: 1rem !important;
-      }
-
-      .feature-grid,
-      .footer-shell {
-        grid-template-columns: 1fr !important;
-      }
-
-      .footer-shell {
-        padding: 22px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: clamp(1.4rem, 10vw, 1.8rem) !important;
-      }
-
-      .eyebrow {
-        font-size: 0.72rem !important;
-      }
-
-      .hero {
-        padding-top: 72px;
-      }
-    }
-  </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Subnautica 2 Guide</title>
+ <meta
+ name="description"
+ content="Subnautica 2 English guide. Beginner tutorials, crafting recipes, material locations, oxygen management, and survival mechanics. Your deep sea exploration starts here."
+ >
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+ href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap"
+ rel="stylesheet"
+ >
+ <style>
+ :root {
+ --bg-1: #020b16;
+ --bg-2: #041428;
+ --bg-3: #07233f;
+ --surface: rgba(6, 23, 41, 0.72);
+ --surface-strong: rgba(4, 20, 40, 0.92);
+ --line: rgba(87, 214, 255, 0.22);
+ --line-strong: rgba(105, 229, 255, 0.6);
+ --text-main: #e8fbff;
+ --text-soft: rgba(214, 241, 255, 0.74);
+ --text-faint: rgba(214, 241, 255, 0.5);
+ --accent: #57d6ff;
+ --accent-2: #7fffd4;
+ --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.28);
+ --shadow-glow: 0 0 24px rgba(87, 214, 255, 0.24);
+ --radius-xl: 28px;
+ --radius-lg: 22px;
+ --radius-md: 18px;
+ --nav-height: 78px;
+ --transition: 0.3s ease;
+ --max-width: 1280px;
+ }
+
+ * {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ }
+
+ html {
+ scroll-behavior: smooth;
+ }
+
+ body {
+ font-family: "Exo 2", sans-serif;
+ background:
+ radial-gradient(circle at 20% 20%, rgba(87, 214, 255, 0.12), transparent 28%),
+ radial-gradient(circle at 82% 16%, rgba(127, 255, 212, 0.08), transparent 22%),
+ linear-gradient(180deg, #010712 0%, #041428 48%, #020d1c 100%);
+ color: var(--text-main);
+ min-height: 100vh;
+ overflow-x: hidden;
+ line-height: 1.6;
+ }
+
+ body::before {
+ content: "";
+ position: fixed;
+ inset: 0;
+ pointer-events: none;
+ background:
+ linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+ background-size: 120px 120px;
+ mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
+ opacity: 0.18;
+ }
+
+ a {
+ color: inherit;
+ text-decoration: none;
+ }
+
+ img {
+ max-width: 100%;
+ display: block;
+ }
+
+ .container {
+ width: min(var(--max-width), calc(100% - 48px));
+ margin: 0 auto;
+ }
+
+ .site-header {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ z-index: 1000;
+ transition:
+ background-color var(--transition),
+ border-color var(--transition),
+ box-shadow var(--transition),
+ backdrop-filter var(--transition);
+ border-bottom: 1px solid transparent;
+ }
+
+ .site-header.is-scrolled {
+ background: rgba(4, 20, 40, 0.86);
+ border-color: rgba(103, 221, 255, 0.14);
+ box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+ backdrop-filter: blur(14px);
+ }
+
+ .nav-shell {
+ height: var(--nav-height);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 24px;
+ }
+
+ .brand {
+ display: inline-flex;
+ align-items: center;
+ gap: 12px;
+ min-width: max-content;
+ }
+
+ .brand-icon {
+ width: 40px;
+ height: 40px;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ border: 1px solid rgba(127, 255, 212, 0.26);
+ border-radius: 50%;
+ background: radial-gradient(circle at 30% 30%, rgba(127, 255, 212, 0.28), rgba(87, 214, 255, 0.08));
+ box-shadow: inset 0 0 24px rgba(127, 255, 212, 0.1), 0 0 20px rgba(87, 214, 255, 0.12);
+ font-size: 1.1rem;
+ }
+
+ .brand-text {
+ font-family: "Orbitron", sans-serif;
+ font-size: 1rem;
+ font-weight: 700;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ color: #f1fdff;
+ }
+
+ .nav-links {
+ display: flex;
+ align-items: center;
+ justify-content: flex-end;
+ gap: 8px;
+ flex-wrap: wrap;
+ }
+
+ .nav-links a {
+ position: relative;
+ padding: 10px 14px;
+ border-radius: 999px;
+ color: var(--text-soft);
+ font-size: 0.96rem;
+ transition:
+ color var(--transition),
+ background-color var(--transition),
+ box-shadow var(--transition),
+ transform var(--transition);
+ }
+
+ .nav-links a::after {
+ content: "";
+ position: absolute;
+ left: 16px;
+ right: 16px;
+ bottom: 6px;
+ height: 1px;
+ background: linear-gradient(90deg, transparent, rgba(87, 214, 255, 0.88), transparent);
+ opacity: 0;
+ transform: scaleX(0.7);
+ transition: opacity var(--transition), transform var(--transition);
+ }
+
+ .nav-links a:hover,
+ .nav-links a:focus-visible {
+ color: var(--text-main);
+ background: rgba(87, 214, 255, 0.1);
+ box-shadow: 0 0 24px rgba(87, 214, 255, 0.14);
+ transform: translateY(-1px);
+ outline: none;
+ }
+
+ .nav-links a:hover::after,
+ .nav-links a:focus-visible::after {
+ opacity: 1;
+ transform: scaleX(1);
+ }
+
+ .hero {
+ position: relative;
+ min-height: 100vh;
+ padding-top: calc(var(--nav-height) + 64px);
+ overflow: hidden;
+ display: flex;
+ align-items: center;
+ }
+
+ .hero::before {
+ content: "";
+ position: absolute;
+ inset: 0;
+ background:
+ radial-gradient(circle at 50% 20%, rgba(87, 214, 255, 0.18), transparent 26%),
+ radial-gradient(circle at 75% 30%, rgba(127, 255, 212, 0.12), transparent 20%),
+ linear-gradient(180deg, rgba(3, 12, 24, 0.34), rgba(1, 8, 16, 0.12));
+ pointer-events: none;
+ }
+
+ .hero-inner {
+ position: relative;
+ z-index: 2;
+ padding: 64px 0 88px;
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+ gap: 56px;
+ align-items: end;
+ }
+
+ .hero-copy {
+ max-width: 100%;
+ }
+
+ .eyebrow {
+ display: inline-flex;
+ align-items: center;
+ gap: 10px;
+ padding: 10px 16px;
+ border: 1px solid rgba(87, 214, 255, 0.22);
+ border-radius: 999px;
+ background: rgba(5, 20, 37, 0.48);
+ color: var(--text-soft);
+ font-size: 0.95rem;
+ backdrop-filter: blur(10px);
+ box-shadow: var(--shadow-glow);
+ margin-bottom: 24px;
+ }
+
+ .eyebrow .mono {
+ font-family: "Share Tech Mono", monospace;
+ color: var(--accent-2);
+ letter-spacing: 0.08em;
+ }
+
+ h1 {
+ font-family: "Orbitron", sans-serif;
+ font-size: clamp(3.2rem, 7vw, 6.1rem);
+ line-height: 0.94;
+ letter-spacing: 0.06em;
+ text-transform: uppercase;
+ text-shadow: 0 0 34px rgba(87, 214, 255, 0.18);
+ margin-bottom: 24px;
+ }
+
+ .hero-subtitle {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px 14px;
+ margin-bottom: 24px;
+ color: var(--text-soft);
+ font-size: 1.04rem;
+ }
+
+ .hero-subtitle span {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ }
+
+ .hero-subtitle span::before {
+ content: "•";
+ color: var(--accent);
+ }
+
+ .hero-subtitle span:first-child::before {
+ content: "";
+ display: none;
+ }
+
+ .hero-description {
+ max-width: 680px;
+ color: var(--text-soft);
+ font-size: clamp(1.02rem, 1.2vw, 1.16rem);
+ margin-bottom: 34px;
+ }
+
+ .hero-actions {
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ flex-wrap: wrap;
+ }
+
+ .cta-button {
+ position: relative;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: 10px;
+ padding: 16px 28px;
+ border-radius: 999px;
+ border: 1px solid rgba(122, 235, 255, 0.45);
+ background: linear-gradient(135deg, rgba(87, 214, 255, 0.2), rgba(127, 255, 212, 0.08));
+ color: #f4fdff;
+ font-weight: 700;
+ letter-spacing: 0.04em;
+ overflow: hidden;
+ transition:
+ transform var(--transition),
+ border-color var(--transition),
+ box-shadow var(--transition),
+ background-color var(--transition);
+ box-shadow:
+ 0 0 0 0 rgba(87, 214, 255, 0.28),
+ 0 10px 28px rgba(0, 0, 0, 0.24),
+ inset 0 0 26px rgba(87, 214, 255, 0.08);
+ }
+
+ .cta-button::before {
+ content: "";
+ position: absolute;
+ inset: 16%;
+ border-radius: inherit;
+ background: radial-gradient(circle, rgba(127, 255, 212, 0.18), transparent 60%);
+ filter: blur(10px);
+ opacity: 0.32;
+ transition: opacity var(--transition), transform var(--transition);
+ transform: scale(0.92);
+ }
+
+ .cta-button::after {
+ content: "";
+ position: absolute;
+ inset: -28%;
+ border-radius: inherit;
+ background: radial-gradient(circle, rgba(87, 214, 255, 0.26), transparent 54%);
+ opacity: 0;
+ transform: scale(0.72);
+ transition: opacity var(--transition), transform var(--transition);
+ pointer-events: none;
+ }
+
+ .cta-button:hover,
+ .cta-button:focus-visible {
+ transform: translateY(-2px);
+ border-color: rgba(127, 255, 212, 0.72);
+ box-shadow:
+ 0 0 0 10px rgba(87, 214, 255, 0.05),
+ 0 0 38px rgba(87, 214, 255, 0.28),
+ 0 16px 36px rgba(2, 10, 22, 0.46);
+ outline: none;
+ }
+
+ .cta-button:hover::before,
+ .cta-button:focus-visible::before {
+ opacity: 0.56;
+ transform: scale(1);
+ }
+
+ .cta-button:hover::after,
+ .cta-button:focus-visible::after {
+ opacity: 1;
+ transform: scale(1);
+ }
+
+ .hero-note {
+ color: var(--text-faint);
+ font-size: 0.96rem;
+ }
+
+ .hero-panel {
+ justify-self: end;
+ width: min(100%, 360px);
+ padding: 24px;
+ margin-left: 20px;
+ border-radius: var(--radius-xl);
+ border: 1px solid rgba(87, 214, 255, 0.2);
+ background:
+ linear-gradient(180deg, rgba(8, 28, 49, 0.66), rgba(3, 12, 24, 0.72)),
+ rgba(3, 12, 24, 0.6);
+ backdrop-filter: blur(14px);
+ box-shadow: var(--shadow-soft);
+ }
+
+ .hero-panel-header {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 12px;
+ margin-bottom: 20px;
+ }
+
+ .hero-panel-title {
+ font-family: "Share Tech Mono", monospace;
+ font-size: 0.95rem;
+ letter-spacing: 0.08em;
+ color: var(--accent-2);
+ text-transform: uppercase;
+ }
+
+ .pulse-dot {
+ width: 10px;
+ height: 10px;
+ border-radius: 50%;
+ background: var(--accent-2);
+ box-shadow: 0 0 14px rgba(127, 255, 212, 0.74);
+ animation: pulse 2.8s ease-in-out infinite;
+ }
+
+ .status-list {
+ list-style: none;
+ display: grid;
+ gap: 14px;
+ }
+
+ .status-item {
+ display: grid;
+ grid-template-columns: 42px minmax(0, 1fr);
+ gap: 14px;
+ align-items: start;
+ padding: 14px;
+ border: 1px solid rgba(87, 214, 255, 0.14);
+ border-radius: var(--radius-md);
+ background: rgba(5, 18, 32, 0.5);
+ transition:
+ transform var(--transition),
+ border-color var(--transition),
+ box-shadow var(--transition);
+ }
+
+ .status-item:hover {
+ transform: translateY(-2px);
+ border-color: rgba(127, 255, 212, 0.3);
+ box-shadow: 0 0 24px rgba(87, 214, 255, 0.12);
+ }
+
+ .status-item strong {
+ display: block;
+ margin-bottom: 3px;
+ font-size: 1rem;
+ }
+
+ .status-item span {
+ color: var(--text-soft);
+ font-size: 0.93rem;
+ }
+
+ .status-icon {
+ width: 42px;
+ height: 42px;
+ border-radius: 14px;
+ display: grid;
+ place-items: center;
+ background: linear-gradient(180deg, rgba(87, 214, 255, 0.16), rgba(87, 214, 255, 0.05));
+ border: 1px solid rgba(87, 214, 255, 0.14);
+ font-size: 1.2rem;
+ }
+
+ .bubble-layer {
+ position: absolute;
+ inset: 0;
+ overflow: hidden;
+ pointer-events: none;
+ z-index: 1;
+ }
+ /* Language visibility */
+ 
+
+ .bubble {
+ position: absolute;
+ bottom: -160px;
+ border-radius: 50%;
+ border: 1px solid rgba(151, 236, 255, 0.18);
+ background:
+ radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(87, 214, 255, 0.08) 42%, transparent 72%);
+ box-shadow:
+ inset -8px -10px 22px rgba(87, 214, 255, 0.08),
+ 0 0 24px rgba(87, 214, 255, 0.08);
+ opacity: 0.7;
+ animation: bubbleFloat linear infinite;
+ }
+
+ main {
+ position: relative;
+ z-index: 2;
+ }
+
+ .section {
+ padding: 104px 0;
+ }
+
+ .section-header {
+ display: flex;
+ align-items: end;
+ justify-content: space-between;
+ gap: 24px;
+ margin-bottom: 36px;
+ }
+
+ .section-kicker {
+ display: inline-block;
+ font-family: "Share Tech Mono", monospace;
+ color: var(--accent-2);
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ margin-bottom: 10px;
+ font-size: 0.92rem;
+ }
+
+ .section-title {
+ font-family: "Orbitron", sans-serif;
+ font-size: clamp(1.8rem, 3vw, 3rem);
+ line-height: 1.05;
+ letter-spacing: 0.04em;
+ }
+
+ .section-summary {
+ max-width: 520px;
+ color: var(--text-soft);
+ }
+
+ .article-grid {
+ display: grid;
+ grid-template-columns: repeat(5, minmax(0, 1fr));
+ gap: 18px;
+ }
+
+ .article-card {
+ position: relative;
+ min-height: 290px;
+ padding: 22px;
+ border-radius: var(--radius-lg);
+ border: 1px solid var(--line);
+ background:
+ linear-gradient(180deg, rgba(7, 25, 43, 0.7), rgba(3, 12, 24, 0.78)),
+ rgba(5, 18, 32, 0.7);
+ box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
+ display: flex;
+ flex-direction: column;
+ transition:
+ transform var(--transition),
+ border-color var(--transition),
+ box-shadow var(--transition),
+ background-color var(--transition);
+ overflow: hidden;
+ }
+
+ .article-card::before {
+ content: "";
+ position: absolute;
+ inset: -40% -20% auto;
+ height: 140px;
+ background: radial-gradient(circle, rgba(87, 214, 255, 0.16), transparent 60%);
+ opacity: 0;
+ transition: opacity var(--transition);
+ pointer-events: none;
+ }
+
+ .article-card:hover,
+ .article-card:focus-within {
+ transform: translateY(-6px);
+ border-color: var(--line-strong);
+ box-shadow:
+ 0 0 0 1px rgba(87, 214, 255, 0.28),
+ 0 0 34px rgba(87, 214, 255, 0.16),
+ 0 22px 40px rgba(0, 0, 0, 0.28);
+ }
+
+ .article-card:hover::before,
+ .article-card:focus-within::before {
+ opacity: 1;
+ }
+
+ .article-card-icon {
+ width: 54px;
+ height: 54px;
+ border-radius: 18px;
+ display: grid;
+ place-items: center;
+ border: 1px solid rgba(87, 214, 255, 0.16);
+ background: rgba(87, 214, 255, 0.08);
+ font-size: 1.55rem;
+ margin-bottom: 18px;
+ }
+
+ .article-card h3 {
+ font-size: 1.12rem;
+ line-height: 1.45;
+ margin-bottom: 10px;
+ min-height: 5.8em;
+ }
+
+ .article-card p {
+ color: var(--text-soft);
+ font-size: 0.95rem;
+ margin-bottom: auto;
+ }
+
+ .article-link {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ margin-top: 24px;
+ color: var(--accent);
+ font-weight: 600;
+ letter-spacing: 0.02em;
+ transition: color var(--transition), transform var(--transition);
+ }
+
+ .article-link:hover,
+ .article-link:focus-visible {
+ color: var(--accent-2);
+ transform: translateX(3px);
+ outline: none;
+ }
+
+ .feature-grid {
+ display: grid;
+ grid-template-columns: repeat(3, minmax(0, 1fr));
+ gap: 20px;
+ }
+
+ .feature-card,
+ .timeline-card,
+ .footer-shell {
+ border-radius: var(--radius-lg);
+ border: 1px solid rgba(87, 214, 255, 0.14);
+ background:
+ linear-gradient(180deg, rgba(6, 23, 41, 0.84), rgba(3, 12, 24, 0.84)),
+ rgba(4, 20, 40, 0.8);
+ box-shadow: var(--shadow-soft);
+ }
+
+ .feature-card {
+ padding: 28px;
+ min-height: 230px;
+ transition:
+ transform var(--transition),
+ border-color var(--transition),
+ box-shadow var(--transition);
+ }
+
+ .feature-card:hover {
+ transform: translateY(-4px);
+ border-color: rgba(127, 255, 212, 0.28);
+ box-shadow: 0 0 26px rgba(87, 214, 255, 0.14);
+ }
+
+ .feature-emoji {
+ font-size: 2.4rem;
+ line-height: 1;
+ margin-bottom: 18px;
+ display: inline-block;
+ filter: drop-shadow(0 0 18px rgba(87, 214, 255, 0.22));
+ }
+
+ .feature-card h3 {
+ font-size: 1.18rem;
+ margin-bottom: 10px;
+ }
+
+ .feature-card p {
+ color: var(--text-soft);
+ font-size: 0.96rem;
+ }
+
+ .timeline-card {
+ padding: 28px;
+ position: relative;
+ overflow: hidden;
+ }
+
+ .timeline-card::before {
+ content: "";
+ position: absolute;
+ top: 28px;
+ left: 34px;
+ width: 2px;
+ bottom: 28px;
+ background: linear-gradient(180deg, rgba(127, 255, 212, 0.48), rgba(87, 214, 255, 0.12));
+ }
+
+ .timeline-item {
+ position: relative;
+ padding-left: 58px;
+ }
+
+ .timeline-item::before {
+ content: "";
+ position: absolute;
+ left: 26px;
+ top: 6px;
+ width: 18px;
+ height: 18px;
+ border-radius: 50%;
+ background: radial-gradient(circle, rgba(127, 255, 212, 0.9), rgba(87, 214, 255, 0.56));
+ box-shadow: 0 0 18px rgba(87, 214, 255, 0.26);
+ }
+
+ .timeline-date {
+ font-family: "Share Tech Mono", monospace;
+ color: var(--accent-2);
+ font-size: 0.96rem;
+ letter-spacing: 0.08em;
+ margin-bottom: 8px;
+ text-transform: uppercase;
+ }
+
+ .timeline-item h3 {
+ font-size: 1.12rem;
+ margin-bottom: 8px;
+ }
+
+ .timeline-item p {
+ color: var(--text-soft);
+ }
+
+ .site-footer {
+ padding: 0 0 40px;
+ }
+
+ .footer-shell {
+ padding: 24px 28px;
+ display: grid;
+ grid-template-columns: repeat(3, minmax(0, 1fr));
+ gap: 16px;
+ }
+
+ .footer-shell strong {
+ display: block;
+ margin-bottom: 6px;
+ color: var(--text-main);
+ }
+
+ .footer-shell p {
+ color: var(--text-faint);
+ font-size: 0.93rem;
+ }
+
+ @keyframes bubbleFloat {
+ 0% {
+ transform: translate3d(0, 0, 0) scale(0.92);
+ opacity: 0;
+ }
+ 15% {
+ opacity: 0.52;
+ }
+ 50% {
+ transform: translate3d(26px, -48vh, 0) scale(1);
+ opacity: 0.66;
+ }
+ 100% {
+ transform: translate3d(-18px, -110vh, 0) scale(1.08);
+ opacity: 0;
+ }
+ }
+
+ @keyframes pulse {
+ 0%,
+ 100% {
+ transform: scale(1);
+ opacity: 0.92;
+ }
+ 50% {
+ transform: scale(1.18);
+ opacity: 0.64;
+ }
+ }
+
+ @media (max-width: 1180px) {
+ .hero-inner {
+ grid-template-columns: 1fr;
+ }
+
+ .hero-panel {
+ justify-self: start;
+ }
+
+ .article-grid {
+ grid-template-columns: repeat(3, minmax(0, 1fr));
+ }
+ }
+
+ @media (max-width: 1024px) {
+ :root {
+ --nav-height: 74px;
+ }
+
+ .container {
+ width: min(var(--max-width), calc(100% - 36px));
+ }
+
+ .hero {
+ min-height: auto;
+ }
+
+ .hero-inner {
+ padding-bottom: 72px;
+ }
+
+ .section {
+ padding: 88px 0;
+ }
+
+ .article-grid {
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ }
+
+ .feature-grid,
+ .footer-shell {
+ grid-template-columns: 1fr;
+ }
+ }
+
+ @media (max-width: 768px) {
+ :root {
+ --nav-height: 60px;
+ }
+
+ .container {
+ width: min(var(--max-width), calc(100% - 24px));
+ }
+
+ .nav-links {
+ gap: 4px !important;
+ justify-content: center !important;
+ flex-wrap: wrap !important;
+ }
+
+ .nav-links a {
+ padding: 7px 10px !important;
+ font-size: 0.82rem !important;
+ white-space: nowrap !important;
+ }
+
+ h1 {
+ font-size: clamp(1.6rem, 9vw, 2.4rem) !important;
+ letter-spacing: 0.04em !important;
+ word-break: break-word !important;
+ overflow-wrap: break-word !important;
+ line-height: 1.1 !important;
+ }
+
+ .eyebrow {
+ font-size: 0.78rem !important;
+ padding: 7px 10px !important;
+ margin-bottom: 16px !important;
+ white-space: nowrap !important;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ }
+
+ .hero-copy {
+ max-width: 100% !important;
+ }
+
+ .hero-inner {
+ grid-template-columns: 1fr !important;
+ gap: 24px !important;
+ padding-bottom: 48px !important;
+ align-items: start !important;
+ }
+
+ .hero-panel {
+ width: 100% !important;
+ margin-left: 0 !important;
+ margin-top: 8px !important;
+ padding: 18px !important;
+ }
+
+ .hero-actions {
+ flex-direction: column !important;
+ align-items: stretch !important;
+ gap: 12px !important;
+ }
+
+ .cta-button {
+ width: 100% !important;
+ justify-content: center !important;
+ padding: 14px 20px !important;
+ font-size: 0.95rem !important;
+ }
+
+ .hero {
+ padding-top: 80px;
+ min-height: auto;
+ }
+
+ .section {
+ padding: 60px 0;
+ }
+
+ .article-grid {
+ grid-template-columns: 1fr !important;
+ gap: 14px !important;
+ }
+
+ .article-card {
+ min-height: auto !important;
+ padding: 18px !important;
+ }
+
+ .article-card h3 {
+ min-height: auto !important;
+ font-size: 1rem !important;
+ }
+
+ .feature-grid,
+ .footer-shell {
+ grid-template-columns: 1fr !important;
+ }
+
+ .footer-shell {
+ padding: 22px;
+ }
+ }
+
+ @media (max-width: 480px) {
+ h1 {
+ font-size: clamp(1.4rem, 10vw, 1.8rem) !important;
+ }
+
+ .eyebrow {
+ font-size: 0.72rem !important;
+ }
+
+ .hero {
+ padding-top: 72px;
+ }
+ }
+ </style>
 </head>
 <body>
-  <header class="site-header" id="siteHeader">
-    <div class="container nav-shell">
-      <a class="brand" href="#top" aria-label="返回页面顶部">
-        <span class="brand-icon" aria-hidden="true">🫧</span>
-        <span class="brand-text">Subnautica2攻略</span>
-      </a>
-      <nav class="nav-links" aria-label="主导航">
-        <a href="articles/beginners-guide.html" class="lang-only" lang="zh">新手入门</a>
-            <a href="articles/beginners-guide.html" lang="en" class="lang-only">Beginner</a>
-        <a href="articles/crafting-recipes.html" class="lang-only" lang="zh">合成表</a>
-            <a href="articles/crafting-recipes.html" lang="en" class="lang-only">Recipes</a>
-        <a href="articles/material-locations.html" class="lang-only" lang="zh">材料位置</a>
-            <a href="articles/material-locations.html" lang="en" class="lang-only">Materials</a>
-        <a href="articles/oxygen-management.html" class="lang-only" lang="zh">生存技巧</a>
-            <a href="articles/oxygen-management.html" lang="en" class="lang-only">Oxygen</a>
-        <a href="articles/survival-mechanics.html" class="lang-only" lang="zh">常见问题</a>
-            <a href="articles/survival-mechanics.html" lang="en" class="lang-only">Survival</a>
-        <div class="lang-toggle">
-            <button id="langBtn" onclick="toggleLanguage()" aria-label="Switch Language">🌐 EN</button>
-          </div>
-        </nav>
-    </div>
-  </header>
+ <header class="site-header" id="siteHeader">
+ <div class="container nav-shell">
+ <a class="brand" href="#top" aria-label="Back to top">
+ <span class="brand-icon" aria-hidden="true">🫧</span>
+ <span class="brand-text">Subnautica 2 Guide</span>
+ </a>
+ <nav class="nav-links" aria-label="Main Navigation">
+ <a href="articles/beginners-guide.html">Beginner</a>
+ <a href="articles/crafting-recipes.html">Recipes</a>
+ <a href="articles/material-locations.html">Materials</a>
+ <a href="articles/oxygen-management.html">Oxygen</a>
+ <a href="articles/survival-mechanics.html">Survival</a>
+ </nav>
+ </div>
+ </header>
 
-  <section class="hero" id="hero">
-    <div class="bubble-layer" id="bubbleLayer" aria-hidden="true"></div>
-    <div class="container hero-inner" id="top">
-      <div class="hero-copy">
-        <div class="eyebrow">
-          <span class="mono">DEEP SURVIVAL INDEX</span>
-          <span class="lang-zh">深海探险信息速读入口</span>
-          <span class="lang-en" lang="en">Deep Survival Info Hub</span>
-        </div>
-        <h1 class="lang-zh">Subnautica2攻略</h1>
-          <h1 class="lang-en" lang="en" style="font-size:clamp(2rem, 5vw, 4rem)">Subnautica 2 Guide</h1>
-        <div class="hero-subtitle" aria-label="版本与平台信息">
-          <span class="lang-zh">2026.05.14 新发布</span>
-          <span class="lang-en" lang="en">Released 2026.05.14</span>
-          <span>PC</span>
-          <span>Xbox Series X/S</span>
-        </div>
-        <p class="hero-description lang-zh">
-          深海探险游戏续作，新手生存指南、合成配方、任务流程一网打尽。这里先把最关键的五类问题摊开讲清楚，让你下水前就知道先做什么、去哪找、怎么活。
-        </p>
-        <p class="hero-description lang-en" lang="en">
-          A complete English Subnautica 2 guide covering beginner tutorials, crafting recipes, material locations, oxygen management, and survival mechanics. Everything you need before your first dive.
-        </p>
-        <div class="hero-actions">
-          <a class="cta-button" href="#articles" class="lang-zh">开始探索</a><a class="cta-button lang-en" lang="en" href="#articles">Start Exploring</a>
-          <span class="hero-note"><span class="lang-zh">先看新手装备、再查材料位置、最后补齐氧气与饥渴机制</span><span class="lang-en" lang="en">Start with equipment, check material locations, then master survival</span></span>
-        </div>
-      </div>
+ <section class="hero" id="hero">
+ <div class="bubble-layer" id="bubbleLayer" aria-hidden="true"></div>
+ <div class="container hero-inner" id="top">
+ <div class="hero-copy">
+ <div class="eyebrow">
+ <span class="mono">DEEP SURVIVAL INDEX</span>
+ <span>Deep Survival Info Hub</span>
+ </div>
+ <h1>Subnautica 2 Guide</h1>
+ <div class="hero-subtitle" aria-label="Game info">
+ <span>Released 2026.05.14</span>
+ <span>PC</span>
+ <span>Xbox Series X/S</span>
+ </div>
+ <p class="hero-description">
+ A complete English Subnautica 2 guide covering beginner tutorials, crafting recipes, material locations, oxygen management, and survival mechanics. Everything you need before your first dive.
+ </p>
+ <div class="hero-actions">
+ <a class="cta-button" href="#articles">Start Exploring</a>
+ <span class="hero-note">Start with equipment, check material locations, then master survival</span>
+ </div>
+ </div>
 
-      <aside class="hero-panel" aria-label="首屏重点内容">
-        <div class="hero-panel-header">
-          <div class="hero-panel-title lang-zh">首批上线内容</div>
-          <div class="hero-panel-title lang-en" lang="en">Launch Content</div>
-          <span class="pulse-dot" aria-hidden="true"></span>
-        </div>
-        <ul class="status-list">
-          <li class="status-item">
-            <span class="status-icon" aria-hidden="true">🔧</span>
-            <div>
-              <strong class="lang-zh">开局装备顺序</strong><strong class="lang-en" lang="en">Starting Gear Order</strong>
-              <span class="lang-zh">先解决 Multitool、Scanner、Fins，避免前期资源浪费。</span><span class="lang-en" lang="en">Craft Multitool, Scanner, and Fins first to avoid early waste.</span>
-            </div>
-          </li>
-          <li class="status-item">
-            <span class="status-icon" aria-hidden="true">🗺️</span>
-            <div>
-              <strong class="lang-zh">材料位置速查</strong><strong class="lang-en" lang="en">Material Location Map</strong>
-              <span class="lang-zh">钛、石英、铜、橡胶采集点按用途归类，不再盲目绕图。</span><span class="lang-en" lang="en">Titanium, Quartz, Copper, and Rubber locations organized by biome.</span>
-            </div>
-          </li>
-          <li class="status-item">
-            <span class="status-icon" aria-hidden="true">🫁</span>
-            <div>
-              <strong class="lang-zh">氧气与生存管理</strong><strong class="lang-en" lang="en">Oxygen &amp; Survival</strong>
-              <span class="lang-zh">洞穴潜泳、氧气植物、饥饿口渴与 AngelComb 解锁一次讲明白。</span><span class="lang-en" lang="en">Cave diving, oxygen plants, hunger/thirst, and Angel Comb unlock explained.</span>
-            </div>
-          </li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+ <aside class="hero-panel" aria-label="Key content">
+ <div class="hero-panel-header">
+ <div class="hero-panel-title">Launch Content</div>
+ <span class="pulse-dot" aria-hidden="true"></span>
+ </div>
+ <ul class="status-list">
+ <li class="status-item">
+ <span class="status-icon" aria-hidden="true">🔧</span>
+ <div>
+ <strong>Starting Gear Order</strong>
+ <span>Craft Multitool, Scanner, and Fins first to avoid early waste.</span>
+ </div>
+ </li>
+ <li class="status-item">
+ <span class="status-icon" aria-hidden="true">🗺️</span>
+ <div>
+ <strong>Material Location Map</strong>
+ <span>Titanium, Quartz, Copper, and Rubber locations organized by biome.</span>
+ </div>
+ </li>
+ <li class="status-item">
+ <span class="status-icon" aria-hidden="true">🫁</span>
+ <div>
+ <strong>Oxygen &amp; Survival</strong>
+ <span>Cave diving, oxygen plants, hunger/thirst, and Angel Comb unlock explained.</span>
+ </div>
+ </li>
+ </ul>
+ </aside>
+ </div>
+ </section>
 
-  <main>
-    <section class="section" id="articles">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <span class="section-kicker lang-zh">Core Articles</span>
-          <span class="section-kicker lang-en" lang="en">Core Articles</span>
-            <h2 class="section-title lang-zh">先把最急的五类问题解决</h2>
-          <h2 class="section-title lang-en" lang="en">5 Essential Guides</h2>
-          </div>
-          <p class="section-summary">
-            <span class="lang-zh">每张卡片都直接告诉你这篇能帮你解决什么问题，先看装备，再查材料，再补生存细节，不浪费开局时间。</span><span class="lang-en" lang="en">Each card links to a complete English guide. Start with equipment, then materials, then survival mechanics.</span>
-          </p>
-        </div>
+ <main>
+ <section class="section" id="articles">
+ <div class="container">
+ <div class="section-header">
+ <div>
+ <span class="section-kicker">Core Articles</span>
+ <h2 class="section-title">5 Essential Guides</h2>
+ </div>
+ <p class="section-summary">
+ <span>Each card links to a complete English guide. Start with equipment, then materials, then survival mechanics.</span>
+ </p>
+ </div>
 
-        <div class="article-grid">
-          <article class="article-card">
-            <div class="article-card-icon" aria-hidden="true">🔰</div>
-            <h3 class="lang-zh">新手入门：生存 Multitool + Scanner + Fins 合成教学</h3>
-            <h3 class="lang-en" lang="en">Beginner's Guide: Multitool + Scanner + Fins</h3>
-            <p class="lang-zh">解决开局第一小时该先造什么、材料怎么凑、顺序怎么排。</p>
-            <p class="lang-en" lang="en">What to build first, what materials you need, and the optimal crafting order.</p>
-            <a class="article-link lang-zh" href="articles/beginners-guide.html">阅读更多 →</a>
-            <a class="article-link lang-en" lang="en" href="articles/beginners-guide.html">Read Guide →</a>
-          </article>
+ <div class="article-grid">
+ <article class="article-card">
+ <div class="article-card-icon" aria-hidden="true">🔰</div>
+ <h3>Beginner's Guide: Multitool + Scanner + Fins</h3>
+ <p>What to build first, what materials you need, and the optimal crafting order.</p>
+ <a class="article-link" href="articles/beginners-guide.html">Read Guide →</a>
+ </article>
 
-          <article class="article-card">
-            <div class="article-card-icon" aria-hidden="true">📘</div>
-            <h3 class="lang-zh">合成配方大全：所有合成表一览</h3>
-            <h3 class="lang-en" lang="en">Crafting Recipes: Complete List</h3>
-            <p class="lang-zh">解决找不到配方、重复查站点和合成路线不清晰的问题。</p>
-            <p class="lang-en" lang="en">Every early-game recipe with materials, tools needed, and usage tips.</p>
-            <a class="article-link lang-zh" href="articles/crafting-recipes.html">阅读更多 →</a>
-            <a class="article-link lang-en" lang="en" href="articles/crafting-recipes.html">Read Guide →</a>
-          </article>
+ <article class="article-card">
+ <div class="article-card-icon" aria-hidden="true">📘</div>
+ <h3>Crafting Recipes: Complete List</h3>
+ <p>Every early-game recipe with materials, tools needed, and usage tips.</p>
+ <a class="article-link" href="articles/crafting-recipes.html">Read Guide →</a>
+ </article>
 
-          <article class="article-card">
-            <div class="article-card-icon" aria-hidden="true">📍</div>
-            <h3 class="lang-zh">材料位置汇总：钛 / 石英 / 铜 / 橡胶采集点</h3>
-            <h3 class="lang-en" lang="en">Material Locations: Titanium / Quartz / Copper / Rubber</h3>
-            <p class="lang-zh">解决关键基础资源去哪采、哪种地形最省时间的问题。</p>
-            <p class="lang-en" lang="en">Where to find each material and which biomes save you the most time.</p>
-            <a class="article-link lang-zh" href="articles/material-locations.html">阅读更多 →</a>
-            <a class="article-link lang-en" lang="en" href="articles/material-locations.html">Read Guide →</a>
-          </article>
+ <article class="article-card">
+ <div class="article-card-icon" aria-hidden="true">📍</div>
+ <h3>Material Locations: Titanium / Quartz / Copper / Rubber</h3>
+ <p>Where to find each material and which biomes save you the most time.</p>
+ <a class="article-link" href="articles/material-locations.html">Read Guide →</a>
+ </article>
 
-          <article class="article-card">
-            <div class="article-card-icon" aria-hidden="true">🫧</div>
-            <h3 class="lang-zh">氧气管理：洞穴潜泳 + 氧气植物技巧</h3>
-            <h3 class="lang-en" lang="en">Oxygen Management: Cave Diving Tips</h3>
-            <p class="lang-zh">解决下潜深度不够、洞穴迷路和返程氧气不足的问题。</p>
-            <p class="lang-en" lang="en">How to extend dive time, find oxygen plants, and navigate caves safely.</p>
-            <a class="article-link lang-zh" href="articles/oxygen-management.html">阅读更多 →</a>
-            <a class="article-link lang-en" lang="en" href="articles/oxygen-management.html">Read Guide →</a>
-          </article>
+ <article class="article-card">
+ <div class="article-card-icon" aria-hidden="true">🫧</div>
+ <h3>Oxygen Management: Cave Diving Tips</h3>
+ <p>How to extend dive time, find oxygen plants, and navigate caves safely.</p>
+ <a class="article-link" href="articles/oxygen-management.html">Read Guide →</a>
+ </article>
 
-          <article class="article-card">
-            <div class="article-card-icon" aria-hidden="true">🥤</div>
-            <h3 class="lang-zh">生存机制：饥饿 / 口渴 / AngelComb 解锁</h3>
-            <h3 class="lang-en" lang="en">Hunger &amp; Thirst: Survival Mechanics Guide</h3>
-            <p class="lang-zh">解决资源续航、状态维持与关键机制解锁不明白的问题。</p>
-            <p class="lang-en" lang="en">Food, water, Bladderfish, Angel Comb unlock — everything about staying alive.</p>
-            <a class="article-link lang-zh" href="articles/survival-mechanics.html">阅读更多 →</a>
-            <a class="article-link lang-en" lang="en" href="articles/survival-mechanics.html">Read Guide →</a>
-          </article>
-        </div>
-      </div>
-    </section>
+ <article class="article-card">
+ <div class="article-card-icon" aria-hidden="true">🥤</div>
+ <h3>Hunger &amp; Thirst: Survival Mechanics Guide</h3>
+ <p>Food, water, Bladderfish, Angel Comb unlock — everything about staying alive.</p>
+ <a class="article-link" href="articles/survival-mechanics.html">Read Guide →</a>
+ </article>
+ </div>
+ </div>
+ </section>
 
-    <section class="section" id="whyus">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <span class="section-kicker lang-zh">Why Us</span>
-          <span class="section-kicker lang-en" lang="en">Why Us</span>
-            <h2 class="section-title">做成能直接下潜前速查的攻略页</h2>
-          </div>
-          <p class="section-summary">
-            不塞花哨废话，重点是让页面风格、信息密度和深海气氛都为阅读服务。
-          </p>
-        </div>
+ <section class="section" id="whyus">
+ <div class="container">
+ <div class="section-header">
+ <div>
+ <span class="section-kicker">Why Us</span>
+ <h2 class="section-title">A Guide You Can Read Before Your First Dive</h2>
+ </div>
+ <p class="section-summary">
+ No fluff. The design, information density, and deep-sea atmosphere all serve one purpose: readable guides.
+ </p>
+ </div>
 
-        <div class="feature-grid">
-          <article class="feature-card">
-            <span class="feature-emoji" aria-hidden="true">📚</span>
-            <h3 class="lang-zh">完整攻略</h3><h3 class="lang-en" lang="en">Complete Guide</h3>
-            <p><span class="lang-zh">覆盖合成、材料、任务、Bug 等核心信息，并按版本持续更新。</span><span class="lang-en" lang="en">Covers crafting, materials, quests, and bugs, updated with each patch.</span></p>
-          </article>
+ <div class="feature-grid">
+ <article class="feature-card">
+ <span class="feature-emoji" aria-hidden="true">📚</span>
+ <h3>Complete Guide</h3>
+ <p><span>Covers crafting, materials, quests, and bugs, updated with each patch.</p>
+ </article>
 
-          <article class="feature-card">
-            <span class="feature-emoji" aria-hidden="true">⚡</span>
-            <h3 class="lang-zh">零广告干扰</h3><h3 class="lang-en" lang="en">Ad-Free Reading</h3>
-            <p><span class="lang-zh">保持干净阅读体验，不弹窗、不打断，只保留真正有用的内容入口。</span><span class="lang-en" lang="en">Clean reading experience — no popups, no interruptions, just useful content.</span></p>
-          </article>
+ <article class="feature-card">
+ <span class="feature-emoji" aria-hidden="true">⚡</span>
+ <h3>Ad-Free Reading</h3>
+ <p><span>Clean reading experience — no popups, no interruptions, just useful content.</p>
+ </article>
 
-          <article class="feature-card">
-            <span class="feature-emoji" aria-hidden="true">🌊</span>
-            <h3 class="lang-zh">深海沉浸感</h3><h3 class="lang-en" lang="en">Deep Sea Immersion</h3>
-            <p><span class="lang-zh">界面色彩、气泡层次与微发光动效统一，尽量贴近游戏下潜氛围。</span><span class="lang-en" lang="en">Deep ocean aesthetic with bioluminescent effects that match the game atmosphere.</span></p>
-          </article>
-        </div>
-      </div>
-    </section>
+ <article class="feature-card">
+ <span class="feature-emoji" aria-hidden="true">🌊</span>
+ <h3>Deep Sea Immersion</h3>
+ <p><span>Deep ocean aesthetic with bioluminescent effects that match the game atmosphere.</p>
+ </article>
+ </div>
+ </div>
+ </section>
 
-    <section class="section" id="updates">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <span class="section-kicker lang-zh">Recent Updates</span>
-          <span class="section-kicker lang-en" lang="en">Recent Updates</span>
-            <h2 class="section-title lang-zh">最新更新时间线</h2>
-          <h2 class="section-title lang-en" lang="en">Recent Updates</h2>
-          </div>
-          <p class="section-summary">
-            <span class="lang-zh">当前已完成首页首批内容落地，后续会继续补充更细的任务流程、地图路径和资源表。</span><span class="lang-en" lang="en">First batch of content live. More guides — quest walkthroughs, map routes, and resource tables — coming soon.</span>
-          </p>
-        </div>
+ <section class="section" id="updates">
+ <div class="container">
+ <div class="section-header">
+ <div>
+ <span class="section-kicker">Recent Updates</span>
+ <h2 class="section-title">Recent Updates</h2>
+ </div>
+ <p class="section-summary">
+ <span>First batch of content live. More guides — quest walkthroughs, map routes, and resource tables — coming soon.</span>
+ </p>
+ </div>
 
-        <div class="timeline-card">
-          <div class="timeline-item">
-            <div class="timeline-date">2026-05-18</div>
-            <h3><span class="lang-zh">首批攻略内容已上线</span><span class="lang-en" lang="en">First Guides Published</span></h3>
-            <p><span class="lang-zh">已开放新手入门、合成表、材料位置、氧气管理与基础生存机制五个核心入口。</span><span class="lang-en" lang="en">Beginner guide, crafting recipes, material locations, oxygen management, and hunger/thirst guides now live.</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+ <div class="timeline-card">
+ <div class="timeline-item">
+ <div class="timeline-date">2026-05-18</div>
+ <h3>First Guides Published</h3>
+ <p><span>Beginner guide, crafting recipes, material locations, oxygen management, and hunger/thirst guides now live.</p>
+ </div>
+ </div>
+ </div>
+ </section>
+ </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-shell">
-        <div>
-          <strong class="lang-zh">版权声明</strong><strong class="lang-en" lang="en">Copyright</strong>
-          <p>© 2026 Subnautica2攻略. All rights reserved.</p>
-        </div>
-        <div>
-          <strong class="lang-zh">数据来源</strong><strong class="lang-en" lang="en">Sources</strong>
-          <p class="lang-zh">IGN Wiki / 官方资料</p><p class="lang-en" lang="en">IGN Wiki / Official Sources</p>
-        </div>
-        <div>
-          <strong class="lang-zh">免责声明</strong><strong class="lang-en" lang="en">Disclaimer</strong>
-          <p><span class="lang-zh">本站不附属于 Unknown Worlds Entertainment，相关内容仅用于攻略整理与信息归纳。<br><small>⚠️本站点不附属于UnknownWorldsEntertainment，内容基于公开资料整理，供玩家社区免费参考。</small></span><span class="lang-en" lang="en">This site is not affiliated with Unknown Worlds Entertainment. Content is based on publicly available information for community reference.</span></p>
-        </div>
-      </div>
-    </div>
-  </footer>
+ <footer class="site-footer">
+ <div class="container">
+ <div class="footer-shell">
+ <div>
+ <strong>Copyright</strong>
+ <p>© 2026 Subnautica 2 Guide. All rights reserved.</p>
+ </div>
+ <div>
+ <strong>Sources</strong>
+ <p>IGN Wiki / Official Sources</p>
+ </div>
+ <div>
+ <strong>Disclaimer</strong>
+ <p><span>This site is not affiliated with Unknown Worlds Entertainment. Content is based on publicly available information for community reference.</p>
+ </div>
+ </div>
+ </div>
+ </footer>
 
-  <script>
-    const bubbleLayer = document.getElementById("bubbleLayer");
-    const siteHeader = document.getElementById("siteHeader");
+ <script>
+ const bubbleLayer = document.getElementById("bubbleLayer");
+ const siteHeader = document.getElementById("siteHeader");
 
-    /**
-     * 生成气泡层标记，保持纯 CSS 漂浮动画并制造不同尺寸与速度层次。
-     * @param {number} count 需要生成的气泡数量。
-     */
-    function createBubbleMarkup(count) {
-      let bubbleMarkup = "";
+ /**
+ * Generate bubble markup with pure CSS float animation across sizes and speeds.
+ * @param {number} count Number of bubbles to generate。
+ */
+ function createBubbleMarkup(count) {
+ let bubbleMarkup = "";
 
-      for (let index = 0; index < count; index += 1) {
-        const size = 18 + (index % 7) * 10 + Math.floor(index / 4) * 2;
-        const left = (index * 11) % 100;
-        const delay = (index % 9) * 0.7;
-        const duration = 11 + (index % 6) * 2.2;
-        const opacity = 0.26 + (index % 5) * 0.08;
+ for (let index = 0; index < count; index += 1) {
+ const size = 18 + (index % 7) * 10 + Math.floor(index / 4) * 2;
+ const left = (index * 11) % 100;
+ const delay = (index % 9) * 0.7;
+ const duration = 11 + (index % 6) * 2.2;
+ const opacity = 0.26 + (index % 5) * 0.08;
 
-        bubbleMarkup += `
-          <span
-            class="bubble"
-            style="
-              width:${size}px;
-              height:${size}px;
-              left:${left}%;
-              animation-duration:${duration}s;
-              animation-delay:-${delay}s;
-              opacity:${opacity};
-            "
-          ></span>
-        `;
-      }
+ bubbleMarkup += `
+ <span
+ class="bubble"
+ style="
+ width:${size}px;
+ height:${size}px;
+ left:${left}%;
+ animation-duration:${duration}s;
+ animation-delay:-${delay}s;
+ opacity:${opacity};
+ "
+ ></span>
+ `;
+ }
 
-      return bubbleMarkup;
-    }
+ return bubbleMarkup;
+ }
 
-    /**
-     * 根据滚动距离切换导航栏背景深度，让首屏保持通透、阅读时增强对比。
-     */
-    function setNavbarState() {
-      if (window.scrollY > 28) {
-        siteHeader.classList.add("is-scrolled");
-      } else {
-        siteHeader.classList.remove("is-scrolled");
-      }
-    }
+ /**
+ * Toggle navbar depth based on scroll position.
+ */
+ function setNavbarState() {
+ if (window.scrollY > 28) {
+ siteHeader.classList.add("is-scrolled");
+ } else {
+ siteHeader.classList.remove("is-scrolled");
+ }
+ }
 
-    /**
-     * 初始化页面交互，包括气泡注入和滚动监听。
-     */
-    function initializePage() {
-      bubbleLayer.innerHTML = createBubbleMarkup(22);
-      setNavbarState();
-      window.addEventListener("scroll", setNavbarState, { passive: true });
-    }
+ /**
+ * Initialize page interactivity: bubbles and scroll listener.
+ */
+ function initializePage() {
+ bubbleLayer.innerHTML = createBubbleMarkup(22);
+ setNavbarState();
+ window.addEventListener("scroll", setNavbarState, { passive: true });
+ }
 
-    initializePage();
-    initializePage();
+ initializePage();
+ initializePage();
 
-    /**
-     * 语言切换：中英文切换 + localStorage 持久化
-     */
-    function toggleLanguage() {
-      const current = document.documentElement.lang;
-      const newLang = current === 'zh-CN' ? 'en' : 'zh-CN';
-      setLanguage(newLang);
-    }
-
-    function setLanguage(lang) {
-      const body = document.body;
-      if (lang === 'en') {
-        body.classList.add('lang-en');
-        body.classList.remove('lang-zh');
-        document.documentElement.lang = 'en';
-        document.getElementById('langBtn').textContent = '🌐 中文';
-        // Update meta description for English
-        document.querySelector('meta[name="description"]').content = 'Subnautica 2 English guide. Beginner tutorial, crafting recipes, material locations, oxygen management, survival mechanics. Your deep sea exploration starts here.';
-      } else {
-        body.classList.add('lang-zh');
-        body.classList.remove('lang-en');
-        document.documentElement.lang = 'zh-CN';
-        document.getElementById('langBtn').textContent = '🌐 EN';
-        // Restore Chinese meta description
-        document.querySelector('meta[name="description"]').content = 'Subnautica2中文攻略站｜2026.05.14新发布。新手入门、合成配方、材料采集点、氧气洞穴潜泳、生存机制详解，持续更新中。深海探险，从这里开始。';
-      }
-      localStorage.setItem('subnautica2-lang', lang);
-    }
-
-    // Auto-detect browser language on first visit
-    function detectLanguage() {
-      const saved = localStorage.getItem('subnautica2-lang');
-      if (saved) {
-        setLanguage(saved);
-        return;
-      }
-      const browserLang = navigator.language || navigator.userLanguage;
-      // Default to English for English speakers, Chinese for others
-      const lang = browserLang.startsWith('en') ? 'en' : 'zh-CN';
-      setLanguage(lang);
-    }
-
-    detectLanguage();
-  </script>
+ </script>
 </body>
 </html>
