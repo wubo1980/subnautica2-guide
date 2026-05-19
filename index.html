@@ -472,6 +472,34 @@
       z-index: 1;
     }
 
+    .lang-toggle {
+      margin-left: 8px;
+    }
+    .lang-toggle button {
+      background: rgba(87, 214, 255, 0.12);
+      border: 1px solid var(--line);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .lang-toggle button:hover {
+      background: rgba(87, 214, 255, 0.22);
+      border-color: var(--line-strong);
+      box-shadow: 0 0 20px rgba(87, 214, 255, 0.2);
+    }
+    /* Language visibility */
+    .lang-only[lang="en"] { display: none; }
+    body.lang-en .lang-only[lang="en"] { display: inline; }
+    body.lang-en .lang-only[lang="zh"] { display: none; }
+    body.lang-en .lang-zh { display: none; }
+    body.lang-zh .lang-en { display: none; }
+    
+
     .bubble {
       position: absolute;
       bottom: -160px;
@@ -944,12 +972,20 @@
         <span class="brand-text">Subnautica2攻略</span>
       </a>
       <nav class="nav-links" aria-label="主导航">
-        <a href="#hero">新手入门</a>
-        <a href="#articles">合成表</a>
-        <a href="#articles">材料位置</a>
-        <a href="#whyus">生存技巧</a>
-        <a href="#updates">常见问题</a>
-      </nav>
+        <a href="articles/beginners-guide.html" class="lang-only" lang="zh">新手入门</a>
+            <a href="articles/beginners-guide.html" lang="en" class="lang-only">Beginner</a>
+        <a href="articles/crafting-recipes.html" class="lang-only" lang="zh">合成表</a>
+            <a href="articles/crafting-recipes.html" lang="en" class="lang-only">Recipes</a>
+        <a href="articles/material-locations.html" class="lang-only" lang="zh">材料位置</a>
+            <a href="articles/material-locations.html" lang="en" class="lang-only">Materials</a>
+        <a href="articles/oxygen-management.html" class="lang-only" lang="zh">生存技巧</a>
+            <a href="articles/oxygen-management.html" lang="en" class="lang-only">Oxygen</a>
+        <a href="articles/survival-mechanics.html" class="lang-only" lang="zh">常见问题</a>
+            <a href="articles/survival-mechanics.html" lang="en" class="lang-only">Survival</a>
+        <div class="lang-toggle">
+            <button id="langBtn" onclick="toggleLanguage()" aria-label="Switch Language">🌐 EN</button>
+          </div>
+        </nav>
     </div>
   </header>
 
@@ -959,48 +995,55 @@
       <div class="hero-copy">
         <div class="eyebrow">
           <span class="mono">DEEP SURVIVAL INDEX</span>
-          <span>深海探险信息速读入口</span>
+          <span class="lang-zh">深海探险信息速读入口</span>
+          <span class="lang-en" lang="en">Deep Survival Info Hub</span>
         </div>
-        <h1>Subnautica2攻略</h1>
+        <h1 class="lang-zh">Subnautica2攻略</h1>
+          <h1 class="lang-en" lang="en" style="font-size:clamp(2rem, 5vw, 4rem)">Subnautica 2 Guide</h1>
         <div class="hero-subtitle" aria-label="版本与平台信息">
-          <span>2026.05.14 新发布</span>
+          <span class="lang-zh">2026.05.14 新发布</span>
+          <span class="lang-en" lang="en">Released 2026.05.14</span>
           <span>PC</span>
           <span>Xbox Series X/S</span>
         </div>
-        <p class="hero-description">
+        <p class="hero-description lang-zh">
           深海探险游戏续作，新手生存指南、合成配方、任务流程一网打尽。这里先把最关键的五类问题摊开讲清楚，让你下水前就知道先做什么、去哪找、怎么活。
         </p>
+        <p class="hero-description lang-en" lang="en">
+          A complete English Subnautica 2 guide covering beginner tutorials, crafting recipes, material locations, oxygen management, and survival mechanics. Everything you need before your first dive.
+        </p>
         <div class="hero-actions">
-          <a class="cta-button" href="#articles">开始探索</a>
-          <span class="hero-note">先看新手装备、再查材料位置、最后补齐氧气与饥渴机制</span>
+          <a class="cta-button" href="#articles" class="lang-zh">开始探索</a><a class="cta-button lang-en" lang="en" href="#articles">Start Exploring</a>
+          <span class="hero-note"><span class="lang-zh">先看新手装备、再查材料位置、最后补齐氧气与饥渴机制</span><span class="lang-en" lang="en">Start with equipment, check material locations, then master survival</span></span>
         </div>
       </div>
 
       <aside class="hero-panel" aria-label="首屏重点内容">
         <div class="hero-panel-header">
-          <div class="hero-panel-title">首批上线内容</div>
+          <div class="hero-panel-title lang-zh">首批上线内容</div>
+          <div class="hero-panel-title lang-en" lang="en">Launch Content</div>
           <span class="pulse-dot" aria-hidden="true"></span>
         </div>
         <ul class="status-list">
           <li class="status-item">
             <span class="status-icon" aria-hidden="true">🔧</span>
             <div>
-              <strong>开局装备顺序</strong>
-              <span>先解决 Multitool、Scanner、Fins，避免前期资源浪费。</span>
+              <strong class="lang-zh">开局装备顺序</strong><strong class="lang-en" lang="en">Starting Gear Order</strong>
+              <span class="lang-zh">先解决 Multitool、Scanner、Fins，避免前期资源浪费。</span><span class="lang-en" lang="en">Craft Multitool, Scanner, and Fins first to avoid early waste.</span>
             </div>
           </li>
           <li class="status-item">
             <span class="status-icon" aria-hidden="true">🗺️</span>
             <div>
-              <strong>材料位置速查</strong>
-              <span>钛、石英、铜、橡胶采集点按用途归类，不再盲目绕图。</span>
+              <strong class="lang-zh">材料位置速查</strong><strong class="lang-en" lang="en">Material Location Map</strong>
+              <span class="lang-zh">钛、石英、铜、橡胶采集点按用途归类，不再盲目绕图。</span><span class="lang-en" lang="en">Titanium, Quartz, Copper, and Rubber locations organized by biome.</span>
             </div>
           </li>
           <li class="status-item">
             <span class="status-icon" aria-hidden="true">🫁</span>
             <div>
-              <strong>氧气与生存管理</strong>
-              <span>洞穴潜泳、氧气植物、饥饿口渴与 AngelComb 解锁一次讲明白。</span>
+              <strong class="lang-zh">氧气与生存管理</strong><strong class="lang-en" lang="en">Oxygen &amp; Survival</strong>
+              <span class="lang-zh">洞穴潜泳、氧气植物、饥饿口渴与 AngelComb 解锁一次讲明白。</span><span class="lang-en" lang="en">Cave diving, oxygen plants, hunger/thirst, and Angel Comb unlock explained.</span>
             </div>
           </li>
         </ul>
@@ -1013,48 +1056,65 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="section-kicker">Core Articles</span>
-            <h2 class="section-title">先把最急的五类问题解决</h2>
+            <span class="section-kicker lang-zh">Core Articles</span>
+          <span class="section-kicker lang-en" lang="en">Core Articles</span>
+            <h2 class="section-title lang-zh">先把最急的五类问题解决</h2>
+          <h2 class="section-title lang-en" lang="en">5 Essential Guides</h2>
           </div>
           <p class="section-summary">
-            每张卡片都直接告诉你这篇能帮你解决什么问题，先看装备，再查材料，再补生存细节，不浪费开局时间。
+            <span class="lang-zh">每张卡片都直接告诉你这篇能帮你解决什么问题，先看装备，再查材料，再补生存细节，不浪费开局时间。</span><span class="lang-en" lang="en">Each card links to a complete English guide. Start with equipment, then materials, then survival mechanics.</span>
           </p>
         </div>
 
         <div class="article-grid">
           <article class="article-card">
             <div class="article-card-icon" aria-hidden="true">🔰</div>
-            <h3>新手入门：生存 Multitool + Scanner + Fins 合成教学</h3>
-            <p>解决开局第一小时该先造什么、材料怎么凑、顺序怎么排。</p>
-            <a class="article-link" href="javascript:void(0)" onclick="alert('内容施工中，稍后上线')">阅读更多→</a>
+            <h3 class="lang-zh">新手入门：生存 Multitool + Scanner + Fins 合成教学</h3>
+            <h3 class="lang-en" lang="en">Beginner's Guide: Multitool + Scanner + Fins</h3>
+            <p class="lang-zh">解决开局第一小时该先造什么、材料怎么凑、顺序怎么排。</p>
+            <p class="lang-en" lang="en">What to build first, what materials you need, and the optimal crafting order.</p>
+            <a class="article-link lang-zh" href="articles/beginners-guide.html">阅读更多 →</a>
+            <a class="article-link lang-en" lang="en" href="articles/beginners-guide.html">Read Guide →</a>
           </article>
 
           <article class="article-card">
             <div class="article-card-icon" aria-hidden="true">📘</div>
-            <h3>合成配方大全：所有合成表一览</h3>
-            <p>解决找不到配方、重复查站点和合成路线不清晰的问题。</p>
-            <a class="article-link" href="javascript:void(0)" onclick="alert('内容施工中，稍后上线')">阅读更多→</a>
+            <h3 class="lang-zh">合成配方大全：所有合成表一览</h3>
+            <h3 class="lang-en" lang="en">Crafting Recipes: Complete List</h3>
+            <p class="lang-zh">解决找不到配方、重复查站点和合成路线不清晰的问题。</p>
+            <p class="lang-en" lang="en">Every early-game recipe with materials, tools needed, and usage tips.</p>
+            <a class="article-link lang-zh" href="articles/crafting-recipes.html">阅读更多 →</a>
+            <a class="article-link lang-en" lang="en" href="articles/crafting-recipes.html">Read Guide →</a>
           </article>
 
           <article class="article-card">
             <div class="article-card-icon" aria-hidden="true">📍</div>
-            <h3>材料位置汇总：钛 / 石英 / 铜 / 橡胶采集点</h3>
-            <p>解决关键基础资源去哪采、哪种地形最省时间的问题。</p>
-            <a class="article-link" href="javascript:void(0)" onclick="alert('内容施工中，稍后上线')">阅读更多→</a>
+            <h3 class="lang-zh">材料位置汇总：钛 / 石英 / 铜 / 橡胶采集点</h3>
+            <h3 class="lang-en" lang="en">Material Locations: Titanium / Quartz / Copper / Rubber</h3>
+            <p class="lang-zh">解决关键基础资源去哪采、哪种地形最省时间的问题。</p>
+            <p class="lang-en" lang="en">Where to find each material and which biomes save you the most time.</p>
+            <a class="article-link lang-zh" href="articles/material-locations.html">阅读更多 →</a>
+            <a class="article-link lang-en" lang="en" href="articles/material-locations.html">Read Guide →</a>
           </article>
 
           <article class="article-card">
             <div class="article-card-icon" aria-hidden="true">🫧</div>
-            <h3>氧气管理：洞穴潜泳 + 氧气植物技巧</h3>
-            <p>解决下潜深度不够、洞穴迷路和返程氧气不足的问题。</p>
-            <a class="article-link" href="javascript:void(0)" onclick="alert('内容施工中，稍后上线')">阅读更多→</a>
+            <h3 class="lang-zh">氧气管理：洞穴潜泳 + 氧气植物技巧</h3>
+            <h3 class="lang-en" lang="en">Oxygen Management: Cave Diving Tips</h3>
+            <p class="lang-zh">解决下潜深度不够、洞穴迷路和返程氧气不足的问题。</p>
+            <p class="lang-en" lang="en">How to extend dive time, find oxygen plants, and navigate caves safely.</p>
+            <a class="article-link lang-zh" href="articles/oxygen-management.html">阅读更多 →</a>
+            <a class="article-link lang-en" lang="en" href="articles/oxygen-management.html">Read Guide →</a>
           </article>
 
           <article class="article-card">
             <div class="article-card-icon" aria-hidden="true">🥤</div>
-            <h3>生存机制：饥饿 / 口渴 / AngelComb 解锁</h3>
-            <p>解决资源续航、状态维持与关键机制解锁不明白的问题。</p>
-            <a class="article-link" href="javascript:void(0)" onclick="alert('内容施工中，稍后上线')">阅读更多→</a>
+            <h3 class="lang-zh">生存机制：饥饿 / 口渴 / AngelComb 解锁</h3>
+            <h3 class="lang-en" lang="en">Hunger &amp; Thirst: Survival Mechanics Guide</h3>
+            <p class="lang-zh">解决资源续航、状态维持与关键机制解锁不明白的问题。</p>
+            <p class="lang-en" lang="en">Food, water, Bladderfish, Angel Comb unlock — everything about staying alive.</p>
+            <a class="article-link lang-zh" href="articles/survival-mechanics.html">阅读更多 →</a>
+            <a class="article-link lang-en" lang="en" href="articles/survival-mechanics.html">Read Guide →</a>
           </article>
         </div>
       </div>
@@ -1064,7 +1124,8 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="section-kicker">Why Us</span>
+            <span class="section-kicker lang-zh">Why Us</span>
+          <span class="section-kicker lang-en" lang="en">Why Us</span>
             <h2 class="section-title">做成能直接下潜前速查的攻略页</h2>
           </div>
           <p class="section-summary">
@@ -1075,20 +1136,20 @@
         <div class="feature-grid">
           <article class="feature-card">
             <span class="feature-emoji" aria-hidden="true">📚</span>
-            <h3>完整攻略</h3>
-            <p>覆盖合成、材料、任务、Bug 等核心信息，并按版本持续更新。</p>
+            <h3 class="lang-zh">完整攻略</h3><h3 class="lang-en" lang="en">Complete Guide</h3>
+            <p><span class="lang-zh">覆盖合成、材料、任务、Bug 等核心信息，并按版本持续更新。</span><span class="lang-en" lang="en">Covers crafting, materials, quests, and bugs, updated with each patch.</span></p>
           </article>
 
           <article class="feature-card">
             <span class="feature-emoji" aria-hidden="true">⚡</span>
-            <h3>零广告干扰</h3>
-            <p>保持干净阅读体验，不弹窗、不打断，只保留真正有用的内容入口。</p>
+            <h3 class="lang-zh">零广告干扰</h3><h3 class="lang-en" lang="en">Ad-Free Reading</h3>
+            <p><span class="lang-zh">保持干净阅读体验，不弹窗、不打断，只保留真正有用的内容入口。</span><span class="lang-en" lang="en">Clean reading experience — no popups, no interruptions, just useful content.</span></p>
           </article>
 
           <article class="feature-card">
             <span class="feature-emoji" aria-hidden="true">🌊</span>
-            <h3>深海沉浸感</h3>
-            <p>界面色彩、气泡层次与微发光动效统一，尽量贴近游戏下潜氛围。</p>
+            <h3 class="lang-zh">深海沉浸感</h3><h3 class="lang-en" lang="en">Deep Sea Immersion</h3>
+            <p><span class="lang-zh">界面色彩、气泡层次与微发光动效统一，尽量贴近游戏下潜氛围。</span><span class="lang-en" lang="en">Deep ocean aesthetic with bioluminescent effects that match the game atmosphere.</span></p>
           </article>
         </div>
       </div>
@@ -1098,19 +1159,21 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="section-kicker">Recent Updates</span>
-            <h2 class="section-title">最新更新时间线</h2>
+            <span class="section-kicker lang-zh">Recent Updates</span>
+          <span class="section-kicker lang-en" lang="en">Recent Updates</span>
+            <h2 class="section-title lang-zh">最新更新时间线</h2>
+          <h2 class="section-title lang-en" lang="en">Recent Updates</h2>
           </div>
           <p class="section-summary">
-            当前已完成首页首批内容落地，后续会继续补充更细的任务流程、地图路径和资源表。
+            <span class="lang-zh">当前已完成首页首批内容落地，后续会继续补充更细的任务流程、地图路径和资源表。</span><span class="lang-en" lang="en">First batch of content live. More guides — quest walkthroughs, map routes, and resource tables — coming soon.</span>
           </p>
         </div>
 
         <div class="timeline-card">
           <div class="timeline-item">
             <div class="timeline-date">2026-05-18</div>
-            <h3>首批攻略内容已上线</h3>
-            <p>已开放新手入门、合成表、材料位置、氧气管理与基础生存机制五个核心入口。</p>
+            <h3><span class="lang-zh">首批攻略内容已上线</span><span class="lang-en" lang="en">First Guides Published</span></h3>
+            <p><span class="lang-zh">已开放新手入门、合成表、材料位置、氧气管理与基础生存机制五个核心入口。</span><span class="lang-en" lang="en">Beginner guide, crafting recipes, material locations, oxygen management, and hunger/thirst guides now live.</span></p>
           </div>
         </div>
       </div>
@@ -1121,16 +1184,16 @@
     <div class="container">
       <div class="footer-shell">
         <div>
-          <strong>版权声明</strong>
+          <strong class="lang-zh">版权声明</strong><strong class="lang-en" lang="en">Copyright</strong>
           <p>© 2026 Subnautica2攻略. All rights reserved.</p>
         </div>
         <div>
-          <strong>数据来源</strong>
-          <p>IGN Wiki / 官方资料</p>
+          <strong class="lang-zh">数据来源</strong><strong class="lang-en" lang="en">Sources</strong>
+          <p class="lang-zh">IGN Wiki / 官方资料</p><p class="lang-en" lang="en">IGN Wiki / Official Sources</p>
         </div>
         <div>
-          <strong>免责声明</strong>
-          <p>本站不附属于 Unknown Worlds Entertainment，相关内容仅用于攻略整理与信息归纳。<br><small>⚠️本站点不附属于UnknownWorldsEntertainment，内容基于公开资料整理，供玩家社区免费参考。</small></p>
+          <strong class="lang-zh">免责声明</strong><strong class="lang-en" lang="en">Disclaimer</strong>
+          <p><span class="lang-zh">本站不附属于 Unknown Worlds Entertainment，相关内容仅用于攻略整理与信息归纳。<br><small>⚠️本站点不附属于UnknownWorldsEntertainment，内容基于公开资料整理，供玩家社区免费参考。</small></span><span class="lang-en" lang="en">This site is not affiliated with Unknown Worlds Entertainment. Content is based on publicly available information for community reference.</span></p>
         </div>
       </div>
     </div>
@@ -1193,6 +1256,51 @@
     }
 
     initializePage();
+    initializePage();
+
+    /**
+     * 语言切换：中英文切换 + localStorage 持久化
+     */
+    function toggleLanguage() {
+      const current = document.documentElement.lang;
+      const newLang = current === 'zh-CN' ? 'en' : 'zh-CN';
+      setLanguage(newLang);
+    }
+
+    function setLanguage(lang) {
+      const body = document.body;
+      if (lang === 'en') {
+        body.classList.add('lang-en');
+        body.classList.remove('lang-zh');
+        document.documentElement.lang = 'en';
+        document.getElementById('langBtn').textContent = '🌐 中文';
+        // Update meta description for English
+        document.querySelector('meta[name="description"]').content = 'Subnautica 2 English guide. Beginner tutorial, crafting recipes, material locations, oxygen management, survival mechanics. Your deep sea exploration starts here.';
+      } else {
+        body.classList.add('lang-zh');
+        body.classList.remove('lang-en');
+        document.documentElement.lang = 'zh-CN';
+        document.getElementById('langBtn').textContent = '🌐 EN';
+        // Restore Chinese meta description
+        document.querySelector('meta[name="description"]').content = 'Subnautica2中文攻略站｜2026.05.14新发布。新手入门、合成配方、材料采集点、氧气洞穴潜泳、生存机制详解，持续更新中。深海探险，从这里开始。';
+      }
+      localStorage.setItem('subnautica2-lang', lang);
+    }
+
+    // Auto-detect browser language on first visit
+    function detectLanguage() {
+      const saved = localStorage.getItem('subnautica2-lang');
+      if (saved) {
+        setLanguage(saved);
+        return;
+      }
+      const browserLang = navigator.language || navigator.userLanguage;
+      // Default to English for English speakers, Chinese for others
+      const lang = browserLang.startsWith('en') ? 'en' : 'zh-CN';
+      setLanguage(lang);
+    }
+
+    detectLanguage();
   </script>
 </body>
 </html>
