@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subnautica 2 Base Building Guide: Best Locations & Hotfix 3 Savings</title>
+  <meta name="description" content="Subnautica 2 base building guide. Best starter base location (Safe Shallows vs Grassy Plateau vs Kelp Forest), room-by-room build order, and how Hotfix 3 reduced Interior Walls cost by 75%.">
+  <meta name="keywords" content="Subnautica 2 base building, Subnautica 2 best base location, Subnautica 2 base guide, Subnautica 2 interior walls cost, Subnautica 2 habitat builder">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #020b16;
+      --bg-2: #041428;
+      --bg-3: #07233f;
+      --surface: rgba(6, 23, 41, 0.72);
+      --surface-strong: rgba(4, 20, 40, 0.92);
+      --line: rgba(87, 214, 255, 0.22);
+      --line-strong: rgba(105, 229, 255, 0.6);
+      --text-main: #e8fbff;
+      --text-soft: rgba(214, 241, 255, 0.74);
+      --text-faint: rgba(214, 241, 255, 0.5);
+      --accent: #57d6ff;
+      --accent-2: #7fffd4;
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.28);
+      --shadow-glow: 0 0 24px rgba(87, 214, 255, 0.24);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --nav-height: 78px;
+      --transition: 0.3s ease;
+      --max-width: 1280px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(87, 214, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 82% 16%, rgba(127, 255, 212, 0.08), transparent 22%),
+        linear-gradient(180deg, #010712 0%, #041428 48%, #020d1c 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
+      opacity: 0.18;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(4, 20, 40, 0.86);
+      border-color: rgba(103, 221, 255, 0.14);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-shell {
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-icon {
+      width: 40px; height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(127, 255, 212, 0.26);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(127, 255, 212, 0.28), rgba(87, 214, 255, 0.08));
+      box-shadow: inset 0 0 24px rgba(127, 255, 212, 0.1), 0 0 20px rgba(87, 214, 255, 0.12);
+      font-size: 1.1rem;
+    }
+
+    .brand-text {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f1fdff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+      transition: color var(--transition), background-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 16px; right: 16px;
+      bottom: 6px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(87, 214, 255, 0.88), transparent);
+      opacity: 0;
+      transform: scaleX(0.7);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .nav-links a:hover, .nav-links a:focus-visible {
+      color: var(--text-main);
+      background: rgba(87, 214, 255, 0.1);
+      box-shadow: 0 0 24px rgba(87, 214, 255, 0.14);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .nav-links a:hover::after, .nav-links a:focus-visible::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(87, 214, 255, 0.22);
+      background: rgba(5, 20, 37, 0.48);
+      color: var(--text-soft);
+      font-size: 0.93rem;
+      backdrop-filter: blur(10px);
+      transition: color var(--transition), background-color var(--transition), transform var(--transition);
+      margin-bottom: 32px;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+      background: rgba(87, 214, 255, 0.1);
+      transform: translateX(-3px);
+    }
+
+    .article-hero {
+      position: relative;
+      padding-top: calc(var(--nav-height) + 48px);
+      padding-bottom: 56px;
+      overflow: hidden;
+    }
+
+    .article-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(87, 214, 255, 0.18), transparent 26%),
+        linear-gradient(180deg, rgba(3, 12, 24, 0.34), rgba(1, 8, 16, 0.12));
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-faint);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb span { opacity: 0.6; }
+
+    .article-hero h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-shadow: 0 0 34px rgba(87, 214, 255, 0.18);
+      margin-bottom: 20px;
+      max-width: 820px;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .meta-tag {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(87, 214, 255, 0.2);
+      background: rgba(5, 20, 37, 0.5);
+      color: var(--text-soft);
+      font-size: 0.86rem;
+    }
+
+    .article-description {
+      max-width: 720px;
+      color: var(--text-soft);
+      font-size: 1.06rem;
+      margin-bottom: 20px;
+    }
+
+    main { position: relative; z-index: 2; }
+
+    .section { padding: 72px 0; }
+
+    .article-content {
+      max-width: 820px;
+    }
+
+    .article-content h2 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      margin-top: 48px;
+      border-bottom: 1px solid rgba(87, 214, 255, 0.14);
+      padding-bottom: 12px;
+    }
+
+    .article-content h2:first-child { margin-top: 0; }
+
+    .article-content h3 {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+
+    .article-content p {
+      color: var(--text-soft);
+      font-size: 1.01rem;
+      margin-bottom: 16px;
+    }
+
+    .article-content ul, .article-content ol {
+      color: var(--text-soft);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      line-height: 1.65;
+    }
+
+    .article-content strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .recipe-box {
+      background: rgba(4, 20, 40, 0.7);
+      border: 1px solid rgba(87, 214, 255, 0.2);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .recipe-box .recipe-title {
+      font-family: "Share Tech Mono", monospace;
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .recipe-item {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(87, 214, 255, 0.1);
+    }
+
+    .recipe-item:last-child { border-bottom: none; }
+
+    .recipe-name {
+      font-weight: 600;
+      color: var(--text-main);
+      font-size: 0.98rem;
+    }
+
+    .recipe-materials {
+      color: var(--text-soft);
+      font-size: 0.93rem;
+    }
+
+    .recipe-materials .mat {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tip-box {
+      background: rgba(127, 255, 212, 0.06);
+      border: 1px solid rgba(127, 255, 212, 0.22);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .tip-box .tip-title {
+      color: var(--accent-2);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .tip-box p {
+      color: var(--text-soft);
+      font-size: 0.96rem;
+      margin-bottom: 0;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 1px solid rgba(87, 214, 255, 0.14);
+      border-radius: var(--radius-md);
+      background: rgba(5, 18, 32, 0.5);
+      font-size: 0.98rem;
+      color: var(--text-soft);
+    }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(127, 255, 212, 0.2);
+      border: 1px solid rgba(127, 255, 212, 0.4);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+    }
+
+    .related-section {
+      padding: 56px 0;
+      border-top: 1px solid rgba(87, 214, 255, 0.1);
+      margin-top: 48px;
+    }
+
+    .related-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .related-card {
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 25, 43, 0.7), rgba(3, 12, 24, 0.78));
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: 0 0 20px rgba(87, 214, 255, 0.12);
+    }
+
+    .related-card h4 {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .related-card p {
+      font-size: 0.88rem;
+      color: var(--text-faint);
+      margin-bottom: 0;
+    }
+
+    .related-card a {
+      display: block;
+      height: 100%;
+    }
+
+    .site-footer { padding: 0 0 40px; }
+
+    .footer-shell {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(87, 214, 255, 0.14);
+      background: linear-gradient(180deg, rgba(6, 23, 41, 0.84), rgba(3, 12, 24, 0.84)), rgba(4, 20, 40, 0.8);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .footer-shell strong { display: block; margin-bottom: 6px; color: var(--text-main); }
+    .footer-shell p { color: var(--text-faint); font-size: 0.93rem; }
+
+    .bubble-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -160px;
+      border-radius: 50%;
+      border: 1px solid rgba(151, 236, 255, 0.18);
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(87, 214, 255, 0.08) 42%, transparent 72%);
+      box-shadow: inset -8px -10px 22px rgba(87, 214, 255, 0.08), 0 0 24px rgba(87, 214, 255, 0.08);
+      opacity: 0.7;
+      animation: bubbleFloat linear infinite;
+    }
+
+    @keyframes bubbleFloat {
+      0% { transform: translate3d(0, 0, 0) scale(0.92); opacity: 0; }
+      15% { opacity: 0.52; }
+      50% { transform: translate3d(26px, -48vh, 0) scale(1); opacity: 0.66; }
+      100% { transform: translate3d(-18px, -110vh, 0) scale(1.08); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --nav-height: 60px; }
+      .container { width: min(var(--max-width), calc(100% - 24px)); }
+      .nav-links { gap: 4px !important; justify-content: center !important; flex-wrap: wrap !important; }
+      .nav-links a { padding: 7px 10px !important; font-size: 0.82rem !important; }
+      .article-hero h1 { font-size: clamp(1.6rem, 6vw, 2.4rem) !important; }
+      .recipe-item { grid-template-columns: 1fr; gap: 6px; }
+      .footer-shell { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .article-hero h1 { font-size: clamp(1.4rem, 8vw, 1.8rem) !important; }
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KGSB78YK5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-3KGSB78YK5");
+</script>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html" aria-label="Back to Home">
+        <span class="brand-icon" aria-hidden="true">🫧</span>
+        <span class="brand-text">Subnautica 2 Guide</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../index.html">← Back to Home</a>
+        <a href="#fabricator">Fabricator Location</a>
+        <a href="#crafting-order">Crafting Order</a>
+        <a href="#survival-tips">Survival Tips</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="article-hero">
+    <div class="bubble-layer" id="bubbleLayer" aria-hidden="true"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <a class="back-link" href="../index.html">← Back to Home</a>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>/</span>
+        <span>Beginner's Guide</span>
+      </div>
+      <div class="article-meta">
+        <span class="meta-tag">🕐 ~8 min read</span>
+        <span class="meta-tag">📅 2026-05-14</span>
+        <span class="meta-tag">🔰 Beginner</span>
+      </div>
+      <h1>Subnautica 2 Beginner's Guide — How to Craft Survival Multitool + Scanner + Fins</h1>
+      <p class="article-description">
+        Complete beginner guide: what to build first, materials & order. After reading: Multitool + Scanner + Fins equipped, Fabricator located, Titanium stocked.
+      </p>
+    </div>
+  </section>
+
+    <main>
+    <section class="section" id="updates-hero">
+      <div class="container">
+        <div class="article-hero">
+          <div class="breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <span>Base Building</span>
+          </div>
+          <h1>Subnautica 2 Base Building Guide: Best Locations & Hotfix 3 Savings</h1>
+          <div class="article-meta">
+            <span class="meta-tag">📅 Updated June 18, 2026</span>
+            <span class="meta-tag">🏷️ Base Building</span>
+            <span class="meta-tag">🏷️ Construction</span>
+          </div>
+          <p class="article-description">
+            Where to build your first base, which rooms to prioritize, and how Hotfix 3's 75% Interior Walls cost reduction changes everything for base builders.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="article-content">
+
+          <h2 id="why-build">🏗️ Why Build a Base in Subnautica 2?</h2>
+          <p>Subnautica 2 is the first game in the series to launch with full 4-player co-op. Here's everything you need to know to set up a base. Your Lifepod is a temporary shelter — it has no storage beyond a single locker, no crafting beyond the basic Fabricator, and no defense. A real base gives you:</p>
+          <ul>
+            <li><strong>Deep storage</strong> — wall lockers, floor lockers, and labeled storage for organizing resources</li>
+            <li><strong>Advanced crafting</strong> — Modification Station, Battery Charger, and later the Biomod Station and Vehicle Upgrade Console</li>
+            <li><strong>Power independence</strong> — Solar panels, thermal reactors, or bioreactors to keep your equipment running</li>
+            <li><strong>Safety</strong> — hostile creatures don't attack base structures (they can bump into them but won't deal damage)</li>
+          </ul>
+
+          <div class="milestone-box">
+            <div class="milestone-number">1 Titanium</div>
+            <div class="milestone-label">Per Interior Wall After Hotfix 3 (was 4 Titanium — 75% savings)</div>
+          </div>
+
+          <h2 id="best-locations">📍 Best Base Locations</h2>
+          <p>Your base location determines your resource access, travel time, and safety. Here are the top three starter locations ranked:</p>
+
+          <h3>🥇 Safe Shallows Border (Kelp Forest Adjacent)</h3>
+          <p><strong>Recommended for:</strong> First playthrough, solo survival, small groups</p>
+          <p>Build at the border between Safe Shallows and Kelp Forest (around -150, -50 on the in-game coordinates, roughly 150 meters northwest of Lifepod 5). This location combines safety with resource density:</p>
+          <ul>
+            <li><strong>Pros:</strong> Abundant Titanium and Quartz from Safe Shallows outcrops. Kelp Forest provides Creepvine (Rubber source) and Copper within 100 meters. No hostile creatures patrol this border zone. Shallow enough for solar panels (0-30m depth — peak efficiency).</li>
+            <li><strong>Cons:</strong> Deep biomes require a 400m+ trek. If you build too far into the Kelp Forest, Stalkers may wander close — they won't attack your base but the scraping noises are unnerving.</li>
+          </ul>
+
+          <h3>🥈 Grassy Plateau (Red Grass Zone)</h3>
+          <p><strong>Recommended for:</strong> Players who want quick access to deeper biomes, medium group (2-3 players)</p>
+          <p>The Grassy Plateau sits at 40-100 meters depth, right over the entrance to the Jellyshroom Caves and with a short swim to the Abyssal Fissure:</p>
+          <ul>
+            <li><strong>Pros:</strong> Quick descent to the deeper resource zones (Abyssal Fissure entrance at ~120m). Red Grass and Spiral Plant clippings for bioreactor fuel. Sandstone outcrops yield Silver and Lead alongside Titanium.</li>
+            <li><strong>Cons:</strong> Occasional Sand Shark patrols (territorial but slow). Slightly deeper than solar-optimal — you'll want 2-3 extra solar panels to compensate.</li>
+          </ul>
+
+          <h3>🥉 Kelp Forest Clearing (Central Tower Area)</h3>
+          <p><strong>Recommended for:</strong> Groups that want fast Rubber/Creepvine access, co-op play</p>
+          <p>Clear a spot near the central Creepvine cluster (identifiable by the tallest vine cluster on the map):</p>
+          <ul>
+            <li><strong>Pros:</strong> Immediate access to Creepvine Samples and Creepvine Seed Clusters for lubricant and rubber. Direct route to Grassy Plateau and deeper zones.</li>
+            <li><strong>Cons:</strong> Stalkers are common here. Dense foliage makes building awkward. Less room for vertical expansion.</li>
+          </ul>
+
+          <div class="tip-box">
+            <div class="tip-title">📊 Location Quick-Comparison</div>
+            <p><strong>Safe Shallows border:</strong> Best for solo / first base. Low maintenance, safe, solar-friendly. <strong>Grassy Plateau:</strong> Best for exploration-focused groups. <strong>Kelp Forest:</strong> Best for crafting-heavy playthroughs. Don't overthink it — you can deconstruct a base and get 100% of materials back.</p>
+          </div>
+
+          <h2 id="room-guide">🏠 Room-by-Room Building Guide</h2>
+          <p>Subnautica 2's base system uses the <strong>Habitat Builder</strong>, crafted with 1 Wiring Kit (2 Silver Ore) and 1 Computer Chip (2 Copper + 1 Gold). Once you have it, here's your build order:</p>
+
+          <h3>Phase 1: Foundation (First 30 minutes)</h3>
+          <ul>
+            <li><strong>1 Multipurpose Room (6 Titanium)</strong> — your central hub. Connect this first.</li>
+            <li><strong>4 Interior Walls (4 Titanium — 1 each after Hotfix 3)</strong> — compartmentalize the room into functional zones. Without walls, the single room does everything in one open space; walls let you separate crafting from storage.</li>
+            <li><strong>1 Fabricator</strong> — already in your Lifepod, but build one in your base for convenience.</li>
+            <li><strong>4 Wall Lockers (2 Titanium total)</strong> — one for building materials, one for electronics, one for food/water, one for tools.</li>
+          </ul>
+
+          <h3>Phase 2: Power & Production (Next 1-2 hours)</h3>
+          <ul>
+            <li><strong>2 Solar Panels (4 Titanium + 4 Quartz each)</strong> — sufficient for a small base above 80m depth. Each generates 50 power during the day.</li>
+            <li><strong>1 Battery Charger (1 Copper + 1 Wiring Kit)</strong> — absolute must. Running out of battery power with no way to recharge tools is the most common new player mistake.</li>
+            <li><strong>1 Scanner Room (5 Titanium + 2 Copper + 1 Wiring Kit)</strong> — scans the surrounding area for specific resources. Extremely useful for finding Silver and Lead without swimming blind.</li>
+          </ul>
+
+          <h3>Phase 3: Expansion (Mid-game)</h3>
+          <ul>
+            <li><strong>Second Multipurpose Room (6 Titanium)</strong> — dedicated to vehicle-related modules and upgrades.</li>
+            <li><strong>Modification Station (1 Titanium + 1 Diamond + 1 Computer Chip)</strong> — upgrades your tools and equipment. Essential before deep exploration.</li>
+            <li><strong>Bio Reactor (1 Wiring Kit + 2 Titanium + 1 Lubricant)</strong> — backup power for night time or deep bases where solar doesn't reach.</li>
+            <li><strong>Reinforced Walls (4 Titanium + 2 Lithium each)</strong> — adds structural integrity if you're building at depth. Not needed for shallow bases.</li>
+          </ul>
+
+          <h2 id="hotfix-3-savings">💰 Hotfix 3: What the 75% Interior Walls Cut Means</h2>
+          <p>Before Hotfix 3, building an Interior Wall cost <strong>4 Titanium</strong>. This was widely considered one of the most expensive base-building costs relative to the benefit. A base with 8 rooms connected by Interior Walls would cost 32 Titanium just for the walls — more than the rooms themselves.</p>
+
+          <p>After Hotfix 3, an Interior Wall costs <strong>1 Titanium</strong>. This is a massive shift in base-building economics:</p>
+
+          <div class="update-box">
+            <div class="update-title">Before vs. After Hotfix 3 — 8-Wall Base Cost</div>
+            <div class="update-item">
+              <span class="update-name">Before</span>
+              <span class="update-desc">32 Titanium for 8 walls. This was enough Titanium to build 5 Multipurpose Rooms (30 Titanium total). Players avoided walls entirely because the cost was absurd.</span>
+            </div>
+            <div class="update-item">
+              <span class="update-name">After</span>
+              <span class="update-desc">8 Titanium for the same 8 walls. That's 75% less. Now you can compartmentalize your base without feeling like you're wasting resources.</span>
+            </div>
+          </div>
+
+          <p><strong>What this means in practice:</strong></p>
+          <ul>
+            <li>Build dedicated rooms: a "Power Room" with Battery Chargers, a "Foundry" with Fabricator and Modification Station, a "Greenhouse" for indoor planters</li>
+            <li>Wall off a Scanner Room annex without feeling like you're burning Titanium</li>
+            <li>Create airlock-style compartments between the exterior door and your main room as a buffer against potential flood damage</li>
+          </ul>
+
+          <div class="tip-box">
+            <div class="tip-title">💡 Interior Wall Placement Tips</div>
+            <p>Interior Walls snap to the center grid of any Multipurpose Room. Place them to create 2-3 functional zones per room. Don't build walls in the center of the room entrance — they'll block navigation. Instead, build along one side to create a "hallway" and a "workstation" zone.</p>
+          </div>
+
+          <h2 id="co-op-base">👥 Co-op Base Building</h2>
+          <p>In co-op, any player can use the Habitat Builder and contribute to the base. Resources used are consumed from the builder's inventory. This means building is faster but requires coordination:</p>
+          <ul>
+            <li><strong>Assign a projects board:</strong> use a wall sign in the base to list what needs building and who's responsible</li>
+            <li><strong>Build a community locker:</strong> dedicate one wall locker (or two) as a shared resource pool — anyone can deposit or withdraw</li>
+            <li><strong>Designate rooms:</strong> one player builds the crafting wing, another builds storage, a third builds power. This parallel construction is the fastest way to get a base operational</li>
+          </ul>
+
+          <div class="tip-box">
+            <div class="tip-title">🔥 Bottom Line</div>
+            <p>Hotfix 3 made base building dramatically more affordable. Build your first base at the Safe Shallows/Kelp Forest border, prioritize a Battery Charger and Scanner Room, and use Interior Walls freely now that they cost 1 Titanium. If you're in co-op, assign roles and build in parallel — you'll have a fully functional base in under an hour.</p>
+          </div>
+
+        </div>
+
+        <div class="related-section">
+          <h3 class="related-title">Related Guides</h3>
+          <div class="related-grid">
+            <div class="related-card">
+              <a href="material-locations.html">
+                <h4>📍 Material Locations</h4>
+                <p>Where to find Titanium, Quartz, Copper, and Rubber for building.</p>
+              </a>
+            </div>
+            <div class="related-card">
+              <a href="subnautica-2-may-2026-update.html">
+                <h4>📰 June 2026 Updates</h4>
+                <p>Hotfix 3 details, Interior Walls cost change, and more.</p>
+              </a>
+            </div>
+            <div class="related-card">
+              <a href="co-op-guide.html">
+                <h4>👥 Co-op Guide</h4>
+                <p>4-player setup, Friend Codes, and co-op survival tips.</p>
+              </a>
+            </div>
+            <div class="related-card">
+              <a href="oxygen-management.html">
+                <h4>🫧 Oxygen Management</h4>
+                <p>Cave diving and depth extension tips for exploration.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-shell">
+        <div>
+          <strong>Copyright</strong>
+          <p>© 2026 Subnautica 2 Guide. All rights reserved.</p>
+        </div>
+        <div>
+          <strong>Community</strong>
+          <p>Join us on <a href="https://discord.gg/AXJ3gZvmmA" target="_blank" rel="noopener" style="color:#57d6ff;text-decoration:underline;">Discord</a> — discuss guides, share tips, and get help.</p>
+        </div>
+        <div>
+          <strong>Disclaimer</strong>
+          <p>This site is not affiliated with Unknown Worlds Entertainment. Content is based on publicly available information for community reference.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const bubbleLayer = document.getElementById("bubbleLayer");
+    const siteHeader = document.getElementById("siteHeader");
+
+    function createBubbleMarkup(count) {
+      let bubbleMarkup = "";
+      for (let index = 0; index < count; index += 1) {
+        const size = 18 + (index % 7) * 10 + Math.floor(index / 4) * 2;
+        const left = (index * 11) % 100;
+        const delay = (index % 9) * 0.7;
+        const duration = 11 + (index % 6) * 2.2;
+        const opacity = 0.26 + (index % 5) * 0.08;
+        bubbleMarkup += `<span class="bubble" style="width:${size}px;height:${size}px;left:${left}%;animation-duration:${duration}s;animation-delay:-${delay}s;opacity:${opacity};"></span>`;
+      }
+      return bubbleMarkup;
+    }
+
+    function setNavbarState() {
+      if (window.scrollY > 28) {
+        siteHeader.classList.add("is-scrolled");
+      } else {
+        siteHeader.classList.remove("is-scrolled");
+      }
+    }
+
+    function initializePage() {
+      bubbleLayer.innerHTML = createBubbleMarkup(22);
+      setNavbarState();
+      window.addEventListener("scroll", setNavbarState, { passive: true });
+    }
+
+    initializePage();
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="https://va.vercel-scripts.com/v1/va.min.js"></script>
+</body>
+</html>

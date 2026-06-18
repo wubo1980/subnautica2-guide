@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subnautica 2 May 2026 Updates: 4 Million Sold & What's New</title>
-  <meta name="description" content="Subnautica 2 sold 4 million copies in early access week. May 22 update adds new resource zone, fish AI improvements, performance optimizations. May 26 Hotfix 2. Upcoming EA roadmap.">
-  <meta name="keywords" content="Subnautica 2 4 million sold, Subnautica 2 May 2026 update, Subnautica 2 early access, Subnautica 2 hotfix 2">
+  <title>Subnautica 2 Co-op Guide: 4-Player Multiplayer Setup & Tips</title>
+  <meta name="description" content="Complete Subnautica 2 co-op guide. How to set up multiplayer, use Friend Codes, host vs guest roles, resource sharing, crossplay support, and 5 pro tips for 4-player survival.">
+  <meta name="keywords" content="Subnautica 2 co-op, Subnautica 2 multiplayer, Subnautica 2 how to play with friends, Subnautica 2 4 player, Subnautica 2 crossplay">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -297,34 +297,7 @@
       font-weight: 600;
     }
 
-    .milestone-box {
-      background: rgba(127, 255, 212, 0.06);
-      border: 1px solid rgba(127, 255, 212, 0.3);
-      border-radius: var(--radius-md);
-      padding: 24px 28px;
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    .milestone-box .milestone-number {
-      font-family: "Orbitron", sans-serif;
-      font-size: 3.2rem;
-      color: var(--accent-2);
-      line-height: 1;
-      margin-bottom: 8px;
-      text-shadow: 0 0 34px rgba(127, 255, 212, 0.3);
-    }
-
-    .milestone-box .milestone-label {
-      color: var(--text-soft);
-      font-size: 1rem;
-    }
-
-    .milestone-box p {
-      margin-bottom: 0;
-    }
-
-    .update-box {
+    .recipe-box {
       background: rgba(4, 20, 40, 0.7);
       border: 1px solid rgba(87, 214, 255, 0.2);
       border-radius: var(--radius-md);
@@ -332,7 +305,7 @@
       margin: 20px 0;
     }
 
-    .update-box .update-title {
+    .recipe-box .recipe-title {
       font-family: "Share Tech Mono", monospace;
       color: var(--accent-2);
       font-size: 0.95rem;
@@ -341,7 +314,7 @@
       margin-bottom: 12px;
     }
 
-    .update-item {
+    .recipe-item {
       display: grid;
       grid-template-columns: 160px minmax(0, 1fr);
       gap: 12px;
@@ -350,29 +323,34 @@
       border-bottom: 1px solid rgba(87, 214, 255, 0.1);
     }
 
-    .update-item:last-child { border-bottom: none; }
+    .recipe-item:last-child { border-bottom: none; }
 
-    .update-name {
+    .recipe-name {
       font-weight: 600;
       color: var(--text-main);
       font-size: 0.98rem;
     }
 
-    .update-desc {
+    .recipe-materials {
       color: var(--text-soft);
       font-size: 0.93rem;
     }
 
+    .recipe-materials .mat {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
     .tip-box {
-      background: rgba(87, 214, 255, 0.06);
-      border: 1px solid rgba(87, 214, 255, 0.22);
+      background: rgba(127, 255, 212, 0.06);
+      border: 1px solid rgba(127, 255, 212, 0.22);
       border-radius: var(--radius-md);
       padding: 18px 22px;
       margin: 20px 0;
     }
 
     .tip-box .tip-title {
-      color: var(--accent);
+      color: var(--accent-2);
       font-weight: 600;
       font-size: 0.95rem;
       margin-bottom: 8px;
@@ -384,7 +362,15 @@
       margin-bottom: 0;
     }
 
-    .hotfix-item {
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checklist li {
       display: flex;
       align-items: flex-start;
       gap: 12px;
@@ -392,62 +378,20 @@
       border: 1px solid rgba(87, 214, 255, 0.14);
       border-radius: var(--radius-md);
       background: rgba(5, 18, 32, 0.5);
-      margin: 12px 0;
       font-size: 0.98rem;
       color: var(--text-soft);
     }
 
-    .hotfix-icon {
+    .check-icon {
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: rgba(87, 214, 255, 0.2);
-      border: 1px solid rgba(87, 214, 255, 0.4);
+      background: rgba(127, 255, 212, 0.2);
+      border: 1px solid rgba(127, 255, 212, 0.4);
       display: grid;
       place-items: center;
       flex-shrink: 0;
       font-size: 0.8rem;
-    }
-
-    .roadmap-item {
-      position: relative;
-      padding: 18px 18px 18px 54px;
-      border: 1px solid rgba(87, 214, 255, 0.14);
-      border-radius: var(--radius-md);
-      background: rgba(5, 18, 32, 0.5);
-      margin: 14px 0;
-    }
-
-    .roadmap-item .roadmap-phase {
-      font-family: "Share Tech Mono", monospace;
-      font-size: 0.85rem;
-      color: var(--accent-2);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .roadmap-item h4 {
-      font-size: 1.05rem;
-      margin-bottom: 8px;
-      color: var(--text-main);
-    }
-
-    .roadmap-item p {
-      font-size: 0.95rem;
-      color: var(--text-soft);
-      margin-bottom: 0;
-    }
-
-    .roadmap-item .roadmap-dot {
-      position: absolute;
-      left: 18px;
-      top: 20px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(87, 214, 255, 0.9), rgba(87, 214, 255, 0.4));
-      box-shadow: 0 0 18px rgba(87, 214, 255, 0.26);
     }
 
     .related-section {
@@ -549,7 +493,7 @@
       .nav-links { gap: 4px !important; justify-content: center !important; flex-wrap: wrap !important; }
       .nav-links a { padding: 7px 10px !important; font-size: 0.82rem !important; }
       .article-hero h1 { font-size: clamp(1.6rem, 6vw, 2.4rem) !important; }
-      .update-item { grid-template-columns: 1fr; gap: 6px; }
+      .recipe-item { grid-template-columns: 1fr; gap: 6px; }
       .footer-shell { grid-template-columns: 1fr; }
     }
 
@@ -575,10 +519,9 @@
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="../index.html">← Back to Home</a>
-        <a href="#sales-milestone">Sales Milestone</a>
-        <a href="#may-22-update">May 22 Update</a>
-        <a href="#hotfix-2">Hotfix 2</a>
-        <a href="#roadmap">Roadmap</a>
+        <a href="#fabricator">Fabricator Location</a>
+        <a href="#crafting-order">Crafting Order</a>
+        <a href="#survival-tips">Survival Tips</a>
       </nav>
     </div>
   </header>
@@ -590,38 +533,37 @@
       <div class="breadcrumb">
         <a href="../index.html">Home</a>
         <span>/</span>
-        <span>May 2026 Updates</span>
+        <span>Beginner's Guide</span>
       </div>
       <div class="article-meta">
-        <span class="meta-tag">🕐 ~6 min read</span>
-        <span class="meta-tag">📅 2026-05-30</span>
-        <span class="meta-tag">📰 News</span>
+        <span class="meta-tag">🕐 ~8 min read</span>
+        <span class="meta-tag">📅 2026-05-14</span>
+        <span class="meta-tag">🔰 Beginner</span>
       </div>
-      <h1>Subnautica 2 May 2026 Updates: 4 Million Sold & What's New</h1>
+      <h1>Subnautica 2 Beginner's Guide — How to Craft Survival Multitool + Scanner + Fins</h1>
       <p class="article-description">
-        Subnautica 2's early access launched May 14 and sold 4 million copies in its first week. Two major patches already landed, and Unknown Worlds has shared their post-launch roadmap. Here's everything you need to know.
+        Complete beginner guide: what to build first, materials & order. After reading: Multitool + Scanner + Fins equipped, Fabricator located, Titanium stocked.
       </p>
     </div>
   </section>
 
-  
-  <main>
+    <main>
     <section class="section" id="updates-hero">
       <div class="container">
         <div class="article-hero">
           <div class="breadcrumb">
             <a href="/">Home</a>
             <span>/</span>
-            <span>Updates</span>
+            <span>Co-op Guide</span>
           </div>
-          <h1>Subnautica 2 Hotfix 3 & Roadmap: PRAWN Suit, New Region, Patch Notes</h1>
+          <h1>Subnautica 2 Co-op Guide: How to Play 4-Player Survival with Friends</h1>
           <div class="article-meta">
             <span class="meta-tag">📅 Updated June 18, 2026</span>
-            <span class="meta-tag">🏷️ Patch Notes</span>
-            <span class="meta-tag">🏷️ Roadmap</span>
+            <span class="meta-tag">🏷️ Multiplayer</span>
+            <span class="meta-tag">🏷️ Co-op</span>
           </div>
           <p class="article-description">
-            Subnautica 2's Early Access just got its third hotfix — tweaking Hammerhead, Nibbler, and Marrowbreach behavior, upgrading DLSS to 4.5, and slashing Interior Wall costs by 75%. Plus: the first Dev Vlog reveals the EA1.1 roadmap with PRAWN Suit return and a terrifying new region.
+            Subnautica 2 is the first game in the series to launch with full 4-player co-op. Here's everything you need to know to set up multiplayer, invite friends, manage worlds, and survive together.
           </p>
         </div>
       </div>
@@ -631,173 +573,141 @@
       <div class="container">
         <div class="article-content">
 
-          <h2 id="sales-milestone">🚀 4 Million Sold & Counting</h2>
-          <p>Two weeks after the 4-million-copies-sold-in-week-one milestone, Subnautica 2 keeps its momentum. Steam reviews remain "Very Positive" (106K+ positive out of 116K total as of mid-June), and the game has held a top-10 spot on SteamDB's weekly best-sellers list since launch. Concurrent players peaked at 46,791 on Steam — more than double the original Subnautica's all-time high.</p>
+          <h2 id="overview">👥 Co-op Overview</h2>
+          <p>Subnautica 2 supports up to <strong>4 players</strong> in online co-op across PC (Steam, Epic Games Store) and Xbox (Series X|S). Crossplay is supported — a Steam player can join an Xbox player's session, and vice versa. There is no split-screen local co-op.</p>
 
-          <p>Beyond the numbers, what matters is the speed of patches. In its first month of Early Access, Unknown Worlds has shipped <strong>Hotfix 3</strong> (June 1) and published the first Dev Vlog (June 4), setting a clear direction for the EA1.1 update. Let's dig into what changed.</p>
-
-          <h2 id="hotfix-3">🔧 Hotfix 3 — June 1, 2026</h2>
-          <p>Hotfix 3 is a significant patch. It's not just bug fixes; it's the first real tuning pass on creature behavior since the pre-launch community feedback letter (May 20). Here's what landed:</p>
-
-          <h3>Creature Behavior Overhauls</h3>
-
-          <div class="update-box">
-            <div class="update-title">🦈 Hammerhead</div>
-            <div class="update-item">
-              <span class="update-name">Change</span>
-              <span class="update-desc">No longer attacks unpiloted Tadpoles. Previously, even an empty Tadpole would trigger Hammerhead aggression, forcing players to always stay inside or risk losing their vehicle from across the zone.</span>
-            </div>
-            <div class="update-item">
-              <span class="update-name">Impact</span>
-              <span class="update-desc">You can now park your Tadpole and explore on foot without returning to a wreck. Massive quality-of-life improvement for resource gathering runs.</span>
-            </div>
-          </div>
-
-          <div class="update-box">
-            <div class="update-title">🐟 Nibbler</div>
-            <div class="update-item">
-              <span class="update-name">Change</span>
-              <span class="update-desc">Aggro range reduced. Nibblers are now less likely to chase you across multiple biomes. They can also be pushed back using the Survival Multitool.</span>
-            </div>
-            <div class="update-item">
-              <span class="update-name">Impact</span>
-              <span class="update-desc">The annoying "infinite chase" behavior is gone. A quick Multitool swing now buys you time to escape into tight caves where Nibblers can't follow.</span>
-            </div>
-          </div>
-
-          <div class="update-box">
-            <div class="update-title">🌋 Marrowbreach</div>
-            <div class="update-item">
-              <span class="update-name">Change</span>
-              <span class="update-desc">Damage increased, but attack cooldown lengthened. The Marrowbreach now hits harder (roughly 1.5x previous damage) but has a noticeably longer recovery window between attacks.</span>
-            </div>
-            <div class="update-item">
-              <span class="update-name">Impact</span>
-              <span class="update-desc">You get a clearer timing window to dodge. If you miss your window, the punishment is steeper. This rewards careful play over tanking hits.</span>
-            </div>
-          </div>
-
-          <h3>Technical Improvements</h3>
-
-          <div class="hotfix-item">
-            <span class="hotfix-icon">⚡</span>
-            <div><strong>DLSS 4.5 Upgrade:</strong> NVIDIA DLSS has been upgraded from version 3.x to 4.5. This includes the new Transformer-based upscaling model, which offers sharper image quality at lower internal resolutions. Players on RTX 30-series and above should see noticeably cleaner edges and less ghosting.</div>
-          </div>
-          <div class="hotfix-item">
-            <span class="hotfix-icon">⚡</span>
-            <div><strong>DLSS Crash Fix:</strong> Fixed a crash that occurred when loading certain save files with DLSS enabled. Also fixed DLSS settings failing to persist between game sessions.</div>
-          </div>
-          <div class="hotfix-item">
-            <span class="hotfix-icon">⚡</span>
-            <div><strong>Frame Generation Restored:</strong> Fixed an issue where Frame Generation was unavailable for some compatible GPUs. Now properly detected and enabled for RTX 40-series.</div>
-          </div>
-          <div class="hotfix-item">
-            <span class="hotfix-icon">🏗️</span>
-            <div><strong>Interior Walls Cost Reduced 75%:</strong> One of the most-requested base-building fixes. Interior Wall cost dropped from 4 Titanium to 1 Titanium, making large compartmentalized bases actually affordable. More on this in our <a href="base-building-guide.html" style="color:#57d6ff;text-decoration:underline;">Base Building Guide</a>.</div>
-          </div>
-          <div class="hotfix-item">
-            <span class="hotfix-icon">✓</span>
-            <div><strong>Multiplayer Rejoin Fix:</strong> Fixed a bug where clients rejoining a co-op session would respawn at the Lifepod instead of their last position. This was a common frustration for 4-player groups.</div>
-          </div>
-          <div class="hotfix-item">
-            <span class="hotfix-icon">✓</span>
-            <div><strong>Strike Armor Stacking Fix:</strong> The Strike Armor piece set no longer stacks its damage resistance bonus multiplicatively with itself. Now applies as intended — one bonus only.</div>
-          </div>
-          <div class="hotfix-item">
-            <span class="hotfix-icon">✓</span>
-            <div><strong>Tadpole Haul Chassis Goggles Fix:</strong> Fixed goggles staying visible on the character model after exiting the Tadpole. Minor but long-standing visual bug since launch.</div>
-          </div>
-          <div class="hotfix-item">
-            <span class="hotfix-icon">✓</span>
-            <div><strong>Miscellaneous:</strong> Fixed rare startup crashes on certain AMD configurations. Updated localized Terms callout text. Improved crash-report context for future diagnostics.</div>
-          </div>
-
-          <div class="tip-box">
-            <div class="tip-title">📊 Hotfix 3 by the Numbers</div>
-            <p>PatchDiff lists Hotfix 3 as 8 buffs, 1 nerf, 6 bug fixes, and 2 other changes. The overall direction is clear: Unknown Worlds is tuning the threat curve — making creatures more readable and predictable while keeping deep-sea encounters dangerous. The DLSS 4.5 upgrade is the standout technical improvement for PC players.</p>
-          </div>
-
-          <h2 id="dev-vlog">🎥 Dev Vlog: "Swimming Forward" — June 4, 2026</h2>
-          <p>On June 4, Design Lead Anthony Gallegos published the first Subnautica 2 Dev Vlog since Early Access launch. The 2:42-minute video (582K+ views, 46K+ likes) laid out the next phase of development. The key message: <strong>Unknown Worlds is pivoting from rapid hotfixes to the EA1.1 major update.</strong></p>
-
-          <p>Here's what was confirmed for EA1.1:</p>
-
-          <div class="roadmap-item">
-            <span class="roadmap-dot"></span>
-            <div class="roadmap-phase">EA1.1 — Coming in the Next Few Weeks</div>
-            <h4>🦾 PRAWN Suit Returns</h4>
-            <p>The fan-favorite exosuit from the original Subnautica is coming back. Known Worlds confirmed the PRAWN Suit will be added as part of EA1.1. It will feature new upgrade modules tailored to Subnautica 2's deeper biomes and the new creature threats. Specific stats and module slots weren't detailed, but expect the classic deep-sea walking + drilling gameplay with Subnautica 2's improvements.</p>
-          </div>
-
-          <div class="roadmap-item">
-            <span class="roadmap-dot"></span>
-            <div class="roadmap-phase">EA1.1 — New Region</div>
-            <h4>👾 Collector Leviathan Territory</h4>
-            <p>EA1.1 introduces a completely new region — home to a new leviathan-class creature called the "Collector Leviathan." GamesPress and Insider Gaming report this region is described as "the scariest the game has been yet." The Collector Leviathan appears to have unique environmental interaction behaviors distinct from anything in the base game. The teaser shot in the Dev Vlog shows a dark cavern with organic suction structures — suggesting the Leviathan may actively reshape its environment.</p>
-          </div>
-
-          <div class="roadmap-item">
-            <span class="roadmap-dot"></span>
-            <div class="roadmap-phase">EA1.1 — Systems</div>
-            <h4>🧬 Biomod System Upgrade</h4>
-            <p>The Biomod system — Subnautica 2's DNA modification mechanics — is getting a significant overhaul. The Dev Vlog confirms improvements to the Biomod UI, more biomod slots, and new passive modifications. This addresses the most common feedback about the current system: that biomod choices feel too limited and the interface is confusing for new players.</p>
-          </div>
-
-          <div class="roadmap-item">
-            <span class="roadmap-dot"></span>
-            <div class="roadmap-phase">EA1.1 — Social</div>
-            <h4>👥 New Social Features</h4>
-            <p>Co-op improvements are part of the EA1.1 scope. While specific details are limited, the roadmap signals more social features to support the 4-player experience beyond the current drop-in/drop-out system. Expect better friend code management, session visibility, and possibly in-game communication enhancements.</p>
-          </div>
-
-          <h2 id="roadmap-after">🗺️ Beyond EA1.1</h2>
-          <p>The broader roadmap (previously shared around launch) remains intact. After EA1.1's quality-of-life and usability focus, EA1.2 is slated to focus on deeper <strong>co-op and multiplayer features</strong>, followed by major content drops expanding biomes, creatures, tools, vehicles, and story.</p>
-          <p>WCCFtech's interview with Unknown Worlds revealed additional context: the team emphasized that Subnautica 2's new planet is "very different" from 4546B (the original game's setting), with entirely new ecosystems and environmental rules. The Collector Leviathan region is the first major showcase of this design philosophy — a biome that's less "place you visit" and more "living entity you navigate through."</p>
+          <p>The co-op system is <strong>drop-in/drop-out</strong>. The host's world persists independently; guests can join, explore, build, and leave without affecting their own saves. Each player has their own inventory, equipment, and oxygen meter, and progress is only saved on the host's world.</p>
 
           <div class="milestone-box">
-            <div class="milestone-number">~3 Weeks</div>
-            <div class="milestone-label">Estimated Wait for EA1.1 (based on "few weeks" from June 4)</div>
+            <div class="milestone-number">4 Players</div>
+            <div class="milestone-label">Max Co-op Size · Crossplay Supported (Steam + Xbox)</div>
           </div>
+
+          <h2 id="setup">🎮 How to Set Up Multiplayer</h2>
+
+          <h3>Step 1: Start in Multiplayer Mode</h3>
+          <p>From the main menu, select <strong>"Play with Friends"</strong> instead of "Singleplayer." This starts your game in multiplayer mode, which allows other players to join. Your existing singleplayer saves will show up here as well — you can convert them to co-op at this step.</p>
+
+          <h3>Step 2: Get Your Friend Code</h3>
+          <p>Once in the multiplayer lobby, you'll see a <strong>Friend Code</strong> displayed on screen. This is a short alphanumeric code that changes periodically. Share this with friends who want to join your session.</p>
 
           <div class="tip-box">
-            <div class="tip-title">🔥 What to Do While Waiting for EA1.1</div>
-            <p>If you haven't tried co-op yet, now's the time. Hotfix 3 fixed the rejoin position bug and improved multiplayer stability. Grab 3 friends, build a shared base, and tackle the deeper biomes together. Our <a href="co-op-guide.html" style="color:#57d6ff;text-decoration:underline;">Co-op Guide</a> has everything you need to get started in 5 minutes.</p>
+            <div class="tip-title">💡 Quick Tip</div>
+            <p>Friend Codes expire after a few minutes. If your friends can't connect, ask them to refresh and send a new code. Unknown Worlds confirmed this is intentional — it prevents stale codes from being reused for session hijacking.</p>
           </div>
 
-          <h2 id="performance">📊 Mid-June Performance Report</h2>
-          <p>With Hotfix 3's DLSS 4.5 upgrade and the continued optimization from the May 22 patch, Subnautica 2's performance has improved measurably since launch day:</p>
-          <ul>
-            <li><strong>RTX 3060 @ 1080p High:</strong> Stable 60 FPS in most biomes, occasional dips to 52 FPS near large base structures</li>
-            <li><strong>RTX 4070 @ 1440p Ultra + DLSS 4.5 Balanced:</strong> 70-85 FPS, with Frame Generation pushing to 100+ on supported monitors</li>
-            <li><strong>RTX 4090 @ 4K Ultra + DLSS 4.5 Performance:</strong> 80-100 FPS, nearly flawless</li>
-            <li><strong>Steam Deck (Low @ 800p):</strong> 30-45 FPS — playable but Steam Deck verification is still in-progress</li>
-          </ul>
-          <p>Most players report that the remaining hitching is tied to terrain streaming in the deeper biomes (The Depths, Abyssal Fissure). This is expected to improve further with terrain optimization work in EA1.1.</p>
+          <h3>Step 3: Friends Join</h3>
+          <p>Other players go to <strong>Main Menu → Play with Friends → Friend Code</strong>, enter the host's code, and click <strong>"Add Friend."</strong> Once the host accepts, they're dropped into the world near the host's current position. No separate server hosting or port forwarding needed — the system uses Unknown Worlds' backend for matchmaking.</p>
 
-          <h2 id="whats-next">What This Means for Players</h2>
-          <p>If you're a <strong>new player</strong>: Jump in. The early game is polished, the beginner's crafting loop is tight, and the co-op mode makes the learning curve gentler (your friends can help you find materials). With Hotfix 3, creature encounters are more predictable, so you won't get frustrated by unfair deaths in the first few hours.</p>
-          <p>If you're a <strong>returning player</strong>: Hotfix 3's Hammerhead fix alone is worth logging back in — parking your Tadpole and exploring on foot is genuinely enjoyable now. The DLSS 4.5 upgrade makes the visuals noticeably sharper, and the 75% Interior Walls cost reduction means you can finally build the base you want without farming Titanium for hours.</p>
-          <p>If you're <strong>waiting for EA1.1</strong>: The wait is approximately 3 weeks from the Dev Vlog date (so roughly late June). The PRAWN Suit return and Collector Leviathan region are the headline features, with the Biomod overhaul being the most impactful quality-of-life change.</p>
+          <h2 id="host-vs-guest">👑 Host vs. Guest: What's Different?</h2>
+
+          <div class="update-box">
+            <div class="update-title">Host</div>
+            <div class="update-item">
+              <span class="update-name">World Ownership</span>
+              <span class="update-desc">The host's save file is the only one that persists. All base building, resource gathering, and exploration progress is saved to the host's file.</span>
+            </div>
+            <div class="update-item">
+              <span class="update-name">Session Control</span>
+              <span class="update-desc">The host controls who can join (friend code system) and can kick disruptive players. Guests cannot save the world to their own save slot.</span>
+            </div>
+            <div class="update-item">
+              <span class="update-name">Performance</span>
+              <span class="update-desc">The host runs the game as usual — no additional server software required. Performance impact is minimal on the host side.</span>
+            </div>
+          </div>
+
+          <div class="update-box">
+            <div class="update-title">Guest</div>
+            <div class="update-item">
+              <span class="update-name">Inventory</span>
+              <span class="update-desc">Guests keep their personal inventory and equipment. When they leave and rejoin, their inventory is preserved from their last session.</span>
+            </div>
+            <div class="update-item">
+              <span class="update-name">Persistence</span>
+              <span class="update-desc">Structures built by guests remain permanently in the host's world. Resources gathered by guests are consumed from the world but credited to the guest's inventory.</span>
+            </div>
+            <div class="update-item">
+              <span class="update-name">Proximity</span>
+              <span class="update-desc">Guests are tethered to the host. If the host moves too far away, the guest is teleported to the host. The tether range varies by biome (roughly 200-400 meters).</span>
+            </div>
+          </div>
+
+          <h2 id="resource-sharing">📦 Resource Sharing: How It Works</h2>
+          <p>A common co-op question: <strong>"If I pick up Titanium, does my friend also get it?"</strong> No — resources are per-player.</p>
+          <ul>
+            <li><strong>World resources</strong> (titanium outcrops, quartz, limestone): First player to collect gets the item. The resource node disappears for everyone, so coordinate gathering routes.</li>
+            <li><strong>Fishing / Hunting</strong>: Each player can catch their own fish from the same school. Killing a creature rewards only the player who lands the final hit. Work together to avoid wasted kills.</li>
+            <li><strong>Base storage</strong>: Lockers and storage containers in shared bases are accessible by all players. Set up a "Community Supplies" locker for shared resources.</li>
+            <li><strong>Vehicles</strong>: Only the vehicle owner can pilot it. Guests can ride as passengers in the Tadpole or Cyclops (when available), but cannot drive.</li>
+          </ul>
+
+          <div class="tip-box">
+            <div class="tip-title">💡 Co-op Resource Strategy</div>
+            <p>Assign roles: one player focuses on Titanium/Quartz (building materials), another on Copper/Wire (electronics), and a third on food/water. This triples your gathering efficiency compared to solo play.</p>
+          </div>
+
+          <h2 id="hotfix-3-mp">🛠️ Hotfix 3: Co-op Improvements</h2>
+          <p>Before Hotfix 3, co-op had a frustrating quirk: if a guest disconnected and rejoined, they'd respawn at the Lifepod — even if the group was 800 meters deep at the Abyssal Fissure. Hotfix 3 fixed this. Guests now <strong>rejoin at their last position</strong>, not the Lifepod. This was the #1 co-op complaint on Reddit, and the fix makes deep-sea expeditions with friends far less annoying.</p>
+
+          <p>Other co-op-related fixes in Hotfix 3 include improved <strong>multiplayer stability</strong> — fewer random disconnections and better sync for creature positions across clients.</p>
+
+          <h2 id="tips">🎯 Co-op Tips for New Players</h2>
+
+          <div class="update-box">
+            <div class="update-title">Tip 1: Share the Blueprint Discovery Work</div>
+            <p>Each player can scan different fragments simultaneously. Split up in the Safe Shallows: one scans the Fabricator blueprint, another finds the Battery blueprint, a third locates the Mobile Vehicle Bay. You all get credit regardless of who scans.</p>
+          </div>
+
+          <div class="update-box">
+            <div class="update-title">Tip 2: Designate a Base Architect</div>
+            <p>Having one player focus on base design and material management keeps things organized. They gather building materials while others explore and hunt. With Hotfix 3's Interior Walls cost reduction (75% cheaper), large bases are finally practical for co-op groups.</p>
+          </div>
+
+          <div class="update-box">
+            <div class="update-title">Tip 3: Use the Buddy System for Deep Dives</div>
+            <p>Going below 200 meters? Pair up. One player carries extra oxygen tanks and emergency repair tools while the other handles navigation. If one player runs out of oxygen, the other can share by staying close (nearby players share a small oxygen buffer). <a href="oxygen-management.html" style="color:#57d6ff;text-decoration:underline;">Learn more about oxygen sharing</a>.</p>
+          </div>
+
+          <div class="update-box">
+            <div class="update-title">Tip 4: Leverage the Biomod System Together</div>
+            <p>In co-op, biomod choices can complement each other. One player takes Aquatic Speed boosts (fast scout), another takes Thermal Resistance (deep zone explorer), a third takes Carrying Capacity (resource gatherer). Coordinate your biomod loadout before heading to the Biomod Station.</p>
+          </div>
+
+          <div class="update-box">
+            <div class="update-title">Tip 5: Communicate Creature Threats</div>
+            <p>Subnautica 2 doesn't have a ping system. Use voice chat or text to call out Hammerhead positions and Stalker sightings. With Hotfix 3's creature changes, knowing where threats are matters more than ever — you can plan routes around Nibbler patrols instead of fighting through.</p>
+          </div>
+
+          <h2 id="crossplay">🔄 Crossplay: What Works & What Doesn't</h2>
+          <p>Crossplay between Steam and Xbox is enabled at launch. Here's the current state:</p>
+          <ul>
+            <li>✅ Steam player ↔ Xbox player: Works. Friends list integration is separate (Steam friends vs. Xbox friends), but Friend Codes bridge the gap.</li>
+            <li>✅ Epic Games Store player ↔ Steam/Xbox: Works the same way using Friend Codes.</li>
+            <li>✅ PC Game Pass ↔ Steam/Xbox: Works. Game Pass users are treated as Xbox platform players for crossplay purposes.</li>
+            <li>❌ Cross-progression: Not supported. Your Steam save doesn't transfer to Xbox. Each platform has its own save ecosystem.</li>
+          </ul>
 
           <div class="tip-box">
             <div class="tip-title">🔥 Bottom Line</div>
-            <p>Hotfix 3 shows Unknown Worlds is serious about player feedback. Creatures are fairer, performance is better, and the roadmap is transparent. With 4 million+ players and a committed development team, Subnautica 2's first month of Early Access has been remarkably strong. EA1.1 will define the next chapter — and it's coming very soon.</p>
+            <p>Subnautica 2's co-op is the real deal. The 4-player system works well, Hotfix 3 fixed the most annoying bugs, and crossplay means you can dive with friends regardless of platform. If you've been playing solo, grab a friend and start a co-op world — the ocean is less scary with company.</p>
           </div>
+
         </div>
 
         <div class="related-section">
           <h3 class="related-title">Related Guides</h3>
           <div class="related-grid">
             <div class="related-card">
-              <a href="beginners-guide.html">
-                <h4>🔰 Beginner's Guide</h4>
-                <p>First hour essentials: Multitool, Scanner, Fins crafting order.</p>
+              <a href="subnautica-2-may-2026-update.html">
+                <h4>📰 June 2026 Updates</h4>
+                <p>Hotfix 3 details, Dev Vlog roadmap, and performance data.</p>
               </a>
             </div>
             <div class="related-card">
-              <a href="co-op-guide.html">
-                <h4>👥 Co-op Guide</h4>
-                <p>4-player multiplayer setup, Friend Codes, and co-op tips.</p>
+              <a href="beginners-guide.html">
+                <h4>🔰 Beginner's Guide</h4>
+                <p>First hour essentials: Multitool, Scanner, Fins crafting order.</p>
               </a>
             </div>
             <div class="related-card">
@@ -807,9 +717,9 @@
               </a>
             </div>
             <div class="related-card">
-              <a href="material-locations.html">
-                <h4>📍 Material Locations</h4>
-                <p>Where to find Titanium, Quartz, Copper, and Rubber.</p>
+              <a href="survival-mechanics.html">
+                <h4>🥤 Survival Mechanics</h4>
+                <p>Hunger, thirst, and staying alive in the deep.</p>
               </a>
             </div>
           </div>
@@ -817,6 +727,7 @@
       </div>
     </section>
   </main>
+
 
 <footer class="site-footer">
     <div class="container">
