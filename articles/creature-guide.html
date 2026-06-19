@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subnautica 2 Creature Guide: Hammerhead, Nibbler & Marrowbreach Tips [Hotfix 3]</title>
+  <meta name="description" content="Complete Subnautica 2 creature guide covering Hammerhead, Nibbler, and Marrowbreach behavior after Hotfix 3. How to dodge, escape, and counter every major predator in Early Access.">
+  <meta name="keywords" content="Subnautica 2 creatures, Subnautica 2 Hammerhead, Subnautica 2 Nibbler, Subnautica 2 Marrowbreach, Subnautica 2 predators, Subnautica 2 Hotfix 3 creature changes">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #020b16;
+      --bg-2: #041428;
+      --bg-3: #07233f;
+      --surface: rgba(6, 23, 41, 0.72);
+      --surface-strong: rgba(4, 20, 40, 0.92);
+      --line: rgba(87, 214, 255, 0.22);
+      --line-strong: rgba(105, 229, 255, 0.6);
+      --text-main: #e8fbff;
+      --text-soft: rgba(214, 241, 255, 0.74);
+      --text-faint: rgba(214, 241, 255, 0.5);
+      --accent: #57d6ff;
+      --accent-2: #7fffd4;
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.28);
+      --shadow-glow: 0 0 24px rgba(87, 214, 255, 0.24);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --nav-height: 78px;
+      --transition: 0.3s ease;
+      --max-width: 1280px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(87, 214, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 82% 16%, rgba(127, 255, 212, 0.08), transparent 22%),
+        linear-gradient(180deg, #010712 0%, #041428 48%, #020d1c 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
+      opacity: 0.18;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(4, 20, 40, 0.86);
+      border-color: rgba(103, 221, 255, 0.14);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-shell {
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-icon {
+      width: 40px; height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(127, 255, 212, 0.26);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(127, 255, 212, 0.28), rgba(87, 214, 255, 0.08));
+      box-shadow: inset 0 0 24px rgba(127, 255, 212, 0.1), 0 0 20px rgba(87, 214, 255, 0.12);
+      font-size: 1.1rem;
+    }
+
+    .brand-text {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f1fdff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+      transition: color var(--transition), background-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 16px; right: 16px;
+      bottom: 6px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(87, 214, 255, 0.88), transparent);
+      opacity: 0;
+      transform: scaleX(0.7);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .nav-links a:hover, .nav-links a:focus-visible {
+      color: var(--text-main);
+      background: rgba(87, 214, 255, 0.1);
+      box-shadow: 0 0 24px rgba(87, 214, 255, 0.14);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .nav-links a:hover::after, .nav-links a:focus-visible::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(87, 214, 255, 0.22);
+      background: rgba(5, 20, 37, 0.48);
+      color: var(--text-soft);
+      font-size: 0.93rem;
+      backdrop-filter: blur(10px);
+      transition: color var(--transition), background-color var(--transition), transform var(--transition);
+      margin-bottom: 32px;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+      background: rgba(87, 214, 255, 0.1);
+      transform: translateX(-3px);
+    }
+
+    .article-hero {
+      position: relative;
+      padding-top: calc(var(--nav-height) + 48px);
+      padding-bottom: 56px;
+      overflow: hidden;
+    }
+
+    .article-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(87, 214, 255, 0.18), transparent 26%),
+        linear-gradient(180deg, rgba(3, 12, 24, 0.34), rgba(1, 8, 16, 0.12));
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-faint);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb span { opacity: 0.6; }
+
+    .article-hero h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-shadow: 0 0 34px rgba(87, 214, 255, 0.18);
+      margin-bottom: 20px;
+      max-width: 820px;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .meta-tag {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(87, 214, 255, 0.2);
+      background: rgba(5, 20, 37, 0.5);
+      color: var(--text-soft);
+      font-size: 0.86rem;
+    }
+
+    .article-description {
+      max-width: 720px;
+      color: var(--text-soft);
+      font-size: 1.06rem;
+      margin-bottom: 20px;
+    }
+
+    main { position: relative; z-index: 2; }
+
+    .section { padding: 72px 0; }
+
+    .article-content {
+      max-width: 820px;
+    }
+
+    .article-content h2 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      margin-top: 48px;
+      border-bottom: 1px solid rgba(87, 214, 255, 0.14);
+      padding-bottom: 12px;
+    }
+
+    .article-content h2:first-child { margin-top: 0; }
+
+    .article-content h3 {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+
+    .article-content p {
+      color: var(--text-soft);
+      font-size: 1.01rem;
+      margin-bottom: 16px;
+    }
+
+    .article-content ul, .article-content ol {
+      color: var(--text-soft);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      line-height: 1.65;
+    }
+
+    .article-content strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .creature-card {
+      background: rgba(4, 20, 40, 0.7);
+      border: 1px solid rgba(87, 214, 255, 0.2);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+
+    .creature-card h3 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .creature-table {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(87, 214, 255, 0.08);
+    }
+
+    .creature-table:last-child { border-bottom: none; }
+
+    .creature-label {
+      font-weight: 600;
+      color: var(--text-main);
+      font-size: 0.92rem;
+    }
+
+    .creature-value {
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    .threat-meter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0;
+    }
+
+    .threat-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(87, 214, 255, 0.12);
+      flex: 1;
+      max-width: 200px;
+      overflow: hidden;
+    }
+
+    .threat-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    .threat-high { background: linear-gradient(90deg, #ff5252, #ff1744); }
+    .threat-mid { background: linear-gradient(90deg, #ffb74d, #ff9800); }
+    .threat-low { background: linear-gradient(90deg, #66bb6a, #43a047); }
+
+    .creature-emoji {
+      font-size: 1.6rem;
+    }
+
+    .tip-box {
+      background: rgba(87, 214, 255, 0.06);
+      border: 1px solid rgba(87, 214, 255, 0.22);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .tip-box .tip-title {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .tip-box p {
+      color: var(--text-soft);
+      font-size: 0.96rem;
+      margin-bottom: 0;
+    }
+
+    .update-box {
+      background: rgba(127, 255, 212, 0.06);
+      border: 1px solid rgba(127, 255, 212, 0.3);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .update-box .update-title {
+      font-family: "Share Tech Mono", monospace;
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .strategy-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 1px solid rgba(87, 214, 255, 0.14);
+      border-radius: var(--radius-md);
+      background: rgba(5, 18, 32, 0.5);
+      margin: 12px 0;
+      font-size: 0.98rem;
+      color: var(--text-soft);
+    }
+
+    .strategy-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(87, 214, 255, 0.2);
+      border: 1px solid rgba(87, 214, 255, 0.4);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+    }
+
+    .related-section {
+      padding: 56px 0;
+      border-top: 1px solid rgba(87, 214, 255, 0.1);
+      margin-top: 48px;
+    }
+
+    .related-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .related-card {
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 25, 43, 0.7), rgba(3, 12, 24, 0.78));
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: 0 0 20px rgba(87, 214, 255, 0.12);
+    }
+
+    .related-card h4 {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .related-card p {
+      font-size: 0.88rem;
+      color: var(--text-faint);
+      margin-bottom: 0;
+    }
+
+    .related-card a {
+      display: block;
+      height: 100%;
+    }
+
+    .site-footer { padding: 0 0 40px; }
+
+    .footer-shell {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(87, 214, 255, 0.14);
+      background: linear-gradient(180deg, rgba(6, 23, 41, 0.84), rgba(3, 12, 24, 0.84)), rgba(4, 20, 40, 0.8);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .footer-shell strong { display: block; margin-bottom: 6px; color: var(--text-main); }
+    .footer-shell p { color: var(--text-faint); font-size: 0.93rem; }
+
+    .bubble-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -160px;
+      border-radius: 50%;
+      border: 1px solid rgba(151, 236, 255, 0.18);
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(87, 214, 255, 0.08) 42%, transparent 72%);
+      box-shadow: inset -8px -10px 22px rgba(87, 214, 255, 0.08), 0 0 24px rgba(87, 214, 255, 0.08);
+      opacity: 0.7;
+      animation: bubbleFloat linear infinite;
+    }
+
+    @keyframes bubbleFloat {
+      0% { transform: translate3d(0, 0, 0) scale(0.92); opacity: 0; }
+      15% { opacity: 0.52; }
+      50% { transform: translate3d(26px, -48vh, 0) scale(1); opacity: 0.66; }
+      100% { transform: translate3d(-18px, -110vh, 0) scale(1.08); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --nav-height: 60px; }
+      .container { width: min(var(--max-width), calc(100% - 24px)); }
+      .nav-links { gap: 4px !important; justify-content: center !important; flex-wrap: wrap !important; }
+      .nav-links a { padding: 7px 10px !important; font-size: 0.82rem !important; }
+      .article-hero h1 { font-size: clamp(1.6rem, 6vw, 2.4rem) !important; }
+      .creature-table { grid-template-columns: 1fr; gap: 6px; }
+      .footer-shell { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .article-hero h1 { font-size: clamp(1.4rem, 8vw, 1.8rem) !important; }
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KGSB78YK5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-3KGSB78YK5");
+</script>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html" aria-label="Back to Home">
+        <span class="brand-icon" aria-hidden="true">🫧</span>
+        <span class="brand-text">Subnautica 2 Guide</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../index.html">← Back to Home</a>
+        <a href="#hammerhead">Hammerhead</a>
+        <a href="#nibbler">Nibbler</a>
+        <a href="#marrowbreach">Marrowbreach</a>
+        <a href="#leviathans">Leviathans</a>
+        <a href="#tips">Survival Tips</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="article-hero">
+    <div class="bubble-layer" id="bubbleLayer" aria-hidden="true"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <a class="back-link" href="../index.html">← Back to Home</a>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>/</span>
+        <span>Creature Guide</span>
+      </div>
+      <div class="article-meta">
+        <span class="meta-tag">🕐 ~7 min read</span>
+        <span class="meta-tag">📅 2026-06-19</span>
+        <span class="meta-tag">🎯 Survival</span>
+      </div>
+      <h1>Subnautica 2 Creature Guide: How to Handle Every Predator</h1>
+      <p class="article-description">
+        From pesky Nibblers to the terrifying Collector Leviathan — learn every creature's behavior, threat level, and proven survival strategies updated for Hotfix 3.
+      </p>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="intro">
+      <div class="container">
+        <div class="article-content">
+          <p>Subnautica 2's alien ocean is packed with creatures that range from mildly annoying to genuinely terrifying. After the <strong>Hotfix 3 patch (June 1, 2026)</strong>, several predators received significant behavior changes that make encounters more predictable — but also more punishing if you ignore the new rules.</p>
+
+          <p>This guide breaks down every major predator in Early Access, with specific tactics based on their updated AI, damage output, and weaknesses. Whether you're a first-time diver or a veteran looking for post-patch strategies, you'll find practical advice you can use on your next dive.</p>
+
+          <div class="tip-box">
+            <div class="tip-title">🎯 Quick Reference — New Player Priority</div>
+            <p>If you're just starting: learn the <strong>Flare + Medkit</strong> combo first. Flares distract most creatures for ~10 seconds, giving you time to escape or heal. Medkits are your panic button — but they share inventory space with Flares, so carry both.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="hammerhead">
+      <div class="container">
+        <div class="article-content">
+          <h2>🦈 Hammerhead — The Zone Boss</h2>
+
+          <div class="creature-card">
+            <h3><span class="creature-emoji">🦈</span> Threat Profile</h3>
+            <div class="creature-table">
+              <span class="creature-label">Threat Level</span>
+              <span class="creature-value"><span class="threat-meter"><span class="threat-bar"><span class="threat-fill threat-high" style="width:80%"></span></span> High</span></span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Biomes</span>
+              <span class="creature-value">Grassy Plateau, Kelp Forest border, Coral Gardens</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Size</span>
+              <span class="creature-value">Large (8-10 meters)</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Aggression</span>
+              <span class="creature-value">Territorial — attacks on sight within detection range</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Damage</span>
+              <span class="creature-value">~35 per hit (can 3-shot a player without armor)</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Hotfix 3 Change</span>
+              <span class="creature-value">No longer attacks unpiloted Tadpoles. Stop wasting materials repairing your parked vehicle!</span>
+            </div>
+          </div>
+
+          <h3>Behavior & Identification</h3>
+          <p>Named for its massive blunt head (not after Hammerhead sharks — confirmed by creature designer Alex Ries), the Hammerhead is the most visually distinctive predator in Subnautica 2's early biomes. It patrols open areas in the Grassy Plateau and often gets into intraspecies combat — two Hammerheads will occasionally fight each other, creating a spectacular visual show that also gives you a free window to slip past.</p>
+
+          <h3>Pre-Hotfix 3 Problem</h3>
+          <p>Before Hotfix 3, Hammerheads would attack your Tadpole even when you weren't inside it. This meant parking your vehicle anywhere in their territory was a gamble — you'd return to find it damaged or destroyed. The community (especially on r/subnautica) called this one of the most frustrating early-game experiences.</p>
+
+          <h3>Post-Hotfix 3 Strategy</h3>
+          <p>The fix makes a huge difference. You can now park your Tadpole and explore on foot without worrying about it getting wrecked from across the zone. Here's the updated approach:</p>
+
+          <div class="strategy-item">
+            <span class="strategy-icon">1️⃣</span>
+            <div><strong>Park smart:</strong> Even with the fix, don't park your Tadpole directly in a Hammerhead's patrol path. Tuck it behind terrain features — rocks, coral formations, wreckage. The fix stops random aggression, not collision-based damage.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">2️⃣</span>
+            <div><strong>Use Flares:</strong> A Flare thrown in one direction will attract a Hammerhead's attention for about 10 seconds. Use this to sneak past or to reach a resource node the Hammerhead is guarding.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">3️⃣</span>
+            <div><strong>Exploit intraspecies combat:</strong> If you see two Hammerheads fighting, that's your cue to move. Their combat animation lasts 15-20 seconds and they'll ignore everything else. Perfect window for a quick resource grab.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">4️⃣</span>
+            <div><strong>Don't fight — flee:</strong> Hammerheads have too much HP to kill with early-game tools. Unless you're in a PRAWN Suit (coming in EA1.1), your goal is always evasion, not combat.</div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-title">💡 Pro Tip: Hammerhead & Tadpole Parking</div>
+            <p>The best base parking spots for your Tadpole are near the border between Safe Shallows and Grassy Plateau. Hammerheads rarely cross into Safe Shallows, so you can leave your Tadpole at the edge and swim into Grassy Plateau on foot. Refer to our <a href="base-building-guide.html" style="color:#57d6ff;text-decoration:underline;">Base Building Guide</a> for the best base locations near these transition zones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="nibbler">
+      <div class="container">
+        <div class="article-content">
+          <h2>🐟 Nibbler — The Infinite Chase (Fixed)</h2>
+
+          <div class="creature-card">
+            <h3><span class="creature-emoji">🐟</span> Threat Profile</h3>
+            <div class="creature-table">
+              <span class="creature-label">Threat Level</span>
+              <span class="creature-value"><span class="threat-meter"><span class="threat-bar"><span class="threat-fill threat-mid" style="width:45%"></span></span> Medium</span></span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Biomes</span>
+              <span class="creature-value">Kelp Forest, Coral Gardens, Safe Shallows (rare)</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Size</span>
+              <span class="creature-value">Small (~1 meter) but often in groups of 3-5</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Aggression</span>
+              <span class="creature-value">Curiosity-driven — attacks when you get too close to their territory</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Damage</span>
+              <span class="creature-value">~8 per nibble (low individually, dangerous in swarms)</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Hotfix 3 Change</span>
+              <span class="creature-value">Aggro range reduced. Can now be pushed back with the Survival Multitool.</span>
+            </div>
+          </div>
+
+          <h3>Behavior & Identification</h3>
+          <p>Nibblers are small, fast fish that patrol in loose groups. Individually they're barely a threat, but their pre-patch behavior was infamous: they'd chase you across multiple biomes, never tiring, slowly chipping away at your health. Many players on r/subnautica reported losing entire exploration runs to a single Nibbler that just wouldn't stop.</p>
+
+          <p>After Hotfix 3, Nibbler behavior is much more manageable. They still attack when you're close, but the chase range is drastically reduced.</p>
+
+          <h3>Post-Hotfix 3 Strategy</h3>
+
+          <div class="strategy-item">
+            <span class="strategy-icon">🛡️</span>
+            <div><strong>Multitool Push:</strong> This is the biggest game-changer. A single Multitool swing now pushes Nibblers back and stuns them for ~3 seconds — enough time to swim into tight caves or Kelp Forest gaps where they can't follow. No more "infinite chase."</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">🏃</span>
+            <div><strong>Outrun into terrain:</strong> Nibblers can't navigate tight spaces. If you're being swarmed, find a narrow cave entrance — they'll lose interest after 5-6 seconds of not being able to reach you.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">💊</span>
+            <div><strong>Medkit when overwhelmed:</strong> If you're swarmed by 4-5 Nibblers and low on health, pop a Medkit. The burst heal gives you enough breathing room to find cover. Stack a Flare + Medkit for maximum safety.</div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-title">🔧 Crafting Note: Multitool Push</div>
+            <p>You need the Survival Multitool to push Nibblers. If you're still using the basic Hand Tool, upgrade as soon as you find Copper and Silver. See our <a href="crafting-recipes.html" style="color:#57d6ff;text-decoration:underline;">Crafting Recipes</a> for the full materials list, and <a href="material-locations.html" style="color:#57d6ff;text-decoration:underline;">Material Locations</a> for where to find Copper and Silver.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="marrowbreach">
+      <div class="container">
+        <div class="article-content">
+          <h2>🌋 Marrowbreach — High Risk, High Punishment</h2>
+
+          <div class="creature-card">
+            <h3><span class="creature-emoji">🌋</span> Threat Profile</h3>
+            <div class="creature-table">
+              <span class="creature-label">Threat Level</span>
+              <span class="creature-value"><span class="threat-meter"><span class="threat-bar"><span class="threat-fill threat-high" style="width:90%"></span></span> Very High</span></span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Biomes</span>
+              <span class="creature-value">The Depths, Abyssal Fissure, The Vents</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Size</span>
+              <span class="creature-value">Very Large (12-15 meters)</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Aggression</span>
+              <span class="creature-value">Ambush predator — waits in thermal vents and erupts when prey is close</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Damage</span>
+              <span class="creature-value">~55 per hit (Hotfix 3 increased this) — can 2-shot unarmored players</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Hotfix 3 Change</span>
+              <span class="creature-value">Damage increased ~1.5x, but attack cooldown lengthened. Hits harder but has a clear dodge window.</span>
+            </div>
+          </div>
+
+          <h3>Behavior & Identification</h3>
+          <p>The Marrowbreach is Subnautica 2's ambush predator. It lurks inside thermal vent structures, blending in with the heat shimmer, and erupts when you swim too close. Before Hotfix 3, its rapid-fire attack pattern made it one of the most feared creatures in the game — you'd take damage, heal, take damage, heal, with no clear escape window.</p>
+
+          <p>Hotfix 3 traded ROF for impact. Now the Marrowbreach hits harder but has a <strong>clear recovery window</strong> between attacks — roughly 4-5 seconds where you can dodge, heal, or flee.</p>
+
+          <h3>Post-Hotfix 3 Strategy</h3>
+
+          <div class="strategy-item">
+            <span class="strategy-icon">👁️</span>
+            <div><strong>Learn the tell:</strong> Before a Marrowbreach attacks, the vent structures around it will pulse with a bright orange glow for ~1.5 seconds. When you see this, immediately swim sideways (not backward — the attack has a forward cone).</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">⏱️</span>
+            <div><strong>Count the cooldown:</strong> After a Marrowbreach strikes, you have roughly 4-5 seconds before it can attack again. Use this window to either escape its territory or heal if you got hit.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">🗺️</span>
+            <div><strong>Mark the vents:</strong> Use beacons to mark thermal vent locations where you've encountered Marrowbreaches. This simple habit saves lives on return trips. One marker, one saved run.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">🚫</span>
+            <div><strong>Avoid Vents until you have the Reinforced Dive Suit:</strong> Marrowbreach territory (The Vents, The Depths) should be end-game zones. Don't explore them until you have at least the basic Reinforced Dive Suit and a fully upgraded oxygen tank.</div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-title">⚠️ Hotfix 3 Warning: Don't Get Hit</div>
+            <p>The damage buff means a single Marrowbreach hit deals ~55 damage. With the standard starting 100 HP, that's more than half your health bar gone in one attack. Always carry 2-3 Medkits when exploring deep biomes. Review our <a href="oxygen-management.html" style="color:#57d6ff;text-decoration:underline;">Oxygen Management guide</a> for cave diving essentials before venturing into Marrowbreach territory.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="leviathans">
+      <div class="container">
+        <div class="article-content">
+          <h2>🐋 Leviathans — Current & Upcoming Threats</h2>
+          <p>For serious explorers, here are the leviathan-class creatures confirmed in the game. Some are encounterable in Early Access; others are coming in EA1.1.</p>
+
+          <h3>Shiver Leviathan (Early Access)</h3>
+          <p>The Shiver Leviathan is the largest freely-roaming creature currently in Subnautica 2's EA. It patrols the deepest parts of The Depths biome — a long, serpentine creature with bioluminescent scales that ripple in waves. YouTube creator Rizado's "TOP 10 Biggest Creatures" video (414K+ views) featured it prominently.</p>
+          <p><strong>Strategy:</strong> Don't approach. The Shiver Leviathan's aggro range is massive. If you see the scale shimmer in the distance, immediately turn around and find an alternate route. Use your Seaglide's speed boost to outrun it if aggroed — it's fast but lacks the acceleration to catch a boosting player.</p>
+
+          <h3>Elusive Leviathan (Early Access)</h3>
+          <p>The Elusive Leviathan is a rare spawn that appears only in specific conditions (player carrying certain items, specific depth thresholds). It's smaller than the Shiver but faster and more aggressive. Encounters are rare — most players report seeing it once in 20+ hours.</p>
+          <p><strong>Strategy:</strong> If you're lucky (or unlucky) enough to encounter one, do not engage. The Elusive Leviathan has an attack pattern that combines a charge + tail whip. Dodge the charge, and the tail whip becomes predictable. A Flare can buy you ~8 seconds to escape.</p>
+
+          <h3>Collector Leviathan (Coming in EA1.1)</h3>
+          <p>The Collector Leviathan is the headline creature for the upcoming EA1.1 update (estimated ~late June 2026). GamesPress and Insider Gaming report it will inhabit a completely new region described as "the scariest the game has been yet." The Dev Vlog teaser shows organic suction structures in a dark cavern — suggesting the Collector Leviathan may actively reshape its environment.</p>
+          <p><strong>What we know:</strong> The Collector Leviathan territory appears to be a biome that's less "a place you visit" and more "a living entity you navigate through." Specific encounter mechanics haven't been detailed, but based on WCCFtech's interview with Unknown Worlds, expect environmental interaction gameplay unlike anything in the original Subnautica.</p>
+
+          <div class="update-box">
+            <div class="update-title">📊 Leviathan Comparison</div>
+            <div class="creature-table">
+              <span class="creature-label">Shiver Leviathan</span>
+              <span class="creature-value">Large, patrolling, avoid at all costs. Found in The Depths.</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Elusive Leviathan</span>
+              <span class="creature-value">Rare, fast, aggressive. Trigger conditions unknown.</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Collector Leviathan</span>
+              <span class="creature-value">EA1.1 new region. Environmental interaction mechanics. Unknown stats.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tips">
+      <div class="container">
+        <div class="article-content">
+          <h2>🎯 General Survival Tips for Creature Encounters</h2>
+
+          <div class="strategy-item">
+            <span class="strategy-icon">⚠️</span>
+            <div><strong>Always carry Flares + Medkits:</strong> The community's biggest feedback from the May 20 letter was that Medkits outclass Flares in every situation. Hotfix 3 didn't buff Flares. So carry both: Flares for distraction (especially against Hammerheads), Medkits for panic healing. They share inventory space — budget 2 slots, allocate based on your destination.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">🎧</span>
+            <div><strong>Listen before you see:</strong> Subnautica 2's audio design is outstanding. Every creature has a distinct sound cue that plays before visual contact. Hammerheads make a low-frequency thrum. Marrowbreaches produce a vent-rumbling audio. Nibblers chatter. Learn these cues — they give you 3-4 seconds of warning.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">🚗</span>
+            <div><strong>Use the Tadpole as a mobile base:</strong> With Hotfix 3's fix, your Tadpole is safe to park near Hammerhead territory. Use it as a resupply point — keep extra Medkits, Flares, and food in your Tadpole storage so you don't have to return to your main base after every encounter.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">🛌</span>
+            <div><strong>Build near creature transition zones:</strong> The borders between Safe Shallows and Grassy Plateau (where Hammerheads patrol) are the safest base locations. You have easy access to Hammerhead resources (fish, fragments) but can retreat to guaranteed safety within 15 seconds of swimming. Our <a href="base-building-guide.html" style="color:#57d6ff;text-decoration:underline;">Base Building Guide</a> covers this in detail.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">👥</span>
+            <div><strong>Co-op makes creatures easier:</strong> In a 4-player session, creature aggro is split across players. One player can bait a Hammerhead while the others gather resources. The Hotfix 3 multiplayer rejoin fix also means you won't respawn miles away from your group if a creature kills you. Read our <a href="co-op-guide.html" style="color:#57d6ff;text-decoration:underline;">Co-op Guide</a> for setup tips.</div>
+          </div>
+          <div class="strategy-item">
+            <span class="strategy-icon">🔬</span>
+            <div><strong>Always scan new creatures with the Scanner:</strong> Every creature you scan gives you a codex entry with its behavior data — aggression range, preferred biomes, diet. This is free information that makes your survival decisions data-driven instead of guesswork. Don't skip the Scanner upgrade.</div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-title">🔥 The Bottom Line on Creatures After Hotfix 3</div>
+            <p>Unknown Worlds is clearly tuning toward <strong>fairer, more readable encounters</strong> — but also making the hits that land count more. The post-Hotfix 3 ocean rewards players who learn creature tells, carry the right tools, and know when to engage vs when to run. If you treat every biome as a puzzle rather than a fight, you'll survive. And with the PRAWN Suit coming in EA1.1, you'll soon have the tools to fight back.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="article-content">
+          <h2 id="patch-summary">📋 Creature Behavior Changes — All Patches</h2>
+          <p>Here's the full timeline of creature-related changes since Early Access launch:</p>
+
+          <div class="update-box">
+            <div class="update-title">📅 Creature Update Timeline</div>
+            <div class="creature-table">
+              <span class="creature-label">May 14</span>
+              <span class="creature-value">Early Access launch. Creatures in their initial tuning.</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">May 20</span>
+              <span class="creature-value">Letter to the Community. Unknown Worlds acknowledges creature interaction issues (Medkit vs Flare imbalance, Hammerhead Tadpole aggression, Nibbler infinite chase).</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">May 22</span>
+              <span class="creature-value">May 22 Update. Initial fish AI improvements. First pass at creature performance.</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">May 26</span>
+              <span class="creature-value">Hotfix 2. Additional creature behavior fixes and crash fixes.</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">June 1</span>
+              <span class="creature-value"><strong>Hotfix 3.</strong> Major creature rebalance: Hammerhead Tadpole fix, Nibbler aggro range reduction + Multitool push, Marrowbreach damage buff + cooldown lengthen.</span>
+            </div>
+            <div class="creature-table">
+              <span class="creature-label">Late June (est.)</span>
+              <span class="creature-value">EA1.1. Collector Leviathan in new region, Biomod system overhaul. PRAWN Suit return.</span>
+            </div>
+          </div>
+
+          <p>For the full Hotfix 3 patch notes including technical changes (DLSS 4.5, Frame Gen, Interior Walls cost reduction), read our <a href="subnautica-2-may-2026-update.html" style="color:#57d6ff;text-decoration:underline;">June 2026 Updates article</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-shell">
+        <div>
+          <strong>Related Guides</strong>
+          <p><a href="beginners-guide.html" style="color:#57d6ff;text-decoration:underline;">Beginner's Guide</a> — <a href="survival-mechanics.html" style="color:#57d6ff;text-decoration:underline;">Survival Mechanics</a> — <a href="base-building-guide.html" style="color:#57d6ff;text-decoration:underline;">Base Building</a></p>
+        </div>
+        <div>
+          <strong>Community</strong>
+          <p>Join us on <a href="https://discord.gg/AXJ3gZvmmA" target="_blank" rel="noopener" style="color:#57d6ff;text-decoration:underline;">Discord</a> — discuss guides, share tips, and get help.</p>
+        </div>
+        <div>
+          <strong>Disclaimer</strong>
+          <p>This site is not affiliated with Unknown Worlds Entertainment. Content is based on publicly available information for community reference.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const bubbleLayer = document.getElementById("bubbleLayer");
+    const siteHeader = document.getElementById("siteHeader");
+
+    function createBubbleMarkup(count) {
+      let bubbleMarkup = "";
+      for (let index = 0; index < count; index += 1) {
+        const size = 18 + (index % 7) * 10 + Math.floor(index / 4) * 2;
+        const left = (index * 11) % 100;
+        const delay = (index % 9) * 0.7;
+        const duration = 11 + (index % 6) * 2.2;
+        const opacity = 0.26 + (index % 5) * 0.08;
+        bubbleMarkup += `<span class="bubble" style="width:${size}px;height:${size}px;left:${left}%;animation-duration:${duration}s;animation-delay:-${delay}s;opacity:${opacity};"></span>`;
+      }
+      return bubbleMarkup;
+    }
+
+    function setNavbarState() {
+      if (window.scrollY > 28) {
+        siteHeader.classList.add("is-scrolled");
+      } else {
+        siteHeader.classList.remove("is-scrolled");
+      }
+    }
+
+    function initializePage() {
+      bubbleLayer.innerHTML = createBubbleMarkup(22);
+      setNavbarState();
+      window.addEventListener("scroll", setNavbarState, { passive: true });
+    }
+
+    initializePage();
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="https://va.vercel-scripts.com/v1/va.min.js"></script>
+</body>
+</html>
