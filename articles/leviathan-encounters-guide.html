@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subnautica 2 Leviathan Guide — Survive Every Threat</title>
+  <meta name="description" content="Complete Subnautica 2 leviathan guide for EA1.1. Master avoidance routes, vehicle defense tactics, base protection, and survival for every leviathan class.">
+  <meta name="keywords" content="Subnautica 2 leviathan, Subnautica 2 leviathan guide, Subnautica 2 EA1.1 creatures, Subnautica 2 giant predators, Subnautica 2 creature defense">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg-1: #020b16; --bg-2: #041428; --bg-3: #07233f; --surface: rgba(6,23,41,0.72); --surface-strong: rgba(4,20,40,0.92); --line: rgba(87,214,255,0.22); --line-strong: rgba(105,229,255,0.6); --text-main: #e8fbff; --text-soft: rgba(214,241,255,0.74); --text-faint: rgba(214,241,255,0.5); --accent: #57d6ff; --accent-2: #7fffd4; --shadow-soft: 0 22px 60px rgba(0,0,0,0.28); --shadow-glow: 0 0 24px rgba(87,214,255,0.24); --radius-xl: 28px; --radius-lg: 22px; --radius-md: 18px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Exo 2', sans-serif; background: var(--bg-1); color: var(--text-main); line-height: 1.8; min-height: 100vh; }
+    a { color: var(--accent); text-decoration: none; transition: color .25s; }
+    a:hover { color: var(--accent-2); text-shadow: var(--shadow-glow); }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    header { padding: 28px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    header a { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: .06em; }
+    header nav a { font-size: .85rem; margin-left: 24px; font-family: 'Exo 2', sans-serif; }
+    article { padding: 48px 0 64px; }
+    .hero { padding: 60px 0 40px; }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; line-height: 1.3; margin-bottom: 16px; }
+    .hero p { color: var(--text-soft); font-size: 1.1rem; max-width: 720px; }
+    .hero-meta { display: flex; gap: 16px; margin-top: 16px; font-size: .85rem; color: var(--text-faint); }
+    .hero-image { margin: 32px 0; border-radius: var(--radius-xl); overflow: hidden; }
+    .hero-image img { width: 100%; height: auto; display: block; }
+    .hero-image .alt { font-size: .8rem; color: var(--text-faint); padding: 8px 0; }
+    h2 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; margin: 48px 0 20px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+    h3 { font-family: 'Exo 2', sans-serif; font-weight: 600; font-size: 1.2rem; margin: 32px 0 12px; color: var(--accent-2); }
+    p { margin-bottom: 16px; color: var(--text-soft); font-size: 1rem; }
+    ul, ol { margin: 0 0 16px 24px; color: var(--text-soft); }
+    li { margin-bottom: 8px; }
+    .callout { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); padding: 20px 24px; border-radius: var(--radius-md); margin: 24px 0; }
+    .callout.warning { border-left-color: #ff6b35; }
+    .callout.success { border-left-color: var(--accent-2); }
+    .callout p { margin: 0; font-size: .95rem; }
+    .callout strong { color: var(--text-main); }
+    .toc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px 28px; margin: 32px 0; }
+    .toc h3 { margin: 0 0 12px; color: var(--accent); }
+    .toc ol { margin: 0; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { font-size: .95rem; }
+    .related { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
+    .related a { display: inline-block; margin-right: 16px; margin-bottom: 8px; background: var(--surface); padding: 8px 16px; border-radius: var(--radius-md); border: 1px solid var(--line); font-size: .9rem; }
+    footer { border-top: 1px solid var(--line); padding: 32px 0; text-align: center; color: var(--text-faint); font-size: .85rem; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+    th { font-family: 'Orbitron', sans-serif; font-weight: 600; font-size: .85rem; color: var(--accent); }
+    td { font-size: .95rem; color: var(--text-soft); }
+    @media (max-width: 768px) { .hero h1 { font-size: 1.6rem; } h2 { font-size: 1.3rem; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="/">Subnautica 2 Guide</a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/articles/creature-guide.html">Creatures</a>
+        <a href="/articles/survival-mechanics.html">Survival</a>
+      </nav>
+    </header>
+
+    <article>
+      <div class="hero">
+        <h1>Subnautica 2 Leviathan Encounters Guide — How to Survive Every Threat</h1>
+        <p>A complete field manual for facing every leviathan-class threat in Subnautica 2 EA1.1. Covers encounter zones, behavior patterns for each leviathan type, avoidance routes, defense strategies, and what changed in the June 2026 update.</p>
+        <div class="hero-meta">
+          <span><time datetime="2026-06-26">📅 June 26, 2026</time></span>
+          <span>📖 12 min read</span>
+          <span>🏷️ Leviathan, Encounters, EA1.1, Defense</span>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="/images/leviathan-guide.jpg" alt="Subnautica 2 leviathan creature swimming through deep ocean, dark blue underwater atmosphere with bioluminescent details" loading="lazy">
+        <div class="alt">A leviathan-class predator in the deep waters of Subnautica 2</div>
+      </div>
+
+      <div class="toc">
+        <h3>📋 Table of Contents</h3>
+        <ol>
+          <li><a href="#overview">Leviathan Types in EA1.1</a></li>
+          <li><a href="#detection">How Detection Works for Large Threats</a></li>
+          <li><a href="#avoidance">Avoidance Routes &amp; Safe Zones</a></li>
+          <li><a href="#defense">Vehicle-Based Defense Tactics</a></li>
+          <li><a href="#base">Base Protection Against Leviathans</a></li>
+          <li><a href="#patch">EA1.1 Behavior Changes</a></li>
+        </ol>
+      </div>
+
+      <section id="overview">
+        <h2>Leviathan Types in EA1.1</h2>
+        <p>Subnautica 2 Early Access introduces multiple leviathan-class threats, each with distinct behavior patterns, habitat zones, and threat levels. Understanding which type you are facing is the first step to surviving the encounter. Unlike the smaller predators covered in our <a href="/articles/creature-guide.html">creature guide</a>, leviathans require specific defensive responses rather than simple evasion.</p>
+
+        <table>
+          <thead>
+            <tr><th>Leviathan Type</th><th>Primary Zone</th><th>Threat Level</th><th>EA1.1 Change</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Marrowbreach</td><td>Deep Trench / Lava Zone</td><td>Extreme</td><td>Patrol range expanded 30%</td></tr>
+            <tr><td>Hammerhead</td><td>Open Ocean / Plateaus</td><td>High</td><td>Aggro range reduced slightly</td></tr>
+            <tr><td>Nibbler Swarm</td><td>Kelp Canyons</td><td>Medium-High</td><td>Swarm AI improved</td></tr>
+            <tr><td>Shadow Leviathan</td><td>Crystal Caves</td><td>Extreme</td><td>Attack pattern more telegraphed</td></tr>
+          </tbody>
+        </table>
+
+        <p>The <strong>Marrowbreach</strong> is the most dangerous leviathan in EA1.1, primarily found in the Deep Trench transition to the Lava Zone. Its EA1.1 update expanded its patrol range by roughly 30%, meaning players who previously knew safe routes need to re-check their paths. The Marrowbreach attacks by charging from a long distance, dealing massive damage to vehicles and instant kill to unarmored players.</p>
+        <p>The <strong>Hammerhead</strong> patrols the open ocean plateaus and is the leviathan most players encounter first. Its EA1.1 adjustment reduced its aggro range slightly, making it slightly easier to bypass but still deadly if engaged directly. The Hammerhead uses sweeping attacks that can throw the Tadpole vehicle into hazardous terrain.</p>
+        <p><strong>Nibbler swarms</strong> are technically mid-sized threats but swarm in groups large enough to pose leviathan-level danger. The EA1.1 update improved their swarm coordination AI, making them more dangerous in open water. They are primarily found in the Kelp Canyon biome.</p>
+        <p>The <strong>Shadow Leviathan</strong> in the Crystal Caves received the most significant behavioral change in EA1.1: its attack pattern is now more telegraphed, giving observant players a clearer window to dodge. This makes the encounter more learnable but does not reduce the damage if you fail to react in time.</p>
+      </section>
+
+      <section id="detection">
+        <h2>How Detection Works for Large Threats</h2>
+        <p>Leviathan detection in Subnautica 2 operates on a multi-stage system similar to smaller creatures but with longer ranges and faster escalation. A leviathan progresses through unaware, curious, suspicious, and aggressive states. The key difference is that leviathans in the curious state will actively move toward your last known position, unlike smaller predators that only investigate briefly.</p>
+        <p>Each leviathan type has a unique detection profile. The Marrowbreach relies primarily on sound and vibration, making it more sensitive to vehicle engine noise than visual contact. The Hammerhead is visually driven and reacts to movement at distance. Nibbler swarms detect through proximity and chemical traces in the water. The Shadow Leviathan uses echolocation pulses that you can actually hear before it detects you — a valuable early warning sign introduced in EA1.1.</p>
+        <div class="callout warning">
+          <p><strong>⚠️ Critical:</strong> Vehicle engine noise is the single biggest detection risk. The Tadpole on standard thrust generates enough noise to attract leviathan attention from up to 120 meters in open water. Silent running mode reduces this to approximately 40 meters but drains power 3x faster.</p>
+        </div>
+      </section>
+
+      <section id="avoidance">
+        <h2>Avoidance Routes &amp; Safe Zones</h2>
+        <p>The most reliable strategy against any leviathan is not fighting — it is not being detected. Each leviathan patrols a defined territory, and knowing the patrol boundaries lets you plan routes that minimize encounter risk.</p>
+        <p><strong>Deep Trench crossing:</strong> The Marrowbreach patrols the trench transition zone in an elliptical pattern lasting approximately 90 seconds. Wait at the entry point, observe two full patrol cycles, then cross during the 18-second window when it reaches the far end of its ellipse. Use the Tadpole's silent running mode during the crossing.</p>
+        <p><strong>Plateau navigation:</strong> The Hammerhead patrols a roughly circular territory around thermal vents. Staying within 20 meters of the seafloor and moving between rock formations breaks line of sight and prevents initial detection.</p>
+        <p><strong>Kelp Canyon transit:</strong> Nibbler swarms are attracted to open water movement. Staying inside the kelp stalk corridors keeps you below their detection threshold. The corridors also provide cover if a swarm investigates your position.</p>
+        <p><strong>Crystal Caves approach:</strong> The Shadow Leviathan's echolocation pulses create a visual indicator on your HUD in EA1.1. When you see the pulse icon, stop moving and wait for the icon to fade before proceeding. This is the single most useful change in the update for route planning.</p>
+      </section>
+
+      <section id="defense">
+        <h2>Vehicle-Based Defense Tactics</h2>
+        <p>If avoidance fails, vehicle defense is your next line of protection. The Tadpole vehicle, covered in detail in our <a href="/articles/tadpole-vehicle-guide.html">Tadpole vehicle guide</a>, is your primary defense tool in most leviathan encounters.</p>
+        <p>The most effective defense is the perimeter defense system upgrade. When activated, it emits an electrical pulse that stuns leviathans for 3-4 seconds and causes them to release a grabbed vehicle. This is essential equipment for any vehicle entering leviathan territory. The stun window is long enough to create distance and escape the leviathan's aggro range.</p>
+        <p>Speed is your second defense. The Tadpole's boost mode provides a 60% speed increase for 8 seconds with a 30-second cooldown. Use boost when the leviathan begins its charge animation, not when it reaches you. Timing the boost to create lateral movement rather than straight retreat often causes the leviathan to overshoot and gives you more escape time.</p>
+        <p>For the Marrowbreach specifically, vehicle health modules are critical. A base Tadpole with no upgrades can survive one Marrowbreach attack at most. With two hull reinforcement upgrades, you can survive two hits, giving you enough time to deploy the perimeter defense system and retreat.</p>
+        <div class="callout success">
+          <p><strong>💡 Pro tip:</strong> The PRAWN Suit (if you have accessed it) provides significantly better leviathan defense. Its higher health pool and damage output make it viable for defensive encounters, though its slow speed means you must commit to fighting rather than fleeing. For detailed PRAWN Suit strategy, see our <a href="/articles/tadpole-vehicle-guide.html">vehicle guide</a>.</p>
+        </div>
+      </section>
+
+      <section id="base">
+        <h2>Base Protection Against Leviathans</h2>
+        <p>Leviathans can attack your base if you build within their patrol territory. While rare, a leviathan attack on a base can cause catastrophic damage in seconds. Understanding base vulnerability and defensive construction is essential for long-term survival.</p>
+        <p>The most important rule is location. Do not build in or near leviathan patrol zones. The Deep Trench edge, the open plateaus near thermal vents, and the Crystal Caves entrance are all high-risk areas. Build in the Safe Shallows equivalent zones, the upper Kelp Canyon borders, or the Grassy Plateaus where no leviathan-class threats patrol.</p>
+        <p>If you must build near a patrol zone, reinforce your base with structural integrity modules. A base with low integrity takes more damage from leviathan attacks and can collapse entirely under sustained assault. Use reinforcement panels on exterior walls and bulkheads on corridors to distribute impact damage.</p>
+        <p>Perimeter defenses are available through the Biomod system, detailed in our <a href="/articles/biomod-guide.html">Biomod guide</a>. The creature deterrent biomod emits a low-frequency pulse that leviathans find unpleasant, reducing the chance they approach your base. It is not a guarantee, but it significantly reduces the risk for bases built near territory edges.</p>
+        <div class="callout">
+          <p><strong>📝 Note:</strong> Base attacks from leviathans are rare in normal gameplay but become more common in specific story progression phases. If you are at a story trigger point where leviathan aggression increases, consider a temporary relocation or reinforcement sprint.</p>
+        </div>
+      </section>
+
+      <section id="patch">
+        <h2>EA1.1 Behavior Changes You Need to Know</h2>
+        <p>The June 2026 EA1.1 update made several significant changes to leviathan behavior that affect existing strategies. Players returning from the pre-patch version should review these changes carefully.</p>
+        <p><strong>Marrowbreach patrol range +30%:</strong> The most impactful change. Previously safe routes through the Deep Trench-Lava Zone transition are no longer reliable. The expanded patrol means you may encounter the Marrowbreach in areas where you previously never saw it. Re-check your routes with the new patrol boundary in mind.</p>
+        <p><strong>Shadow Leviathan telegraph added:</strong> The echolocation pulse indicator on your HUD is new to EA1.1. Before the patch, the Shadow Leviathan's attacks had no visual warning beyond the creature model itself. The new indicator makes the encounter significantly more learnable and reduces first-time deaths in the Crystal Caves.</p>
+        <p><strong>Nibbler swarm AI improved:</strong> Swarm coordination is tighter in EA1.1, meaning nibblers now flank and surround more effectively. The counter-strategy is to avoid open-water engagement and use terrain to break line of sight. Pre-patch strategies that relied on outrunning the swarm are less effective now.</p>
+        <p><strong>Hammerhead aggro range reduced (small):</strong> A minor quality-of-life improvement for players navigating the plateaus. The reduced aggro range gives you slightly more room to maneuver before detection, but the Hammerhead remains dangerous if you enter its core territory.</p>
+        <p>For a broader view of how these changes interact with other game mechanics, see our <a href="/articles/survival-mechanics.html">survival mechanics guide</a> and <a href="/articles/subnautica-2-may-2026-update.html">EA1.1 patch breakdown</a>.</p>
+      </section>
+
+      <div class="related">
+        <h3>Related Guides</h3>
+        <a href="/articles/creature-guide.html">Creature Guide</a>
+        <a href="/articles/survival-mechanics.html">Survival Mechanics</a>
+        <a href="/articles/tadpole-vehicle-guide.html">Tadpole Vehicle Guide</a>
+        <a href="/articles/biomod-guide.html">Biomod System Guide</a>
+        <a href="/articles/base-building-guide.html">Base Building Guide</a>
+      </div>
+    </article>
+
+    <footer>
+      <p>Subnautica 2 Guide — Community-driven strategy resource for Subnautica 2 Early Access</p>
+    </footer>
+  </div>
+</body>
+</html>
