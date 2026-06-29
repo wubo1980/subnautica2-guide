@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subnautica 2 Navigation Guide — No Map? No Problem</title>
+  <meta name="description" content="Master Subnautica 2 navigation without a map. Learn biome landmarks, coordinate system, beacon strategy, and community mapping tips for Early Access 2026.">
+  <meta name="keywords" content="Subnautica 2 navigation, Subnautica 2 no map, Subnautica 2 how to navigate, Subnautica 2 map Subnautica 2 landmarks, Subnautica 2 biome coordinates">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg-1: #020b16; --bg-2: #041428; --bg-3: #07233f; --surface: rgba(6,23,41,0.72); --surface-strong: rgba(4,20,40,0.92); --line: rgba(87,214,255,0.22); --line-strong: rgba(105,229,255,0.6); --text-main: #e8fbff; --text-soft: rgba(214,241,255,0.74); --text-faint: rgba(214,241,255,0.5); --accent: #57d6ff; --accent-2: #7fffd4; --shadow-soft: 0 22px 60px rgba(0,0,0,0.28); --shadow-glow: 0 0 24px rgba(87,214,255,0.24); --radius-xl: 28px; --radius-lg: 22px; --radius-md: 18px; }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Exo 2', sans-serif; background: var(--bg-1); color: var(--text-main); line-height: 1.8; min-height: 100vh; }
+    a { color: var(--accent); text-decoration: none; transition: color .25s; }
+    a:hover { color: var(--accent-2); text-shadow: var(--shadow-glow); }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    header { padding: 28px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    header a { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: .06em; }
+    header nav a { font-size: .85rem; margin-left: 24px; font-family: 'Exo 2', sans-serif; }
+    article { padding: 48px 0 64px; }
+    .hero { padding: 60px 0 40px; }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; line-height: 1.3; margin-bottom: 16px; }
+    .hero p { color: var(--text-soft); font-size: 1.1rem; max-width: 720px; }
+    .hero-meta { display: flex; gap: 16px; margin-top: 16px; font-size: .85rem; color: var(--text-faint); }
+    .hero-image { margin: 32px 0; border-radius: var(--radius-xl); overflow: hidden; }
+    .hero-image img { width: 100%; height: auto; display: block; }
+    .hero-image .alt { font-size: .8rem; color: var(--text-faint); padding: 8px 0; }
+    h2 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; margin: 48px 0 20px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+    h3 { font-family: 'Exo 2', sans-serif; font-weight: 600; font-size: 1.2rem; margin: 32px 0 12px; color: var(--accent-2); }
+    p { margin-bottom: 16px; color: var(--text-soft); font-size: 1rem; }
+    ul, ol { margin: 0 0 16px 24px; color: var(--text-soft); }
+    li { margin-bottom: 8px; }
+    .callout { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); padding: 20px 24px; border-radius: var(--radius-md); margin: 24px 0; }
+    .callout.warning { border-left-color: #ff6b35; }
+    .callout.success { border-left-color: var(--accent-2); }
+    .callout p { margin: 0; font-size: .95rem; }
+    .callout strong { color: var(--text-main); }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .9rem; }
+    th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+    th { font-family: 'Orbitron', sans-serif; font-size: .8rem; letter-spacing: .04em; color: var(--accent); background: var(--surface-strong); }
+    td { color: var(--text-soft); }
+    tr:hover td { background: var(--surface); }
+    figure { margin: 32px 0; border-radius: var(--radius-xl); overflow: hidden; }
+    figure img { width: 100%; height: auto; display: block; }
+    figcaption { font-size: .8rem; color: var(--text-faint); padding: 8px 0; text-align: center; }
+    footer { padding: 32px 0; border-top: 1px solid var(--line); text-align: center; color: var(--text-faint); font-size: .85rem; }
+    footer a { color: var(--accent); }
+    .toc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 24px; margin: 32px 0; }
+    .toc h3 { margin: 0 0 12px; font-family: 'Orbitron', sans-serif; font-size: 1rem; }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { font-size: .9rem; }
+    @media (max-width: 768px) { .hero h1 { font-size: 1.6rem; } h2 { font-size: 1.2rem; } th, td { padding: 8px 10px; font-size: .8rem; } }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <a href="/">Subnautica 2 Guide</a>
+    <nav>
+      <a href="/articles/beginners-guide.html">Beginner Guide</a>
+      <a href="/articles/survival-mechanics.html">Survival</a>
+      <a href="/articles/creature-guide.html">Creatures</a>
+    </nav>
+  </header>
+
+  <article>
+    <div class="hero">
+      <h1>Subnautica 2 Navigation Guide — Find Your Way Without a Map</h1>
+      <p>Subnautica 2 has no in-game map. Zero. Zilch. This guide teaches you every trick — biome landmarks, the coordinate system, smart beacon placement, and community mapping — so you never get lost again on the alien ocean of Proteus.</p>
+      <div class="hero-meta">
+        <span>📅 <time datetime="2026-06-29">June 29, 2026</time></span>
+        <span>⏱ 12 min read</span>
+        <span>📂 <a href="/articles/beginners-guide.html">Beginner Guide</a> · <a href="/articles/survival-mechanics.html">Survival Mechanics</a></span>
+      </div>
+    </div>
+
+    <figure>
+      <img src="/images/subnautica-2-navigation-comparison.jpg" alt="Subnautica 2 map-less navigation showing biome transition from Safe Shallows to Kelp Forest with coordinate overlay." loading="lazy" width="1000" height="500">
+      <figcaption>Navigating Subnautica 2 without a map — biome landmarks and depth gradients are your best friends.</figcaption>
+    </figure>
+
+    <div class="toc">
+      <h3>📋 Table of Contents</h3>
+      <ol>
+        <li><a href="#why-no-map">Why Subnautica 2 Has No Map (And Why It Works)</a></li>
+        <li><a href="#coordinate-system">The Coordinate System That Saves Lives</a></li>
+        <li><a href="#biome-landmarks">Every Biome's Key Landmarks</a></li>
+        <li><a href="#beacon-strategy">The Smart Beacon Strategy</a></li>
+        <li><a href="#practical-routes">Practical Routes for Common Destinations</a></li>
+        <li><a href="#community-maps">Community Map Resources (EA 2026)</a></li>
+        <li><a href="#advanced-tips">Advanced Navigation Tips for Seasoned Players</a></li>
+      </ol>
+    </div>
+
+    <h2 id="why-no-map">1. Why Subnautica 2 Has No Map (And Why It Works)</h2>
+    <p>Unknown Worlds Entertainment deliberately chose not to include an in-game map for Subnautica 2. According to the developers, the absence of a map is a core design decision — it preserves the sense of isolation and discovery that made the original Subnautica unforgettable. In Early Access (launched May 14, 2026), this choice has sparked heated debate on Reddit and Steam forums. Some players love the immersion; others desperately wish for a mini-map toggle.</p>
+    <p>The reality? Learning to navigate without a map makes you a better player. You pay attention to your surroundings. You remember visual cues. You plan your oxygen and your route before leaving the habitat. Once you master the techniques in this guide, you won't miss the map.</p>
+
+    <div class="callout success">
+      <p><strong>🔑 Key Insight:</strong> Subnautica 2 uses a hidden coordinate grid. Your Lifepod starts at roughly (0, 0, 0). Every position in the game world can be pinpointed using these coordinates — and your HUD actually shows them when you build certain equipment.</p>
+    </div>
+
+    <h2 id="coordinate-system">2. The Coordinate System That Saves Lives</h2>
+    <p>Every Subnautica 2 player has access to the F1 debug screen on PC (press F1). This overlay shows your exact world position as X, Y, Z coordinates where:</p>
+    <ul>
+      <li><strong>X</strong> = East-West position (positive = East)</li>
+      <li><strong>Y</strong> = Depth (positive = up, negative = below sea level)</li>
+      <li><strong>Z</strong> = North-South position (positive = South)</li>
+    </ul>
+    <p>Your Lifepod (the starting point) sits at approximately X:0, Z:0. From there, the map extends roughly ±1500 meters in both X and Z directions. The shallows sit at Y:0 to Y:-80, while the deepest known areas in EA 1.0 drop to Y:-1200.</p>
+
+    <div class="callout warning">
+      <p><strong>⚠️ Console Players:</strong> The F1 overlay is not available on Xbox or Game Pass versions. Skip to section 3 — landmark-based navigation will be your primary tool.</p>
+    </div>
+
+    <p>Here's a quick coordinate reference for key locations in Subnautica 2 Early Access (all depths measured from sea level):</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Coordinates (X, Z)</th>
+          <th>Depth (Y)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Lifepod 5 (Spawn)</td><td>0, -60</td><td>-2 m</td></tr>
+        <tr><td>Safe Shallows (Center)</td><td>0, 0</td><td>-15 m</td></tr>
+        <tr><td>Grassy Plateau</td><td>+320, -100</td><td>-35 m</td></tr>
+        <tr><td>Kelp Forest (North)</td><td>-80, -420</td><td>-40 m</td></tr>
+        <tr><td>Kelp Forest (South)</td><td>+50, +380</td><td>-45 m</td></tr>
+        <tr><td>Bioluminescent Cave</td><td>+150, -220</td><td>-180 m</td></tr>
+        <tr><td>Blood Kelp Zone</td><td>-300, +200</td><td>-250 m</td></tr>
+        <tr><td>Deep Reef</td><td>+400, +150</td><td>-160 m</td></tr>
+        <tr><td>Lost River Entrance (West)</td><td>-250, +100</td><td>-400 m</td></tr>
+        <tr><td>Lava Zone (Patch 1.1 Preview)</td><td>+100, -350</td><td>-900 m</td></tr>
+      </tbody>
+    </table>
+
+    <p><em>Note: Coordinates are approximate and may shift with future patches. Unknown Worlds is still expanding the map.</em></p>
+
+    <h2 id="biome-landmarks">3. Every Biome's Key Landmarks</h2>
+    <p>Each biome in Subnautica 2 has distinct visual signatures. Learn these, and you can orient yourself at a glance.</p>
+
+    <h3>🏝️ Safe Shallows</h3>
+    <p><strong>Signatures:</strong> Warm turquoise water, coral tubes, small fish (Peeper, Boomerang). The Lifepod wreckage sits in the center-south area. Look for the distinctive L-shaped coral arch near the southwestern edge — this marks the transition to the Kelp Forest.</p>
+
+    <h3>🌿 Kelp Forest</h3>
+    <p><strong>Signatures:</strong> Tall green Creepvine stalks, dappled light, Stalker patrols. Two major zones: North Kelp Forest (colder, slightly deeper) and South Kelp Forest (warmer, more Creepvine clusters). The transition zone between the two has increased Stalker density — be careful.</p>
+
+    <h3>🌾 Grassy Plateau</h3>
+    <p><strong>Signatures:</strong> Red grass covering the seafloor, large sandstone outcrops, moderate fish activity. Located east of the Safe Shallows. The plateau has three distinct tiers that step down from -20m to -70m. The first tier is safest for early-game base construction.</p>
+
+    <h3>💡 Bioluminescent Cave</h3>
+    <p><strong>Signatures:</strong> Glowing blue-green flora, zero natural light beyond the bioluminescence, tight cave passages. Entrance is found at the northern edge of the Grassy Plateau around coordinates (+150, -220). Watch for the distinctive glowing mushrooms at the mouth of the cave.</p>
+
+    <h3>🩸 Blood Kelp Zone</h3>
+    <p><strong>Signatures:</strong> Blood-red stalks, eerie red haze, reduced visibility. Located southwest of the map center. Crabsquid territory begins here. The zone is a corridor — following it deeper leads to the Lost River entrance.</p>
+
+    <h3>🌊 Deep Reef</h3>
+    <p><strong>Signatures:</strong> Massive coral structures, blue-purple lighting, high ceilings. Southeast of the Grassy Plateau transition. This biome has some of the most dramatic vertical drops in the game — use it as a navigational reference point for the deeper zones.</p>
+
+    <h2 id="beacon-strategy">4. The Smart Beacon Strategy</h2>
+    <p>Beacons are the single most important navigation tool in Subnautica 2. Here's the optimal beacon placement strategy used by experienced players:</p>
+
+    <ol>
+      <li><strong>Beacon 1: Lifepod</strong> — Your permanent home point. Color: Yellow.</li>
+      <li><strong>Beacon 2: Cave Entrance</strong> — Mark every significant cave or biome transition. Color: Green.</li>
+      <li><strong>Beacon 3: Resource Hotspot</strong> — Lithium cluster, Diamond deposits, rare ore veins. Color: Blue.</li>
+      <li><strong>Beacon 4: Danger Zone</strong> — Leviathan spawn points, aggressive creature dens. Color: Red.</li>
+      <li><strong>Beacon 5 + 6: Biome Borders</strong> — Mark the edges between biomes so you know when you've crossed over. Color: Purple.</li>
+      <li><strong>Beacon 7: Deep Dive Point</strong> — Your descent point for exploring below -500m. Color: White.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>💡 Pro Tip:</strong> Rename your beacons with distance hints. Example: "Deep Reef Entrance — 320m SE" instead of just "Deep Reef." This saves you from opening the beacon list every time you pass by.</p>
+    </div>
+
+    <p>Hotfix 3 (released June 1, 2026) reduced the beacon crafting cost from 3 Copper Ore to 1 Copper Ore + 1 Table Coral Sample. This makes the beacon strategy much more accessible early game — there's no excuse not to deploy at least 8 beacons before your first deep dive.</p>
+
+    <h2 id="practical-routes">5. Practical Routes for Common Destinations</h2>
+
+    <h3>Route A: Lifepod → Kelp Forest North</h3>
+    <p><strong>Distance:</strong> ~400m | <strong>Oxygen needed:</strong> 2 High Capacity Tanks or vehicle</p>
+    <p>Head directly north from the Lifepod (Z: -60 → Z: -420). You'll cross the Safe Shallows border at Z: -150. The terrain gradually slopes down. Look for the first Creepvine stalks at Z: -300. By Z: -420, you're in the center of North Kelp Forest.</p>
+
+    <h3>Route B: Lifepod → Bioluminescent Cave</h3>
+    <p><strong>Distance:</strong> ~270m | <strong>Oxygen needed:</strong> Standard tank + 1 spare</p>
+    <p>Head east-northeast from the Lifepod toward coordinates (+150, -220). You'll cross a shallow ridge at (+80, -150). The cave mouth is at the base of a rock formation with glowing mushrooms. Do <em>not</em> enter without a Seaglide — the cave system extends for over 300 meters.</p>
+
+    <h3>Route C: Lifepod → Lost River via Blood Kelp</h3>
+    <p><strong>Distance:</strong> ~320m | <strong>Vehicle required:</strong> Tadpole or Cyclops recommended</p>
+    <p>Head southwest from the Lifepod (-250, +100). The water changes from turquoise to red-tinted around (-150, +50). Follow the Blood Kelp corridor downward — the gradient is steady at roughly 15° descent. At approximately -400m, the terrain opens up into the Lost River antechamber.</p>
+
+    <h2 id="community-maps">6. Community Map Resources (EA 2026)</h2>
+    <p>While there's no official map, the Subnautica community has created some excellent resources:</p>
+    <ul>
+      <li><strong><a href="https://wiki.subnautica.com/sn2/Biomes" target="_blank" rel="noopener">Subnautica 2 Wiki — Biome Pages</a></strong>: Developer-licensed wiki with accurate biome coordinates and transition maps. Updated through Hotfix 3.</li>
+      <li><strong>r/subnautica community map</strong>: A crowdsourced interactive map on Google Sheets (search "Subnautica 2 community map Reddit EA1.0"). Updated weekly by volunteers.</li>
+      <li><strong>Discord Mapping Channel</strong>: The official Unknown Worlds Discord has a dedicated channel where players share coordinates for new discoveries.</li>
+    </ul>
+
+    <div class="callout warning">
+      <p><strong>⚠️ Caution:</strong> Many websites claiming to have "Subnautica 2 complete maps" contain spoilers for content not yet released. The Patch 1.1 and 1.2 biomes are not in the game yet — any map showing them is speculative.</p>
+    </div>
+
+    <h2 id="advanced-tips">7. Advanced Navigation Tips for Seasoned Players</h2>
+
+    <h3>📐 Triangulation Technique</h3>
+    <p>If you have 3 beacons deployed in known locations, you can triangulate your position by measuring bearing angles. Point your camera toward each beacon, note the angle difference, and calculate where you intersect. This takes practice but is invaluable for finding lost pod locations or unexplored cave exits.</p>
+
+    <h3>🔄 The Depth Ring Method</h3>
+    <p>Subnautica 2 biomes are organized in rough concentric rings from the map center. The Safe Shallows occupy the core (radius ~400m). Beyond that: Kelp Forest and Grassy Plateau (400-700m), then deeper transitional zones (700-1000m), with the deepest biomes at the outer edges. If you know your distance from the Lifepod, you can guess which biome tier you're in.</p>
+
+    <h3>⛰️ Surface Reference Points</h3>
+    <p>The Aurora wreck (added in Patch 1.0 for Subnautica 2) is visible from most starting biomes. Use it as a cardinal reference: the Aurora's bow points roughly Northeast. When you surface between expeditions, spot the Aurora and immediately know your approximate orientation.</p>
+
+    <h3>🎮 Console Workaround: Photo Mode</h3>
+    <p>Xbox players can use Photo Mode (pause → camera) to get a brief overhead view of the immediate area. It's not a full map, but it gives you a 20-meter radius bird's-eye view that can resolve confusion about nearby cave entrances.</p>
+
+    <div class="callout success">
+      <p><strong>🎯 Final Pro Tip:</strong> Before every major expedition, write down 3 beacons you'll deploy and their intended coordinates. Treat it like a real oceanographic survey — log your findings. Within 10 hours of disciplined beacon use, you'll have a mental map that rivals any in-game minimap.</p>
+    </div>
+
+  </article>
+
+  <footer>
+    <p>Subnautica 2 Guide — Your complete companion for Early Access 2026 | <a href="/">Home</a> · <a href="/articles/creature-guide.html">Creature Guide</a> · <a href="/articles/survival-mechanics.html">Survival</a></p>
+    <p>Subnautica 2 © Unknown Worlds Entertainment. This is a fan guide. Coordinates based on EA 1.0/Hotfix 3 data.</p>
+  </footer>
+</div>
+
+</body>
+</html>
