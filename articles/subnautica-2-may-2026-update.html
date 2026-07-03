@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subnautica 2 May 2026 Updates: 4 Million Sold & What's New</title>
-  <meta name="description" content="Subnautica 2 sold 4 million copies in early access week. May 22 update adds new resource zone, fish AI improvements, performance optimizations. May 26 Hotfix 2. Upcoming EA roadmap.">
-  <meta name="keywords" content="Subnautica 2 4 million sold, Subnautica 2 May 2026 update, Subnautica 2 early access, Subnautica 2 hotfix 2">
+  <title>Subnautica 2 Hotfix 3 & Roadmap: PRAWN Suit & New Region</title>
+  <meta name="description" content="Complete breakdown of Subnautica 2 Hotfix 3: creature AI changes, DLSS 4.5 upgrade, and Interior Walls 75% off. Plus Dev Vlog roadmap with PRAWN Suit return.">
+  <meta name="keywords" content="Subnautica 2 hotfix 3, Subnautica 2 June 2026 update, Subnautica 2 roadmap, Subnautica 2 PRAWN Suit, Subnautica 2 patch notes">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -184,6 +184,8 @@
       transform: translateX(-3px);
     }
 
+    main { position: relative; z-index: 2; }
+
     .article-hero {
       position: relative;
       padding-top: calc(var(--nav-height) + 48px);
@@ -246,8 +248,6 @@
       margin-bottom: 20px;
     }
 
-    main { position: relative; z-index: 2; }
-
     .section { padding: 72px 0; }
 
     .article-content {
@@ -295,6 +295,11 @@
     .article-content strong {
       color: var(--text-main);
       font-weight: 600;
+    }
+
+    .article-content a {
+      color: #57d6ff;
+      text-decoration: underline;
     }
 
     .milestone-box {
@@ -427,18 +432,6 @@
       margin-bottom: 6px;
     }
 
-    .roadmap-item h4 {
-      font-size: 1.05rem;
-      margin-bottom: 8px;
-      color: var(--text-main);
-    }
-
-    .roadmap-item p {
-      font-size: 0.95rem;
-      color: var(--text-soft);
-      margin-bottom: 0;
-    }
-
     .roadmap-item .roadmap-dot {
       position: absolute;
       left: 18px;
@@ -548,13 +541,11 @@
       .container { width: min(var(--max-width), calc(100% - 24px)); }
       .nav-links { gap: 4px !important; justify-content: center !important; flex-wrap: wrap !important; }
       .nav-links a { padding: 7px 10px !important; font-size: 0.82rem !important; }
-      .article-hero h1 { font-size: clamp(1.6rem, 6vw, 2.4rem) !important; }
       .update-item { grid-template-columns: 1fr; gap: 6px; }
       .footer-shell { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
-      .article-hero h1 { font-size: clamp(1.4rem, 8vw, 1.8rem) !important; }
     }
   </style>
 <!-- Google tag (gtag.js) -->
@@ -574,56 +565,35 @@
         <span class="brand-text">Subnautica 2 Guide</span>
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
-        <a href="../index.html">← Back to Home</a>
-        <a href="#sales-milestone">Sales Milestone</a>
-        <a href="#may-22-update">May 22 Update</a>
-        <a href="#hotfix-2">Hotfix 2</a>
-        <a href="#roadmap">Roadmap</a>
+        <a href="../index.html">&larr; Back to Home</a>
+        <a href="#hotfix-3">Hotfix 3</a>
+        <a href="#dev-vlog">Dev Vlog</a>
+        <a href="#roadmap-after">Roadmap</a>
+        <a href="#performance">Performance</a>
       </nav>
     </div>
   </header>
 
-  <section class="article-hero">
-    <div class="bubble-layer" id="bubbleLayer" aria-hidden="true"></div>
-    <div class="container" style="position: relative; z-index: 2;">
-      <a class="back-link" href="../index.html">← Back to Home</a>
-      <div class="breadcrumb">
-        <a href="../index.html">Home</a>
-        <span>/</span>
-        <span>May 2026 Updates</span>
-      </div>
-      <div class="article-meta">
-        <span class="meta-tag">🕐 ~6 min read</span>
-        <span class="meta-tag">📅 2026-05-30</span>
-        <span class="meta-tag">📰 News</span>
-      </div>
-      <h1>Subnautica 2 May 2026 Updates: 4 Million Sold & What's New</h1>
-      <p class="article-description">
-        Subnautica 2's early access launched May 14 and sold 4 million copies in its first week. Two major patches already landed, and Unknown Worlds has shared their post-launch roadmap. Here's everything you need to know.
-      </p>
-    </div>
-  </section>
-
-  
   <main>
-    <section class="section" id="updates-hero">
-      <div class="container">
-        <div class="article-hero">
-          <div class="breadcrumb">
-            <a href="/">Home</a>
-            <span>/</span>
-            <span>Updates</span>
-          </div>
-          <h1>Subnautica 2 Hotfix 3 & Roadmap: PRAWN Suit, New Region, Patch Notes</h1>
-          <div class="article-meta">
-            <span class="meta-tag">📅 Updated June 18, 2026</span>
-            <span class="meta-tag">🏷️ Patch Notes</span>
-            <span class="meta-tag">🏷️ Roadmap</span>
-          </div>
-          <p class="article-description">
-            Subnautica 2's Early Access just got its third hotfix — tweaking Hammerhead, Nibbler, and Marrowbreach behavior, upgrading DLSS to 4.5, and slashing Interior Wall costs by 75%. Plus: the first Dev Vlog reveals the EA1.1 roadmap with PRAWN Suit return and a terrifying new region.
-          </p>
+    <section class="article-hero" id="updates-hero">
+      <div class="bubble-layer" id="bubbleLayer" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 2;">
+        <a class="back-link" href="../index.html">&larr; Back to Home</a>
+        <div class="breadcrumb">
+          <a href="../index.html">Home</a>
+          <span>/</span>
+          <span>Updates</span>
         </div>
+        <div class="article-meta">
+          <span class="meta-tag">&#x1F550; ~8 min read</span>
+          <span class="meta-tag">&#x1F4C5; Updated 2026-07-03</span>
+          <span class="meta-tag">&#x1F3F7;&#xFE0F; Patch Notes</span>
+          <span class="meta-tag">&#x1F3F7;&#xFE0F; Roadmap</span>
+        </div>
+        <h1>Subnautica 2 Hotfix 3 &amp; Roadmap: PRAWN Suit, New Region, Full Patch Notes</h1>
+        <p class="article-description">
+          Subnautica 2's Early Access just got its third hotfix — tweaking Hammerhead, Nibbler, and Marrowbreach behavior, upgrading DLSS to 4.5, and slashing Interior Wall costs by 75%. Plus: the first Dev Vlog reveals the EA1.1 roadmap with PRAWN Suit return and a terrifying new region.
+        </p>
       </div>
     </section>
 
@@ -631,18 +601,20 @@
       <div class="container">
         <div class="article-content">
 
-          <h2 id="sales-milestone">🚀 4 Million Sold & Counting</h2>
+          <h2 id="sales-milestone">&#x1F680; 4 Million Sold &amp; Counting</h2>
           <p>Two weeks after the 4-million-copies-sold-in-week-one milestone, Subnautica 2 keeps its momentum. Steam reviews remain "Very Positive" (106K+ positive out of 116K total as of mid-June), and the game has held a top-10 spot on SteamDB's weekly best-sellers list since launch. Concurrent players peaked at 46,791 on Steam — more than double the original Subnautica's all-time high.</p>
 
           <p>Beyond the numbers, what matters is the speed of patches. In its first month of Early Access, Unknown Worlds has shipped <strong>Hotfix 3</strong> (June 1) and published the first Dev Vlog (June 4), setting a clear direction for the EA1.1 update. Let's dig into what changed.</p>
 
-          <h2 id="hotfix-3">🔧 Hotfix 3 — June 1, 2026</h2>
+          <img src="/images/subnautica-2-hotfix-3-patch.jpg" alt="Subnautica 2 Hotfix 3 patch notes" style="border-radius: var(--radius-lg); width: 100%; max-width: 800px; margin: 24px 0; border: 1px solid var(--line);">
+
+          <h2 id="hotfix-3">&#x1F527; Hotfix 3 — June 1, 2026</h2>
           <p>Hotfix 3 is a significant patch. It's not just bug fixes; it's the first real tuning pass on creature behavior since the pre-launch community feedback letter (May 20). Here's what landed:</p>
 
           <h3>Creature Behavior Overhauls</h3>
 
           <div class="update-box">
-            <div class="update-title">🦈 Hammerhead</div>
+            <div class="update-title">&#x1F988; Hammerhead</div>
             <div class="update-item">
               <span class="update-name">Change</span>
               <span class="update-desc">No longer attacks unpiloted Tadpoles. Previously, even an empty Tadpole would trigger Hammerhead aggression, forcing players to always stay inside or risk losing their vehicle from across the zone.</span>
@@ -654,7 +626,7 @@
           </div>
 
           <div class="update-box">
-            <div class="update-title">🐟 Nibbler</div>
+            <div class="update-title">&#x1F41F; Nibbler</div>
             <div class="update-item">
               <span class="update-name">Change</span>
               <span class="update-desc">Aggro range reduced. Nibblers are now less likely to chase you across multiple biomes. They can also be pushed back using the Survival Multitool.</span>
@@ -666,7 +638,7 @@
           </div>
 
           <div class="update-box">
-            <div class="update-title">🌋 Marrowbreach</div>
+            <div class="update-title">&#x1F30B; Marrowbreach</div>
             <div class="update-item">
               <span class="update-name">Change</span>
               <span class="update-desc">Damage increased, but attack cooldown lengthened. The Marrowbreach now hits harder (roughly 1.5x previous damage) but has a noticeably longer recovery window between attacks.</span>
@@ -680,44 +652,44 @@
           <h3>Technical Improvements</h3>
 
           <div class="hotfix-item">
-            <span class="hotfix-icon">⚡</span>
+            <span class="hotfix-icon">&#x26A1;</span>
             <div><strong>DLSS 4.5 Upgrade:</strong> NVIDIA DLSS has been upgraded from version 3.x to 4.5. This includes the new Transformer-based upscaling model, which offers sharper image quality at lower internal resolutions. Players on RTX 30-series and above should see noticeably cleaner edges and less ghosting.</div>
           </div>
           <div class="hotfix-item">
-            <span class="hotfix-icon">⚡</span>
+            <span class="hotfix-icon">&#x26A1;</span>
             <div><strong>DLSS Crash Fix:</strong> Fixed a crash that occurred when loading certain save files with DLSS enabled. Also fixed DLSS settings failing to persist between game sessions.</div>
           </div>
           <div class="hotfix-item">
-            <span class="hotfix-icon">⚡</span>
+            <span class="hotfix-icon">&#x26A1;</span>
             <div><strong>Frame Generation Restored:</strong> Fixed an issue where Frame Generation was unavailable for some compatible GPUs. Now properly detected and enabled for RTX 40-series.</div>
           </div>
           <div class="hotfix-item">
-            <span class="hotfix-icon">🏗️</span>
-            <div><strong>Interior Walls Cost Reduced 75%:</strong> One of the most-requested base-building fixes. Interior Wall cost dropped from 4 Titanium to 1 Titanium, making large compartmentalized bases actually affordable. More on this in our <a href="base-building-guide.html" style="color:#57d6ff;text-decoration:underline;">Base Building Guide</a>.</div>
+            <span class="hotfix-icon">&#x1F3D7;&#xFE0F;</span>
+            <div><strong>Interior Walls Cost Reduced 75%:</strong> One of the most-requested base-building fixes. Interior Wall cost dropped from 4 Titanium to 1 Titanium, making large compartmentalized bases actually affordable. More on this in our <a href="/articles/base-building-guide.html">Base Building Guide</a>.</div>
           </div>
           <div class="hotfix-item">
-            <span class="hotfix-icon">✓</span>
+            <span class="hotfix-icon">&#x2713;</span>
             <div><strong>Multiplayer Rejoin Fix:</strong> Fixed a bug where clients rejoining a co-op session would respawn at the Lifepod instead of their last position. This was a common frustration for 4-player groups.</div>
           </div>
           <div class="hotfix-item">
-            <span class="hotfix-icon">✓</span>
+            <span class="hotfix-icon">&#x2713;</span>
             <div><strong>Strike Armor Stacking Fix:</strong> The Strike Armor piece set no longer stacks its damage resistance bonus multiplicatively with itself. Now applies as intended — one bonus only.</div>
           </div>
           <div class="hotfix-item">
-            <span class="hotfix-icon">✓</span>
+            <span class="hotfix-icon">&#x2713;</span>
             <div><strong>Tadpole Haul Chassis Goggles Fix:</strong> Fixed goggles staying visible on the character model after exiting the Tadpole. Minor but long-standing visual bug since launch.</div>
           </div>
           <div class="hotfix-item">
-            <span class="hotfix-icon">✓</span>
+            <span class="hotfix-icon">&#x2713;</span>
             <div><strong>Miscellaneous:</strong> Fixed rare startup crashes on certain AMD configurations. Updated localized Terms callout text. Improved crash-report context for future diagnostics.</div>
           </div>
 
           <div class="tip-box">
-            <div class="tip-title">📊 Hotfix 3 by the Numbers</div>
+            <div class="tip-title">&#x1F4CA; Hotfix 3 by the Numbers</div>
             <p>PatchDiff lists Hotfix 3 as 8 buffs, 1 nerf, 6 bug fixes, and 2 other changes. The overall direction is clear: Unknown Worlds is tuning the threat curve — making creatures more readable and predictable while keeping deep-sea encounters dangerous. The DLSS 4.5 upgrade is the standout technical improvement for PC players.</p>
           </div>
 
-          <h2 id="dev-vlog">🎥 Dev Vlog: "Swimming Forward" — June 4, 2026</h2>
+          <h2 id="dev-vlog">&#x1F3A5; Dev Vlog: "Swimming Forward" — June 4, 2026</h2>
           <p>On June 4, Design Lead Anthony Gallegos published the first Subnautica 2 Dev Vlog since Early Access launch. The 2:42-minute video (582K+ views, 46K+ likes) laid out the next phase of development. The key message: <strong>Unknown Worlds is pivoting from rapid hotfixes to the EA1.1 major update.</strong></p>
 
           <p>Here's what was confirmed for EA1.1:</p>
@@ -725,34 +697,34 @@
           <div class="roadmap-item">
             <span class="roadmap-dot"></span>
             <div class="roadmap-phase">EA1.1 — Coming in the Next Few Weeks</div>
-            <h4>🦾 PRAWN Suit Returns</h4>
-            <p>The fan-favorite exosuit from the original Subnautica is coming back. Known Worlds confirmed the PRAWN Suit will be added as part of EA1.1. It will feature new upgrade modules tailored to Subnautica 2's deeper biomes and the new creature threats. Specific stats and module slots weren't detailed, but expect the classic deep-sea walking + drilling gameplay with Subnautica 2's improvements.</p>
+            <h3 style="font-size:1.05rem;margin:0 0 8px">&#x1F9BE; PRAWN Suit Returns</h3>
+            <p>The fan-favorite exosuit from the original Subnautica is coming back. Unknown Worlds confirmed the PRAWN Suit will be added as part of EA1.1. It will feature new upgrade modules tailored to Subnautica 2's deeper biomes and the new creature threats.</p>
           </div>
 
           <div class="roadmap-item">
             <span class="roadmap-dot"></span>
             <div class="roadmap-phase">EA1.1 — New Region</div>
-            <h4>👾 Collector Leviathan Territory</h4>
-            <p>EA1.1 introduces a completely new region — home to a new leviathan-class creature called the "Collector Leviathan." GamesPress and Insider Gaming report this region is described as "the scariest the game has been yet." The Collector Leviathan appears to have unique environmental interaction behaviors distinct from anything in the base game. The teaser shot in the Dev Vlog shows a dark cavern with organic suction structures — suggesting the Leviathan may actively reshape its environment.</p>
+            <h3 style="font-size:1.05rem;margin:0 0 8px">&#x1F47E; Collector Leviathan Territory</h3>
+            <p>EA1.1 introduces a completely new region — home to a new leviathan-class creature called the "Collector Leviathan." GamesPress and Insider Gaming report this region is described as "the scariest the game has been yet." The teaser shot suggests a dark cavern with organic suction structures — the Leviathan may actively reshape its environment.</p>
           </div>
 
           <div class="roadmap-item">
             <span class="roadmap-dot"></span>
             <div class="roadmap-phase">EA1.1 — Systems</div>
-            <h4>🧬 Biomod System Upgrade</h4>
-            <p>The Biomod system — Subnautica 2's DNA modification mechanics — is getting a significant overhaul. The Dev Vlog confirms improvements to the Biomod UI, more biomod slots, and new passive modifications. This addresses the most common feedback about the current system: that biomod choices feel too limited and the interface is confusing for new players.</p>
+            <h3 style="font-size:1.05rem;margin:0 0 8px">&#x1F9EC; Biomod System Upgrade</h3>
+            <p>The Biomod system — Subnautica 2's DNA modification mechanics — is getting a significant overhaul. The Dev Vlog confirms improvements to the Biomod UI, more biomod slots, and new passive modifications.</p>
           </div>
 
           <div class="roadmap-item">
             <span class="roadmap-dot"></span>
             <div class="roadmap-phase">EA1.1 — Social</div>
-            <h4>👥 New Social Features</h4>
-            <p>Co-op improvements are part of the EA1.1 scope. While specific details are limited, the roadmap signals more social features to support the 4-player experience beyond the current drop-in/drop-out system. Expect better friend code management, session visibility, and possibly in-game communication enhancements.</p>
+            <h3 style="font-size:1.05rem;margin:0 0 8px">&#x1F465; New Social Features</h3>
+            <p>Co-op improvements are part of the EA1.1 scope. While specific details are limited, the roadmap signals more social features to support the 4-player experience beyond the current drop-in/drop-out system.</p>
           </div>
 
-          <h2 id="roadmap-after">🗺️ Beyond EA1.1</h2>
+          <h2 id="roadmap-after">&#x1F5FA;&#xFE0F; Beyond EA1.1</h2>
           <p>The broader roadmap (previously shared around launch) remains intact. After EA1.1's quality-of-life and usability focus, EA1.2 is slated to focus on deeper <strong>co-op and multiplayer features</strong>, followed by major content drops expanding biomes, creatures, tools, vehicles, and story.</p>
-          <p>WCCFtech's interview with Unknown Worlds revealed additional context: the team emphasized that Subnautica 2's new planet is "very different" from 4546B (the original game's setting), with entirely new ecosystems and environmental rules. The Collector Leviathan region is the first major showcase of this design philosophy — a biome that's less "place you visit" and more "living entity you navigate through."</p>
+          <p>WCCFtech's interview with Unknown Worlds revealed additional context: the team emphasized that Subnautica 2's new planet is "very different" from 4546B (the original game's setting), with entirely new ecosystems and environmental rules.</p>
 
           <div class="milestone-box">
             <div class="milestone-number">~3 Weeks</div>
@@ -760,11 +732,11 @@
           </div>
 
           <div class="tip-box">
-            <div class="tip-title">🔥 What to Do While Waiting for EA1.1</div>
-            <p>If you haven't tried co-op yet, now's the time. Hotfix 3 fixed the rejoin position bug and improved multiplayer stability. Grab 3 friends, build a shared base, and tackle the deeper biomes together. Our <a href="co-op-guide.html" style="color:#57d6ff;text-decoration:underline;">Co-op Guide</a> has everything you need to get started in 5 minutes.</p>
+            <div class="tip-title">&#x1F525; What to Do While Waiting for EA1.1</div>
+            <p>If you haven't tried co-op yet, now's the time. Hotfix 3 fixed the rejoin position bug and improved multiplayer stability. Grab 3 friends, build a shared base, and tackle the deeper biomes together. Our <a href="/articles/co-op-guide.html">Co-op Guide</a> has everything you need to get started in 5 minutes.</p>
           </div>
 
-          <h2 id="performance">📊 Mid-June Performance Report</h2>
+          <h2 id="performance">&#x1F4CA; Mid-June Performance Report</h2>
           <p>With Hotfix 3's DLSS 4.5 upgrade and the continued optimization from the May 22 patch, Subnautica 2's performance has improved measurably since launch day:</p>
           <ul>
             <li><strong>RTX 3060 @ 1080p High:</strong> Stable 60 FPS in most biomes, occasional dips to 52 FPS near large base structures</li>
@@ -772,16 +744,16 @@
             <li><strong>RTX 4090 @ 4K Ultra + DLSS 4.5 Performance:</strong> 80-100 FPS, nearly flawless</li>
             <li><strong>Steam Deck (Low @ 800p):</strong> 30-45 FPS — playable but Steam Deck verification is still in-progress</li>
           </ul>
-          <p>Most players report that the remaining hitching is tied to terrain streaming in the deeper biomes (The Depths, Abyssal Fissure). This is expected to improve further with terrain optimization work in EA1.1.</p>
+          <p>Most players report that the remaining hitching is tied to terrain streaming in the deeper biomes (The Depths, Abyssal Fissure).</p>
 
           <h2 id="whats-next">What This Means for Players</h2>
-          <p>If you're a <strong>new player</strong>: Jump in. The early game is polished, the beginner's crafting loop is tight, and the co-op mode makes the learning curve gentler (your friends can help you find materials). With Hotfix 3, creature encounters are more predictable, so you won't get frustrated by unfair deaths in the first few hours.</p>
-          <p>If you're a <strong>returning player</strong>: Hotfix 3's Hammerhead fix alone is worth logging back in — parking your Tadpole and exploring on foot is genuinely enjoyable now. The DLSS 4.5 upgrade makes the visuals noticeably sharper, and the 75% Interior Walls cost reduction means you can finally build the base you want without farming Titanium for hours.</p>
-          <p>If you're <strong>waiting for EA1.1</strong>: The wait is approximately 3 weeks from the Dev Vlog date (so roughly late June). The PRAWN Suit return and Collector Leviathan region are the headline features, with the Biomod overhaul being the most impactful quality-of-life change.</p>
+          <p>If you're a <strong>new player</strong>: Jump in. The early game is polished, the beginner's crafting loop is tight, and the co-op mode makes the learning curve gentler. With Hotfix 3, creature encounters are more predictable.</p>
+          <p>If you're a <strong>returning player</strong>: Hotfix 3's Hammerhead fix alone is worth logging back in. The DLSS 4.5 upgrade makes the visuals noticeably sharper, and the 75% Interior Walls cost reduction means you can finally build the base you want.</p>
+          <p>If you're <strong>waiting for EA1.1</strong>: The wait is approximately 3 weeks from the Dev Vlog date (so roughly late June). The PRAWN Suit return and Collector Leviathan region are the headline features.</p>
 
           <div class="tip-box">
-            <div class="tip-title">🔥 Bottom Line</div>
-            <p>Hotfix 3 shows Unknown Worlds is serious about player feedback. Creatures are fairer, performance is better, and the roadmap is transparent. With 4 million+ players and a committed development team, Subnautica 2's first month of Early Access has been remarkably strong. EA1.1 will define the next chapter — and it's coming very soon.</p>
+            <div class="tip-title">&#x1F525; Bottom Line</div>
+            <p>Hotfix 3 shows Unknown Worlds is serious about player feedback. Creatures are fairer, performance is better, and the roadmap is transparent. With 4 million+ players and a committed development team, Subnautica 2's first month of Early Access has been remarkably strong.</p>
           </div>
         </div>
 
@@ -789,26 +761,26 @@
           <h3 class="related-title">Related Guides</h3>
           <div class="related-grid">
             <div class="related-card">
-              <a href="beginners-guide.html">
-                <h4>🔰 Beginner's Guide</h4>
+              <a href="/articles/beginners-guide.html">
+                <h4>&#x1F530; Beginner's Guide</h4>
                 <p>First hour essentials: Multitool, Scanner, Fins crafting order.</p>
               </a>
             </div>
             <div class="related-card">
-              <a href="co-op-guide.html">
-                <h4>👥 Co-op Guide</h4>
+              <a href="/articles/co-op-guide.html">
+                <h4>&#x1F465; Co-op Guide</h4>
                 <p>4-player multiplayer setup, Friend Codes, and co-op tips.</p>
               </a>
             </div>
             <div class="related-card">
-              <a href="base-building-guide.html">
-                <h4>🏗️ Base Building Guide</h4>
+              <a href="/articles/base-building-guide.html">
+                <h4>&#x1F3D7;&#xFE0F; Base Building Guide</h4>
                 <p>Best locations, room layouts, and Hotfix 3 cost savings.</p>
               </a>
             </div>
             <div class="related-card">
-              <a href="material-locations.html">
-                <h4>📍 Material Locations</h4>
+              <a href="/articles/material-locations.html">
+                <h4>&#x1F4CD; Material Locations</h4>
                 <p>Where to find Titanium, Quartz, Copper, and Rubber.</p>
               </a>
             </div>
@@ -823,7 +795,7 @@
       <div class="footer-shell">
         <div>
           <strong>Copyright</strong>
-          <p>© 2026 Subnautica 2 Guide. All rights reserved.</p>
+          <p>&copy; 2026 Subnautica 2 Guide. All rights reserved.</p>
         </div>
         <div>
           <strong>Community</strong>
@@ -849,7 +821,7 @@
         const delay = (index % 9) * 0.7;
         const duration = 11 + (index % 6) * 2.2;
         const opacity = 0.26 + (index % 5) * 0.08;
-        bubbleMarkup += `<span class="bubble" style="width:${size}px;height:${size}px;left:${left}%;animation-duration:${duration}s;animation-delay:-${delay}s;opacity:${opacity};"></span>`;
+        bubbleMarkup += '<span class="bubble" style="width:' + size + 'px;height:' + size + 'px;left:' + left + '%;animation-duration:' + duration + 's;animation-delay:-' + delay + 's;opacity:' + opacity + ';"></span>';
       }
       return bubbleMarkup;
     }
