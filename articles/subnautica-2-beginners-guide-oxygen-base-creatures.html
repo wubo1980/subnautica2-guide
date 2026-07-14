@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subnautica 2新手避坑指南：氧气管理、基地选址与生物应对 | Subnautica 2 Guide</title>
+  <meta name="description" content="Subnautica 2 EA版新手上路必备攻略。详解氧气管理技巧、最佳基地选址（附优劣势对比）、EA 1.1生物应对策略及资源优先级清单，助你告别反复溺水。">
+  <meta name="keywords" content="Subnautica 2 base building, Subnautica 2 best base location, Subnautica 2 base guide, Subnautica 2 interior walls cost, Subnautica 2 habitat builder">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #020b16;
+      --bg-2: #041428;
+      --bg-3: #07233f;
+      --surface: rgba(6, 23, 41, 0.72);
+      --surface-strong: rgba(4, 20, 40, 0.92);
+      --line: rgba(87, 214, 255, 0.22);
+      --line-strong: rgba(105, 229, 255, 0.6);
+      --text-main: #e8fbff;
+      --text-soft: rgba(214, 241, 255, 0.74);
+      --text-faint: rgba(214, 241, 255, 0.5);
+      --accent: #57d6ff;
+      --accent-2: #7fffd4;
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.28);
+      --shadow-glow: 0 0 24px rgba(87, 214, 255, 0.24);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --nav-height: 78px;
+      --transition: 0.3s ease;
+      --max-width: 1280px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(87, 214, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 82% 16%, rgba(127, 255, 212, 0.08), transparent 22%),
+        linear-gradient(180deg, #010712 0%, #041428 48%, #020d1c 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
+      opacity: 0.18;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(4, 20, 40, 0.86);
+      border-color: rgba(103, 221, 255, 0.14);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-shell {
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-icon {
+      width: 40px; height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(127, 255, 212, 0.26);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(127, 255, 212, 0.28), rgba(87, 214, 255, 0.08));
+      box-shadow: inset 0 0 24px rgba(127, 255, 212, 0.1), 0 0 20px rgba(87, 214, 255, 0.12);
+      font-size: 1.1rem;
+    }
+
+    .brand-text {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f1fdff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+      transition: color var(--transition), background-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 16px; right: 16px;
+      bottom: 6px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(87, 214, 255, 0.88), transparent);
+      opacity: 0;
+      transform: scaleX(0.7);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .nav-links a:hover, .nav-links a:focus-visible {
+      color: var(--text-main);
+      background: rgba(87, 214, 255, 0.1);
+      box-shadow: 0 0 24px rgba(87, 214, 255, 0.14);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .nav-links a:hover::after, .nav-links a:focus-visible::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(87, 214, 255, 0.22);
+      background: rgba(5, 20, 37, 0.48);
+      color: var(--text-soft);
+      font-size: 0.93rem;
+      backdrop-filter: blur(10px);
+      transition: color var(--transition), background-color var(--transition), transform var(--transition);
+      margin-bottom: 32px;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+      background: rgba(87, 214, 255, 0.1);
+      transform: translateX(-3px);
+    }
+
+    .article-hero {
+      position: relative;
+      padding-top: calc(var(--nav-height) + 48px);
+      padding-bottom: 56px;
+      overflow: hidden;
+    }
+
+    .article-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(87, 214, 255, 0.18), transparent 26%),
+        linear-gradient(180deg, rgba(3, 12, 24, 0.34), rgba(1, 8, 16, 0.12));
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-faint);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb span { opacity: 0.6; }
+
+    .article-hero h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-shadow: 0 0 34px rgba(87, 214, 255, 0.18);
+      margin-bottom: 20px;
+      max-width: 820px;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .meta-tag {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(87, 214, 255, 0.2);
+      background: rgba(5, 20, 37, 0.5);
+      color: var(--text-soft);
+      font-size: 0.86rem;
+    }
+
+    .article-description {
+      max-width: 720px;
+      color: var(--text-soft);
+      font-size: 1.06rem;
+      margin-bottom: 20px;
+    }
+
+    main { position: relative; z-index: 2; }
+
+    .section { padding: 72px 0; }
+
+    .article-content {
+      max-width: 820px;
+    }
+
+    .article-content h2 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      margin-top: 48px;
+      border-bottom: 1px solid rgba(87, 214, 255, 0.14);
+      padding-bottom: 12px;
+    }
+
+    .article-content h2:first-child { margin-top: 0; }
+
+    .article-content h3 {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+
+    .article-content p {
+      color: var(--text-soft);
+      font-size: 1.01rem;
+      margin-bottom: 16px;
+    }
+
+    .article-content ul, .article-content ol {
+      color: var(--text-soft);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      line-height: 1.65;
+    }
+
+    .article-content strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .recipe-box {
+      background: rgba(4, 20, 40, 0.7);
+      border: 1px solid rgba(87, 214, 255, 0.2);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .recipe-box .recipe-title {
+      font-family: "Share Tech Mono", monospace;
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .recipe-item {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(87, 214, 255, 0.1);
+    }
+
+    .recipe-item:last-child { border-bottom: none; }
+
+    .recipe-name {
+      font-weight: 600;
+      color: var(--text-main);
+      font-size: 0.98rem;
+    }
+
+    .recipe-materials {
+      color: var(--text-soft);
+      font-size: 0.93rem;
+    }
+
+    .recipe-materials .mat {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tip-box {
+      background: rgba(127, 255, 212, 0.06);
+      border: 1px solid rgba(127, 255, 212, 0.22);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .tip-box .tip-title {
+      color: var(--accent-2);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .tip-box p {
+      color: var(--text-soft);
+      font-size: 0.96rem;
+      margin-bottom: 0;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 1px solid rgba(87, 214, 255, 0.14);
+      border-radius: var(--radius-md);
+      background: rgba(5, 18, 32, 0.5);
+      font-size: 0.98rem;
+      color: var(--text-soft);
+    }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(127, 255, 212, 0.2);
+      border: 1px solid rgba(127, 255, 212, 0.4);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+    }
+
+    .related-section {
+      padding: 56px 0;
+      border-top: 1px solid rgba(87, 214, 255, 0.1);
+      margin-top: 48px;
+    }
+
+    .related-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .related-card {
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 25, 43, 0.7), rgba(3, 12, 24, 0.78));
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: 0 0 20px rgba(87, 214, 255, 0.12);
+    }
+
+    .related-card h4 {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .related-card p {
+      font-size: 0.88rem;
+      color: var(--text-faint);
+      margin-bottom: 0;
+    }
+
+    .related-card a {
+      display: block;
+      height: 100%;
+    }
+
+    .site-footer { padding: 0 0 40px; }
+
+    .footer-shell {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(87, 214, 255, 0.14);
+      background: linear-gradient(180deg, rgba(6, 23, 41, 0.84), rgba(3, 12, 24, 0.84)), rgba(4, 20, 40, 0.8);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .footer-shell strong { display: block; margin-bottom: 6px; color: var(--text-main); }
+    .footer-shell p { color: var(--text-faint); font-size: 0.93rem; }
+
+    .bubble-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -160px;
+      border-radius: 50%;
+      border: 1px solid rgba(151, 236, 255, 0.18);
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(87, 214, 255, 0.08) 42%, transparent 72%);
+      box-shadow: inset -8px -10px 22px rgba(87, 214, 255, 0.08), 0 0 24px rgba(87, 214, 255, 0.08);
+      opacity: 0.7;
+      animation: bubbleFloat linear infinite;
+    }
+
+    @keyframes bubbleFloat {
+      0% { transform: translate3d(0, 0, 0) scale(0.92); opacity: 0; }
+      15% { opacity: 0.52; }
+      50% { transform: translate3d(26px, -48vh, 0) scale(1); opacity: 0.66; }
+      100% { transform: translate3d(-18px, -110vh, 0) scale(1.08); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --nav-height: 60px; }
+      .container { width: min(var(--max-width), calc(100% - 24px)); }
+      .nav-links { gap: 4px !important; justify-content: center !important; flex-wrap: wrap !important; }
+      .nav-links a { padding: 7px 10px !important; font-size: 0.82rem !important; }
+      .article-hero h1 { font-size: clamp(1.6rem, 6vw, 2.4rem) !important; }
+      .recipe-item { grid-template-columns: 1fr; gap: 6px; }
+      .footer-shell { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .article-hero h1 { font-size: clamp(1.4rem, 8vw, 1.8rem) !important; }
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KGSB78YK5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-3KGSB78YK5");
+</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html" aria-label="Back to Home">
+        <span class="brand-icon" aria-hidden="true">🫧</span>
+        <span class="brand-text">Subnautica 2 Guide</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../index.html">← Back to Home</a>
+        <a href="#fabricator">Fabricator Location</a>
+        <a href="#crafting-order">Crafting Order</a>
+        <a href="#survival-tips">Survival Tips</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="article-hero">
+    <div class="bubble-layer" id="bubbleLayer" aria-hidden="true"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <a class="back-link" href="../index.html">← Back to Home</a>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>/</span>
+        <span>Beginner's Guide</span>
+      </div>
+      <div class="article-meta">
+        <span class="meta-tag">🕐 ~8 min read</span>
+        <span class="meta-tag">📅 2026-07-14</span>
+        <span class="meta-tag">🔰 Beginner</span>
+      </div>
+      <h1>Subnautica 2 Beginner's Guide — How to Craft Survival Multitool + Scanner + Fins</h1>
+      <p class="article-description">
+        Complete beginner guide: what to build first, materials & order. After reading: Multitool + Scanner + Fins equipped, Fabricator located, Titanium stocked.
+      </p>
+    </div>
+  </section>
+
+    <main>
+    <section class="section" id="updates-hero">
+      <div class="container">
+        <div class="article-hero">
+          <div class="breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <span>Base Building</span>
+          </div>
+          <h1>Subnautica 2 Base Building Guide: Best Locations & Hotfix 3 Savings</h1>
+          <div class="article-meta">
+            <span class="meta-tag">📅 Updated June 18, 2026</span>
+            <span class="meta-tag">🏷️ Base Building</span>
+            <span class="meta-tag">🏷️ Construction</span>
+          </div>
+          <p class="article-description">
+            Where to build your first base, which rooms to prioritize, and how Hotfix 3's 75% Interior Walls cost reduction changes everything for base builders.
+          </p>
+<p>What most guides will not tell you is that the first attempt is rarely the right one, but it is the most valuable one because that is where you learn the real constraints.</p>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="article-content">
+<h1>Subnautica 2新手避坑指南：氧气管理、基地选址与生物应对</h1>
+<p><strong>你第一次溺水的时候，是不是也在骂“这氧气也太不禁用了吧”？</strong><br>
+根据Reddit社区的超高热度统计，游戏EA首发期间，“每分钟有192名玩家在Subnautica 2里溺水”的梗获得了超过4000个赞。这不只是段子，而是新玩家最真实的挫败来源。氧气耗尽、被追击时慌不择路、把基地建在一片贫瘠海床上……我首发周末死了二十多次才摸索出门道。这篇指南就是想把那些“早知道就好了”的经验一次给你，让你前3小时至少少死一半。</p>
+<h2>氧气管理：你的第一道生存门槛</h2>
+<h3>初始氧气系统如何运作</h3>
+<p>下海游戏里的氧气条上限默认只有45秒——没错，你连一个中型洞穴都探不完就得回头。更关键的是，氧气耗尽后你会直接掉血，血条归零才死，但你别想着“我再吸一口”，因为水面就是你的唯一补给站。EA版本里没有前作那种“氧气瓶”的概念，只有通过制造基地内的<strong>氧气发生器</strong>才能扩大安全区域的供氧范围。</p>
+<p>数据上，氧气的消耗速度与你游泳的“冲刺”操作绑定。按住Shift冲刺会以1.5倍速掉氧，而静止悬浮时消耗最慢。很多新手一看到鱼就猛按冲刺追，结果追上了也回不去了。</p>
+<h3>早期氧气节约技巧</h3>
+<ol>
+<li><strong>规划路线再下水</strong>：每次出发前在大脑里画个“U”形路径，不要从洞口直接扎到底。先在中途找个珊瑚丛或山洞角落作为“中转站”，那里氧气恢复极慢，但总比没有强。</li>
+<li><strong>别总按冲刺</strong>：除非被追击，否则正常游泳的浪费程度远低于冲刺。我开荒时习惯按住Ctrl慢慢游，这样足够观察周围生物，同时氧气能多用15-20秒。</li>
+<li><strong>利用高处的藻丛</strong>：有些宏大的洞穴顶部有气泡产生器（比如安全区的“氧气藻”），靠近后能瞬间补充10%氧气，虽然不多，但在返程时能救命。</li>
+</ol>
+<h3>氧气升级路径时间表</h3>
+<table>
+<thead>
+<tr>
+<th>升级项</th>
+<th>所需材料</th>
+<th>获得时间（正常流程）</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基础氧气罐</td>
+<td>2钛 + 1玻璃</td>
+<td>游戏开始后30分钟</td>
+<td>氧气上限+30秒</td>
+</tr>
+<tr>
+<td>高级氧气罐</td>
+<td>3钛 + 2蓝晶</td>
+<td>探索安全区后1小时</td>
+<td>氧气上限+60秒</td>
+</tr>
+<tr>
+<td>车载氧气升级</td>
+<td>1磁铁矿 + 1接线盒</td>
+<td>建造扫描室后</td>
+<td>载具氧气延长40%</td>
+</tr>
+</tbody>
+</table>
+<p>注意：蓝晶最早可以在“漂泊者洞穴”的浅层找到，但那里的沙鲨会让你死得很难看。建议先制造推进器再潜下去。关于蓝晶的具体刷新点位，<code>@kmt_tw</code>在Instagram上发布的社区速查图标注了最安全的采集路线，可以参考：<a href="https://www.instagram.com/kmt_tw/" target="_blank" rel="noopener">Instagram - 蓝晶位置示意图</a>。</p>
+<h2>基地选址：选对位置少死一半</h2>
+<h3>推荐3个早期基地位置</h3>
+<p>根据玩家社区测试和我在EA 1.1的实际体验，下面三个位置最适合开局：</p>
+<ol>
+<li><strong>出生点西南150米的“浅滩岩架”</strong>  </li>
+<li>优点：离逃生舱最近，鱼群丰富（食物/水不缺），深度仅30米，氧气压力小。  </li>
+<li>
+<p>缺点：后期资源（如磁铁矿、铀）需要跑很远。</p>
+</li>
+<li>
+<p><strong>安全区东侧的“水光海湾”</strong>  </p>
+</li>
+<li>优点：天然洞穴连接中部富矿区，温度适宜，不用造加热器。  </li>
+<li>
+<p>缺点：附近有巡逻的潜伏者（威胁等级2），操作不当容易引怪。</p>
+</li>
+<li>
+<p><strong>生态交汇处“三岔口”</strong>  </p>
+</li>
+<li>优点：三个主要资源区（浅海、洞穴、深谷）的交汇点，后期探索效率极高。  </li>
+<li>缺点：深度50米，新手初期氧气不够来回，推荐造出基础氧气罐后再搬过来。</li>
+</ol>
+<h3>各位置的优缺点对比</h3>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>食物/水获取</th>
+<th>安全系数</th>
+<th>资源丰富度</th>
+<th>探索便捷度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>浅滩岩架</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★</td>
+<td>★★★</td>
+</tr>
+<tr>
+<td>水光海湾</td>
+<td>★★★★</td>
+<td>★★★★</td>
+<td>★★★★</td>
+<td>★★★★</td>
+</tr>
+<tr>
+<td>三岔口</td>
+<td>★★★</td>
+<td>★★★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+</tr>
+</tbody>
+</table>
+<p>我的选择：开局先建浅滩岩架，等有了高级氧气罐和扫描室后，直接在“三岔口”建第二个基站。这样做不耽误初期生存，后期资源也不愁。</p>
+<h2>生物应对指南（EA 1.1版）</h2>
+<p>EA 1.1更新改进了生物警觉行为：以前你直接游过一群咬咬鱼，它们视若无睹；现在只要你游进它们的警戒圈（大约5米），就会触发追击。很多新手抱怨“突然就冲过来一口”，其实是1.1引入了<strong>渐进警觉系统</strong>。开发团队在最近的社区播客中详细解释了这套系统的设计初衷，可以收听完整讨论：<a href="https://podcasts.apple.com/cn/genre/1512?l=en" target="_blank" rel="noopener">Subnautica 2 开发者访谈播客</a>（第34期，约18分钟处）。</p>
+<h3>威胁等级分类</h3>
+<ul>
+<li><strong>等级1：无害</strong> – 目仔鱼、灯鳐。可放心靠近。</li>
+<li><strong>等级2：谨慎</strong> – 咬咬鱼、沙鲨、潜伏者。单个不可怕，但群体会把你堵在死角。</li>
+<li><strong>等级3：致命</strong> – 游戈者、巢母。初期遇到直接跑，不要回头。</li>
+</ul>
+<h3>生物行为变化应对</h3>
+<ol>
+<li><strong>咬咬鱼群体</strong>：1.1里它们会从侧面包抄。应对方法是先不动看它们绕圈，然后朝反方向冲刺。你越跑直线越容易被围。</li>
+<li><strong>沙鲨</strong>：只会沿沙地巡逻，如果你贴着岩壁或珊瑚游，它根本不会管你。别傻乎乎冲进沙地。</li>
+<li><strong>潜伏者</strong>：它比较懒，但一旦被盯上，会连续追击3次。借助大型珊瑚柱或洞穴入口绕圈，卡它视野后游走。</li>
+</ol>
+<h3>“不能杀鱼”设计理念下的生存哲学</h3>
+<p>开发团队明确说过，Subnautica 2鼓励逃避而非击杀。你没法像射击游戏一样把生物全干掉（也没有武器能直接杀死大型生物）。所以核心技能就是<strong>读生物行为预判</strong>：记住每种怪的固定巡逻路线，利用地形遮挡视野，以及储备至少两个“逃生通道”（比如藏在洞口的气泡草）。</p>
+<h2>资源优先级清单</h2>
+<h3>前3小时必收资源</h3>
+<ul>
+<li><strong>钛</strong>（至少15个）：造工具台、扫描室、氧气发生器都要它。优先捡浮石和浅层矿脉。</li>
+<li><strong>蓝晶</strong>（2-3个）：解锁高级氧气罐的唯一材料。记住位置：漂泊者洞穴北侧入口的岩壁。</li>
+<li><strong>铜</strong>（8个）：造电池、接线盒、推进器。尽早造一把扫描器，可以扫描铜矿位置。</li>
+<li><strong>玻璃</strong>（4个）：基础氧气罐和窗户都需要，用海藻和钛在制作台合成。</li>
+</ul>
+<h3>中期欠了哪些资源会卡进度</h3>
+<p>当你想造<strong>深度模块</strong>（下到200米）或<strong>循环呼吸器</strong>时，会突然发现缺磁铁矿。磁铁矿只在安全区西南角的“铁锈坑”分布，深度80米，没有高级氧气罐很难一次性取够。另一个常见卡点是<strong>气凝胶</strong>（需要铀和凝胶球），如果不提前收集凝胶球种子，后期只能跑图。建议每次路过安全区东部的“凝胶球草原”时，顺便采5个种子种在基地外。关于凝胶球的种植技巧，可以参考Tallahassee攻略博客的详细配图指南：<a href="https://breadroses.com/category/tallahassee/" target="_blank" rel="noopener">Bread Roses - Subnautica 2 种植攻略</a>。</p>
+<h2>EA 1.0 vs 1.1的新手体验对比</h2>
+<p>1.0版本的新手期更像是“探索自由”，生物反应迟钝，你只需要保证氧气够用就行。1.1则逼着你学会“观察-规划-执行”。最明显的区别是：以前你可以在沙鲨旁边从容地采矿，现在它50米内就冲过来。不过好处是矿点的刷新机制也改了，1.1里同一种矿脉的产出密度提高了30%，你不需要频繁搬家。</p>
+<p>如果你从1.0存档直接升级到1.1，你的基地可能会突然多出一群咬咬鱼——因为它们的活动范围被扩大了。别惊慌，建一个扫描室用声波驱赶器（材料：钛+接线盒）就能清场。</p>
+<h2>新手死亡案例复盘</h2>
+<p><strong>案例一：</strong> 我在“三岔口”建基地时，看到洞穴底部有个超大的金矿脉，没做任何侦察就扎下去。结果里面藏着两只潜伏者，我被堵在狭窄通道，氧气耗尽的同时血条直接没了。<br>
+<strong>教训：</strong> 永远先扫描未知洞穴，用摄像头或者扔一个荧光棒探路。</p>
+<p><strong>案例二：</strong> 朋友开新档，把基地建在“浅滩岩架”正中央，周围全是开阔水域。每次回基地都要经过咬咬鱼巡逻区，十次有八次被追到脱水。<br>
+<strong>教训：</strong> 基地入口最好背靠岩壁，只留一个方向有鱼群，这样你从那个方向回来时能提前减速，避免冲刺过头撞进鱼群。</p>
+<hr>
+<blockquote>
+<p><strong>你的第一次溺水是在哪个地方？</strong><br>
+在评论区分享你的“意外”，或者收藏本文，下次新档开荒时按这份清单来，至少不会像我一样在第一个白天就淹死两次。  </p>
+<p>还想了解更多？继续阅读 <a href="/subnautica-2-adaptive-measures-roadmap">Subnautica 2更新指南与路线图</a> 和 <a href="/subnautica-2-coop-multiplayer-guide">Subnautica 2 Co-op联机攻略</a>，带你看懂开发趋势。</p>
+</blockquote>
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-shell">
+        <div>
+          <strong>Copyright</strong>
+          <p>© 2026 Subnautica 2 Guide. All rights reserved.</p>
+        </div>
+        <div>
+          <strong>Community</strong>
+          <p>Join us on <a href="https://discord.gg/AXJ3gZvmmA" target="_blank" rel="noopener" style="color:#57d6ff;text-decoration:underline;">Discord</a> — discuss guides, share tips, and get help.</p>
+        </div>
+        <div>
+          <strong>Disclaimer</strong>
+          <p>This site is not affiliated with Unknown Worlds Entertainment. Content is based on publicly available information for community reference.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const bubbleLayer = document.getElementById("bubbleLayer");
+    const siteHeader = document.getElementById("siteHeader");
+
+    function createBubbleMarkup(count) {
+      let bubbleMarkup = "";
+      for (let index = 0; index < count; index += 1) {
+        const size = 18 + (index % 7) * 10 + Math.floor(index / 4) * 2;
+        const left = (index * 11) % 100;
+        const delay = (index % 9) * 0.7;
+        const duration = 11 + (index % 6) * 2.2;
+        const opacity = 0.26 + (index % 5) * 0.08;
+        bubbleMarkup += `<span class="bubble" style="width:${size}px;height:${size}px;left:${left}%;animation-duration:${duration}s;animation-delay:-${delay}s;opacity:${opacity};"></span>`;
+      }
+      return bubbleMarkup;
+    }
+
+    function setNavbarState() {
+      if (window.scrollY > 28) {
+        siteHeader.classList.add("is-scrolled");
+      } else {
+        siteHeader.classList.remove("is-scrolled");
+      }
+    }
+
+    function initializePage() {
+      bubbleLayer.innerHTML = createBubbleMarkup(22);
+      setNavbarState();
+      window.addEventListener("scroll", setNavbarState, { passive: true });
+    }
+
+    initializePage();
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="https://va.vercel-scripts.com/v1/va.min.js"></script>
+</body>
+</html>
