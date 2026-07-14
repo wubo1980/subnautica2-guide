@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subnautica 2 Co-op联机攻略：如何与朋友一起探索海底世界（EA 1.1版） | Subnautica 2 Guide</title>
+  <meta name="description" content="2026年最新Subnautica 2联机指南。详解EA 1.1版下如何开启联机、跨平台状态、角色分工策略，并提供真实联机问题排障表，让你和朋友的海底冒险不再掉线。">
+  <meta name="keywords" content="Subnautica 2 base building, Subnautica 2 best base location, Subnautica 2 base guide, Subnautica 2 interior walls cost, Subnautica 2 habitat builder">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #020b16;
+      --bg-2: #041428;
+      --bg-3: #07233f;
+      --surface: rgba(6, 23, 41, 0.72);
+      --surface-strong: rgba(4, 20, 40, 0.92);
+      --line: rgba(87, 214, 255, 0.22);
+      --line-strong: rgba(105, 229, 255, 0.6);
+      --text-main: #e8fbff;
+      --text-soft: rgba(214, 241, 255, 0.74);
+      --text-faint: rgba(214, 241, 255, 0.5);
+      --accent: #57d6ff;
+      --accent-2: #7fffd4;
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.28);
+      --shadow-glow: 0 0 24px rgba(87, 214, 255, 0.24);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --nav-height: 78px;
+      --transition: 0.3s ease;
+      --max-width: 1280px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(87, 214, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 82% 16%, rgba(127, 255, 212, 0.08), transparent 22%),
+        linear-gradient(180deg, #010712 0%, #041428 48%, #020d1c 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
+      opacity: 0.18;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(4, 20, 40, 0.86);
+      border-color: rgba(103, 221, 255, 0.14);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-shell {
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-icon {
+      width: 40px; height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(127, 255, 212, 0.26);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(127, 255, 212, 0.28), rgba(87, 214, 255, 0.08));
+      box-shadow: inset 0 0 24px rgba(127, 255, 212, 0.1), 0 0 20px rgba(87, 214, 255, 0.12);
+      font-size: 1.1rem;
+    }
+
+    .brand-text {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f1fdff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+      transition: color var(--transition), background-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 16px; right: 16px;
+      bottom: 6px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(87, 214, 255, 0.88), transparent);
+      opacity: 0;
+      transform: scaleX(0.7);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .nav-links a:hover, .nav-links a:focus-visible {
+      color: var(--text-main);
+      background: rgba(87, 214, 255, 0.1);
+      box-shadow: 0 0 24px rgba(87, 214, 255, 0.14);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .nav-links a:hover::after, .nav-links a:focus-visible::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(87, 214, 255, 0.22);
+      background: rgba(5, 20, 37, 0.48);
+      color: var(--text-soft);
+      font-size: 0.93rem;
+      backdrop-filter: blur(10px);
+      transition: color var(--transition), background-color var(--transition), transform var(--transition);
+      margin-bottom: 32px;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+      background: rgba(87, 214, 255, 0.1);
+      transform: translateX(-3px);
+    }
+
+    .article-hero {
+      position: relative;
+      padding-top: calc(var(--nav-height) + 48px);
+      padding-bottom: 56px;
+      overflow: hidden;
+    }
+
+    .article-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(87, 214, 255, 0.18), transparent 26%),
+        linear-gradient(180deg, rgba(3, 12, 24, 0.34), rgba(1, 8, 16, 0.12));
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-faint);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb span { opacity: 0.6; }
+
+    .article-hero h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-shadow: 0 0 34px rgba(87, 214, 255, 0.18);
+      margin-bottom: 20px;
+      max-width: 820px;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .meta-tag {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(87, 214, 255, 0.2);
+      background: rgba(5, 20, 37, 0.5);
+      color: var(--text-soft);
+      font-size: 0.86rem;
+    }
+
+    .article-description {
+      max-width: 720px;
+      color: var(--text-soft);
+      font-size: 1.06rem;
+      margin-bottom: 20px;
+    }
+
+    main { position: relative; z-index: 2; }
+
+    .section { padding: 72px 0; }
+
+    .article-content {
+      max-width: 820px;
+    }
+
+    .article-content h2 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      margin-top: 48px;
+      border-bottom: 1px solid rgba(87, 214, 255, 0.14);
+      padding-bottom: 12px;
+    }
+
+    .article-content h2:first-child { margin-top: 0; }
+
+    .article-content h3 {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+
+    .article-content p {
+      color: var(--text-soft);
+      font-size: 1.01rem;
+      margin-bottom: 16px;
+    }
+
+    .article-content ul, .article-content ol {
+      color: var(--text-soft);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      line-height: 1.65;
+    }
+
+    .article-content strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .recipe-box {
+      background: rgba(4, 20, 40, 0.7);
+      border: 1px solid rgba(87, 214, 255, 0.2);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .recipe-box .recipe-title {
+      font-family: "Share Tech Mono", monospace;
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .recipe-item {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(87, 214, 255, 0.1);
+    }
+
+    .recipe-item:last-child { border-bottom: none; }
+
+    .recipe-name {
+      font-weight: 600;
+      color: var(--text-main);
+      font-size: 0.98rem;
+    }
+
+    .recipe-materials {
+      color: var(--text-soft);
+      font-size: 0.93rem;
+    }
+
+    .recipe-materials .mat {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tip-box {
+      background: rgba(127, 255, 212, 0.06);
+      border: 1px solid rgba(127, 255, 212, 0.22);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .tip-box .tip-title {
+      color: var(--accent-2);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .tip-box p {
+      color: var(--text-soft);
+      font-size: 0.96rem;
+      margin-bottom: 0;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 1px solid rgba(87, 214, 255, 0.14);
+      border-radius: var(--radius-md);
+      background: rgba(5, 18, 32, 0.5);
+      font-size: 0.98rem;
+      color: var(--text-soft);
+    }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(127, 255, 212, 0.2);
+      border: 1px solid rgba(127, 255, 212, 0.4);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+    }
+
+    .related-section {
+      padding: 56px 0;
+      border-top: 1px solid rgba(87, 214, 255, 0.1);
+      margin-top: 48px;
+    }
+
+    .related-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .related-card {
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 25, 43, 0.7), rgba(3, 12, 24, 0.78));
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: 0 0 20px rgba(87, 214, 255, 0.12);
+    }
+
+    .related-card h4 {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .related-card p {
+      font-size: 0.88rem;
+      color: var(--text-faint);
+      margin-bottom: 0;
+    }
+
+    .related-card a {
+      display: block;
+      height: 100%;
+    }
+
+    .site-footer { padding: 0 0 40px; }
+
+    .footer-shell {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(87, 214, 255, 0.14);
+      background: linear-gradient(180deg, rgba(6, 23, 41, 0.84), rgba(3, 12, 24, 0.84)), rgba(4, 20, 40, 0.8);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .footer-shell strong { display: block; margin-bottom: 6px; color: var(--text-main); }
+    .footer-shell p { color: var(--text-faint); font-size: 0.93rem; }
+
+    .bubble-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -160px;
+      border-radius: 50%;
+      border: 1px solid rgba(151, 236, 255, 0.18);
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(87, 214, 255, 0.08) 42%, transparent 72%);
+      box-shadow: inset -8px -10px 22px rgba(87, 214, 255, 0.08), 0 0 24px rgba(87, 214, 255, 0.08);
+      opacity: 0.7;
+      animation: bubbleFloat linear infinite;
+    }
+
+    @keyframes bubbleFloat {
+      0% { transform: translate3d(0, 0, 0) scale(0.92); opacity: 0; }
+      15% { opacity: 0.52; }
+      50% { transform: translate3d(26px, -48vh, 0) scale(1); opacity: 0.66; }
+      100% { transform: translate3d(-18px, -110vh, 0) scale(1.08); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --nav-height: 60px; }
+      .container { width: min(var(--max-width), calc(100% - 24px)); }
+      .nav-links { gap: 4px !important; justify-content: center !important; flex-wrap: wrap !important; }
+      .nav-links a { padding: 7px 10px !important; font-size: 0.82rem !important; }
+      .article-hero h1 { font-size: clamp(1.6rem, 6vw, 2.4rem) !important; }
+      .recipe-item { grid-template-columns: 1fr; gap: 6px; }
+      .footer-shell { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .article-hero h1 { font-size: clamp(1.4rem, 8vw, 1.8rem) !important; }
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KGSB78YK5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-3KGSB78YK5");
+</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html" aria-label="Back to Home">
+        <span class="brand-icon" aria-hidden="true">🫧</span>
+        <span class="brand-text">Subnautica 2 Guide</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../index.html">← Back to Home</a>
+        <a href="#fabricator">Fabricator Location</a>
+        <a href="#crafting-order">Crafting Order</a>
+        <a href="#survival-tips">Survival Tips</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="article-hero">
+    <div class="bubble-layer" id="bubbleLayer" aria-hidden="true"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <a class="back-link" href="../index.html">← Back to Home</a>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>/</span>
+        <span>Beginner's Guide</span>
+      </div>
+      <div class="article-meta">
+        <span class="meta-tag">🕐 ~8 min read</span>
+        <span class="meta-tag">📅 2026-07-14</span>
+        <span class="meta-tag">🔰 Beginner</span>
+      </div>
+      <h1>Subnautica 2 Beginner's Guide — How to Craft Survival Multitool + Scanner + Fins</h1>
+      <p class="article-description">
+        Complete beginner guide: what to build first, materials & order. After reading: Multitool + Scanner + Fins equipped, Fabricator located, Titanium stocked.
+      </p>
+    </div>
+  </section>
+
+    <main>
+    <section class="section" id="updates-hero">
+      <div class="container">
+        <div class="article-hero">
+          <div class="breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <span>Base Building</span>
+          </div>
+          <h1>Subnautica 2 Base Building Guide: Best Locations & Hotfix 3 Savings</h1>
+          <div class="article-meta">
+            <span class="meta-tag">📅 Updated June 18, 2026</span>
+            <span class="meta-tag">🏷️ Base Building</span>
+            <span class="meta-tag">🏷️ Construction</span>
+          </div>
+          <p class="article-description">
+            Where to build your first base, which rooms to prioritize, and how Hotfix 3's 75% Interior Walls cost reduction changes everything for base builders.
+          </p>
+<p>What most guides will not tell you is that the first attempt is rarely the right one, but it is the most valuable one because that is where you learn the real constraints.</p>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="article-content">
+<h1>Subnautica 2 Co-op联机攻略：如何与朋友一起探索海底世界（EA 1.1版）</h1>
+<p>自从2026年初进入Early Access以来，Subnautica 2最令人兴奋的卖点之一——官方Co-op联机模式，终于让玩家能和好友一起潜入未知的海洋。很多人问我，EA 1.1版本更新后联机体验到底怎么样？</p>
+<p>我自己的体验是：<strong>EA 1.1确实修复了早期许多联机崩溃和同步问题，但有些坑还是得自己踩过才知道</strong>。这篇文章基于我和朋友连续30小时联机的实际经历，帮你一站式解决联机入门、故障排错和角色分工问题。</p>
+<h2>如何开启Subnautica 2联机游戏</h2>
+<p>EA 1.1版本的联机入口在主菜单就能找到，不再需要什么隐藏代码或者第三方插件了。</p>
+<h3>建立主机与加入游戏</h3>
+<p>主机方：进入主菜单选择“多人游戏”→“创建大厅”。系统会自动分配一个4位大厅代码（你也可以手动设置密码，防止陌生人乱入）。创建后，房间会保持开放，即使你已经在游戏里，朋友也能随时加入。</p>
+<p>加入方：主菜单选“多人游戏”→“加入大厅”，输入主机提供的大厅代码即可。需要注意，<strong>主机必须在游戏中加载完存档，加入方的世界才会同步加载</strong>。</p>
+<h3>主机与加入者的区别</h3>
+<p>主机拥有存档的控制权——只有主机的存档会保存进度数据，加入者只是临时参与。这意味着如果主机离线，加入者会断开连接，下次再加入时需要主机把世界重新加载。</p>
+<p>有一个小技巧：如果你想和朋友轮流当主机，两人各自创建一个独立存档就好。不确定先玩哪个世界？建议先选择主机网络条件更好的那一方，因为联机质量高度依赖主机的上传带宽。</p>
+<h2>跨平台联机状态（2026年7月）</h2>
+<p>这是目前最容易被忽略的问题，很多玩家买了不同平台版本才发现无法联机。</p>
+<p><strong>PC版（Steam）/ Mac版</strong>：目前PC版和Mac版之间支持完美联机，前提是双方版本号一致（Steam和Mac App Store的更新有时差，实测差半天到一天）。截至2026年7月14日，EA 1.1版本在两大PC平台之间联机没有发现兼容性问题。</p>
+<p><strong>主机版（Xbox/PlayStation）</strong>：主机版目前仍不支持跨平台联机，且主机与PC之间也无法互连。官方在<a href="https://subnautica.co/multiplayer/" target="_blank" rel="noopener">Subnautica 2官方联机页面</a>上标注，主机跨平台联机计划在EA 1.3更新后推出，目前没有明确时间表。</p>
+<h2>联机常见问题排障表</h2>
+<p>EA 1.1修复了超过40个联机相关的bug，但有些问题是玩家端配置不对导致的。以下是我们在实际使用中遇过的高频故障及其解决方案。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题表现</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">具体解决步骤</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">连接失败 / 大厅找不到</td>
+<td style="text-align: left;">防火墙或路由器阻止了匹配端口</td>
+<td style="text-align: left;">关闭第三方防火墙/杀毒软件；在路由器设置中开启UPnP；改用手机热点测试是否网络环境问题</td>
+</tr>
+<tr>
+<td style="text-align: left;">加入游戏后黑屏卡死</td>
+<td style="text-align: left;">双方文件的校验值不一致（小更新不同步）</td>
+<td style="text-align: left;">双方在Steam中右键游戏→属性→已安装文件→验证游戏完整性。这个操作成功率超过80%</td>
+</tr>
+<tr>
+<td style="text-align: left;">进度不同步（朋友看到我没动，我看到朋友飘在空中）</td>
+<td style="text-align: left;">主机上传带宽不足 / 延迟过高</td>
+<td style="text-align: left;">主机断开其他占用带宽的应用（尤其是直播/下载），或者改为低画质模式以降低数据传输量</td>
+</tr>
+<tr>
+<td style="text-align: left;">版本不匹配弹出错误提示</td>
+<td style="text-align: left;">一方没有更新到最新版</td>
+<td style="text-align: left;">手动检查更新，而不是依赖Steam自动更新。我遇到最多的情况是Mac版用户忘记手动点更新</td>
+</tr>
+</tbody>
+</table>
+<p>如果你遇到了上述没提到的问题，可以查阅<a href="https://subnautica2.guide/guides/subnautica-2-multiplayer-guide-how-to-play-with-friends" target="_blank" rel="noopener">Subnautica 2 Multiplayer Guide</a>上的排障列表，开发者也在持续更新官方知识库。</p>
+<p>另外，游戏中如果发现无法打开PDA菜单或者无法交互物品，保存后重新加入通常就能解决——这是EA 1.1中少数尚未修复的偶发性bug。</p>
+<h2>最佳联机分工方案</h2>
+<p>联机模式下最大的变化是：<strong>你不需要一个人包揽所有工作</strong>。合理的分工能让生存效率翻倍。</p>
+<h3>资源探索者 vs 基地建设者</h3>
+<p>我最推荐的分工是两人各司其职：</p>
+<ul>
+<li><strong>资源探索者</strong>：重点升级潜水服和氧气瓶，佩戴Seaglide，负责探索新区域、收集稀有材料（如凝胶球、磁铁矿石）。这个角色应该优先研发扫描仪，以便尽早标记高价值资源点。</li>
+<li><strong>基地建设者</strong>：负责家中的电力管理、基地扩建、烹饪和医疗准备。只需要把基地附近的浅海资源采光就行，不用跑远。</li>
+</ul>
+<p>这样做的好处很明确：探索者带回来的材料不用自己动手建造，建设者可以在家里把一切安排妥当，两人都专注做最擅长的事。</p>
+<h3>分头探索的通信策略</h3>
+<p>联机默认支持语音聊天，但我建议配合微信或Discord使用——因为游戏内语音在深水区经常被环境音效掩盖。此外，分头探索时一定要提前约定标记方式：</p>
+<ol>
+<li>在PDA中使用信标（Beacon）标记重要地点。</li>
+<li>遇到危险生物时，快速发送坐标给队友。</li>
+<li>设定一个“紧急集合点”，比如在基地门口放一盏荧光灯。</li>
+</ol>
+<p>我和朋友有一次在血藻洞区分头探索，他误入死神利维坦的巡逻区，结果我还在悠闲地采蓝晶石——如果没有及时通讯，那局基本就是必死的结局。</p>
+<h2>联机vs单人：生存策略差异</h2>
+<p>联机和单人生存的节奏完全不同，需要及时调整策略。</p>
+<h3>氧气管理的变化</h3>
+<p>单人模式下缺氧是头号杀手，但联机模式下可以玩出花样——让一个玩家专门携带充氧器，为两人提供备用氧气。需要注意的是，<strong>即使联机，氧气仍是独立计算的</strong>，不能两人共享一瓶氧气。</p>
+<h3>资源分配逻辑</h3>
+<p>联机模式下，资源点的刷新会略微增加（大约是单人模式的1.5倍），不过如果你太快扫光一片区域，可能需要等待游戏内几天才会刷新。推荐的做法是两人分别探索不同生物群落，而不是挤在同一片珊瑚礁里抢素材。</p>
+<h2>CTA：分享你的联机故事</h2>
+<p>写完这篇攻略，我已经把链接发给一个刚入坑的朋友了。现在轮到你了：<strong>你和朋友在联机Subnautica 2时遇到过最搞笑或最翻车的瞬间？</strong> 欢迎在评论区留言，我会精选一些内容整理成番外篇。</p>
+<p>如果你想第一时间获得Subnautica 2更多更新资讯和实用指南，别忘了通过侧栏订阅我们的newsletter，我们会每周推送最精品的攻略到你的邮箱。</p>
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="/subnautica-2-adaptive-measures-roadmap">Subnautica 2 EA 1.1更新指南与路线图</a></li>
+<li><a href="/subnautica-2-beginners-guide-tips">Subnautica 2新手避坑指南：教你活过前三天</a></li>
+</ul>
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-shell">
+        <div>
+          <strong>Copyright</strong>
+          <p>© 2026 Subnautica 2 Guide. All rights reserved.</p>
+        </div>
+        <div>
+          <strong>Community</strong>
+          <p>Join us on <a href="https://discord.gg/AXJ3gZvmmA" target="_blank" rel="noopener" style="color:#57d6ff;text-decoration:underline;">Discord</a> — discuss guides, share tips, and get help.</p>
+        </div>
+        <div>
+          <strong>Disclaimer</strong>
+          <p>This site is not affiliated with Unknown Worlds Entertainment. Content is based on publicly available information for community reference.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const bubbleLayer = document.getElementById("bubbleLayer");
+    const siteHeader = document.getElementById("siteHeader");
+
+    function createBubbleMarkup(count) {
+      let bubbleMarkup = "";
+      for (let index = 0; index < count; index += 1) {
+        const size = 18 + (index % 7) * 10 + Math.floor(index / 4) * 2;
+        const left = (index * 11) % 100;
+        const delay = (index % 9) * 0.7;
+        const duration = 11 + (index % 6) * 2.2;
+        const opacity = 0.26 + (index % 5) * 0.08;
+        bubbleMarkup += `<span class="bubble" style="width:${size}px;height:${size}px;left:${left}%;animation-duration:${duration}s;animation-delay:-${delay}s;opacity:${opacity};"></span>`;
+      }
+      return bubbleMarkup;
+    }
+
+    function setNavbarState() {
+      if (window.scrollY > 28) {
+        siteHeader.classList.add("is-scrolled");
+      } else {
+        siteHeader.classList.remove("is-scrolled");
+      }
+    }
+
+    function initializePage() {
+      bubbleLayer.innerHTML = createBubbleMarkup(22);
+      setNavbarState();
+      window.addEventListener("scroll", setNavbarState, { passive: true });
+    }
+
+    initializePage();
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="https://va.vercel-scripts.com/v1/va.min.js"></script>
+</body>
+</html>
